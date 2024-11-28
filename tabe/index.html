@@ -1,1002 +1,305 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Rotation-Equivariant Natural Illumination</title>
-    <!-- Bootstrap -->
-    <link href="RENI/src/bootstrap-4.css" rel="stylesheet">
-    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"> -->
-    <link href="RENI/src/css.css" rel="stylesheet" type="text/css">
-    <style>
-        body {
-            background: rgb(255, 255, 255) no-repeat fixed top left;
-            font-family: 'Open Sans', sans-serif;
-        }
-    </style>
-
-    <style type="text/css">.CtxtMenu_InfoClose {
-        top: .2em;
-        right: .2em;
-    }
-
-    .CtxtMenu_InfoContent {
-        overflow: auto;
-        text-align: left;
-        font-size: 80%;
-        padding: .4em .6em;
-        border: 1px inset;
-        margin: 1em 0px;
-        max-height: 20em;
-        max-width: 30em;
-        background-color: #EEEEEE;
-        white-space: normal;
-    }
-
-    .CtxtMenu_Info.CtxtMenu_MousePost {
-        outline: none;
-    }
-
-    .CtxtMenu_Info {
-        position: fixed;
-        left: 50%;
-        width: auto;
-        text-align: center;
-        border: 3px outset;
-        padding: 1em 2em;
-        background-color: #DDDDDD;
-        color: black;
-        cursor: default;
-        font-family: message-box;
-        font-size: 120%;
-        font-style: normal;
-        text-indent: 0;
-        text-transform: none;
-        line-height: normal;
-        letter-spacing: normal;
-        word-spacing: normal;
-        word-wrap: normal;
-        white-space: nowrap;
-        float: none;
-        z-index: 201;
-        border-radius: 15px; /* Opera 10.5 and IE9 */
-        -webkit-border-radius: 15px; /* Safari and Chrome */
-        -moz-border-radius: 15px; /* Firefox */
-        -khtml-border-radius: 15px; /* Konqueror */
-        box-shadow: 0px 10px 20px #808080; /* Opera 10.5 and IE9 */
-        -webkit-box-shadow: 0px 10px 20px #808080; /* Safari 3 & Chrome */
-        -moz-box-shadow: 0px 10px 20px #808080; /* Forefox 3.5 */
-        -khtml-box-shadow: 0px 10px 20px #808080; /* Konqueror */
-        filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color="gray", Positive="true"); /* IE */
-    }
-    </style>
-    <style type="text/css">.CtxtMenu_MenuClose {
-        position: absolute;
-        cursor: pointer;
-        display: inline-block;
-        border: 2px solid #AAA;
-        border-radius: 18px;
-        -webkit-border-radius: 18px; /* Safari and Chrome */
-        -moz-border-radius: 18px; /* Firefox */
-        -khtml-border-radius: 18px; /* Konqueror */
-        font-family: "Courier New", Courier;
-        font-size: 24px;
-        color: #F0F0F0
-    }
-
-    .CtxtMenu_MenuClose span {
-        display: block;
-        background-color: #AAA;
-        border: 1.5px solid;
-        border-radius: 18px;
-        -webkit-border-radius: 18px; /* Safari and Chrome */
-        -moz-border-radius: 18px; /* Firefox */
-        -khtml-border-radius: 18px; /* Konqueror */
-        line-height: 0;
-        padding: 8px 0 6px /* may need to be browser-specific */
-    }
-
-    .CtxtMenu_MenuClose:hover {
-        color: white !important;
-        border: 2px solid #CCC !important
-    }
-
-    .CtxtMenu_MenuClose:hover span {
-        background-color: #CCC !important
-    }
-
-    .CtxtMenu_MenuClose:hover:focus {
-        outline: none
-    }
-    </style>
-    <style type="text/css">.CtxtMenu_Menu {
-        position: absolute;
-        background-color: white;
-        color: black;
-        width: auto;
-        padding: 5px 0px;
-        border: 1px solid #CCCCCC;
-        margin: 0;
-        cursor: default;
-        font: menu;
-        text-align: left;
-        text-indent: 0;
-        text-transform: none;
-        line-height: normal;
-        letter-spacing: normal;
-        word-spacing: normal;
-        word-wrap: normal;
-        white-space: nowrap;
-        float: none;
-        z-index: 201;
-        border-radius: 5px; /* Opera 10.5 and IE9 */
-        -webkit-border-radius: 5px; /* Safari and Chrome */
-        -moz-border-radius: 5px; /* Firefox */
-        -khtml-border-radius: 5px; /* Konqueror */
-        box-shadow: 0px 10px 20px #808080; /* Opera 10.5 and IE9 */
-        -webkit-box-shadow: 0px 10px 20px #808080; /* Safari 3 & Chrome */
-        -moz-box-shadow: 0px 10px 20px #808080; /* Forefox 3.5 */
-        -khtml-box-shadow: 0px 10px 20px #808080; /* Konqueror */
-    }
-
-    .CtxtMenu_MenuItem {
-        padding: 1px 2em;
-        background: transparent;
-    }
-
-    .CtxtMenu_MenuArrow {
-        position: absolute;
-        right: .5em;
-        padding-top: .25em;
-        color: #666666;
-        font-family: null;
-        font-size: .75em
-    }
-
-    .CtxtMenu_MenuActive .CtxtMenu_MenuArrow {
-        color: white
-    }
-
-    .CtxtMenu_MenuArrow.CtxtMenu_RTL {
-        left: .5em;
-        right: auto
-    }
-
-    .CtxtMenu_MenuCheck {
-        position: absolute;
-        left: .7em;
-        font-family: null
-    }
-
-    .CtxtMenu_MenuCheck.CtxtMenu_RTL {
-        right: .7em;
-        left: auto
-    }
-
-    .CtxtMenu_MenuRadioCheck {
-        position: absolute;
-        left: .7em;
-    }
-
-    .CtxtMenu_MenuRadioCheck.CtxtMenu_RTL {
-        right: .7em;
-        left: auto
-    }
-
-    .CtxtMenu_MenuInputBox {
-        padding-left: 1em;
-        right: .5em;
-        color: #666666;
-        font-family: null;
-    }
-
-    .CtxtMenu_MenuInputBox.CtxtMenu_RTL {
-        left: .1em;
-    }
-
-    .CtxtMenu_MenuComboBox {
-        left: .1em;
-        padding-bottom: .5em;
-    }
-
-    .CtxtMenu_MenuSlider {
-        left: .1em;
-    }
-
-    .CtxtMenu_SliderValue {
-        position: absolute;
-        right: .1em;
-        padding-top: .25em;
-        color: #333333;
-        font-size: .75em
-    }
-
-    .CtxtMenu_SliderBar {
-        outline: none;
-        background: #d3d3d3
-    }
-
-    .CtxtMenu_MenuLabel {
-        padding: 1px 2em 3px 1.33em;
-        font-style: italic
-    }
-
-    .CtxtMenu_MenuRule {
-        border-top: 1px solid #DDDDDD;
-        margin: 4px 3px;
-    }
-
-    .CtxtMenu_MenuDisabled {
-        color: GrayText
-    }
-
-    .CtxtMenu_MenuActive {
-        background-color: #606872;
-        color: white;
-    }
-
-    .CtxtMenu_MenuDisabled:focus {
-        background-color: #E8E8E8
-    }
-
-    .CtxtMenu_MenuLabel:focus {
-        background-color: #E8E8E8
-    }
-
-    .CtxtMenu_ContextMenu:focus {
-        outline: none
-    }
-
-    .CtxtMenu_ContextMenu .CtxtMenu_MenuItem:focus {
-        outline: none
-    }
-
-    .CtxtMenu_SelectionMenu {
-        position: relative;
-        float: left;
-        border-bottom: none;
-        box-shadow: none;
-        -webkit-box-shadow: none;
-        border-radius: 0px;
-        -webkit-border-radius: 0px;
-    }
-
-    .CtxtMenu_SelectionItem {
-        padding-right: 1em;
-    }
-
-    .CtxtMenu_Selection {
-        right: 40%;
-        width: 50%;
-    }
-
-    .CtxtMenu_SelectionBox {
-        padding: 0em;
-        max-height: 20em;
-        max-width: none;
-        background-color: #FFFFFF;
-    }
-
-    .CtxtMenu_SelectionDivider {
-        clear: both;
-        border-top: 2px solid #000000;
-    }
-
-    .CtxtMenu_Menu .CtxtMenu_MenuClose {
-        top: -10px;
-        left: -10px
-    }
-    </style>
-    <style id="MJX-CHTML-styles">
-        mjx-container[jax="CHTML"] {
-            line-height: 0;
-        }
-
-        mjx-container [space="1"] {
-            margin-left: .111em;
-        }
-
-        mjx-container [space="2"] {
-            margin-left: .167em;
-        }
-
-        mjx-container [space="3"] {
-            margin-left: .222em;
-        }
-
-        mjx-container [space="4"] {
-            margin-left: .278em;
-        }
-
-        mjx-container [space="5"] {
-            margin-left: .333em;
-        }
-
-        mjx-container [rspace="1"] {
-            margin-right: .111em;
-        }
-
-        mjx-container [rspace="2"] {
-            margin-right: .167em;
-        }
-
-        mjx-container [rspace="3"] {
-            margin-right: .222em;
-        }
-
-        mjx-container [rspace="4"] {
-            margin-right: .278em;
-        }
-
-        mjx-container [rspace="5"] {
-            margin-right: .333em;
-        }
-
-        mjx-container [size="s"] {
-            font-size: 70.7%;
-        }
-
-        mjx-container [size="ss"] {
-            font-size: 50%;
-        }
-
-        mjx-container [size="Tn"] {
-            font-size: 60%;
-        }
-
-        mjx-container [size="sm"] {
-            font-size: 85%;
-        }
-
-        mjx-container [size="lg"] {
-            font-size: 120%;
-        }
-
-        mjx-container [size="Lg"] {
-            font-size: 144%;
-        }
-
-        mjx-container [size="LG"] {
-            font-size: 173%;
-        }
-
-        mjx-container [size="hg"] {
-            font-size: 207%;
-        }
-
-        mjx-container [size="HG"] {
-            font-size: 249%;
-        }
-
-        mjx-container [width="full"] {
-            width: 100%;
-        }
-
-        mjx-box {
-            display: inline-block;
-        }
-
-        mjx-block {
-            display: block;
-        }
-
-        mjx-itable {
-            display: inline-table;
-        }
-
-        mjx-row {
-            display: table-row;
-        }
-
-        mjx-row > * {
-            display: table-cell;
-        }
-
-        mjx-mtext {
-            display: inline-block;
-        }
-
-        mjx-mstyle {
-            display: inline-block;
-        }
-
-        mjx-merror {
-            display: inline-block;
-            color: red;
-            background-color: yellow;
-        }
-
-        mjx-mphantom {
-            visibility: hidden;
-        }
-
-        _::-webkit-full-page-media, _:future, :root mjx-container {
-            will-change: opacity;
-        }
-
-        .row-bottom-margin {
-            margin-bottom: 0px;
-        }
-
-        div.imagetiles div.col-lg-3.col-md-3.col-sm-3.col-xs-6 {
-            padding: 0px;
-        }
-
-        mjx-assistive-mml {
-            position: absolute !important;
-            top: 0px;
-            left: 0px;
-            clip: rect(1px, 1px, 1px, 1px);
-            padding: 1px 0px 0px 0px !important;
-            border: 0px !important;
-            display: block !important;
-            width: auto !important;
-            overflow: hidden !important;
-            -webkit-touch-callout: none;
-            -webkit-user-select: none;
-            -khtml-user-select: none;
-            -moz-user-select: none;
-            -ms-user-select: none;
-            user-select: none;
-        }
-
-        mjx-assistive-mml[display="block"] {
-            width: 100% !important;
-        }
-
-        mjx-c::before {
-            display: block;
-            width: 0;
-        }
-
-        .MJX-TEX {
-            font-family: MJXZERO, MJXTEX;
-        }
-
-        .TEX-B {
-            font-family: MJXZERO, MJXTEX-B;
-        }
-
-        .TEX-I {
-            font-family: MJXZERO, MJXTEX-I;
-        }
-
-        .TEX-MI {
-            font-family: MJXZERO, MJXTEX-MI;
-        }
-
-        .TEX-BI {
-            font-family: MJXZERO, MJXTEX-BI;
-        }
-
-        .TEX-S1 {
-            font-family: MJXZERO, MJXTEX-S1;
-        }
-
-        .TEX-S2 {
-            font-family: MJXZERO, MJXTEX-S2;
-        }
-
-        .TEX-S3 {
-            font-family: MJXZERO, MJXTEX-S3;
-        }
-
-        .TEX-S4 {
-            font-family: MJXZERO, MJXTEX-S4;
-        }
-
-        .TEX-A {
-            font-family: MJXZERO, MJXTEX-A;
-        }
-
-        .TEX-C {
-            font-family: MJXZERO, MJXTEX-C;
-        }
-
-        .TEX-CB {
-            font-family: MJXZERO, MJXTEX-CB;
-        }
-
-        .TEX-FR {
-            font-family: MJXZERO, MJXTEX-FR;
-        }
-
-        .TEX-FRB {
-            font-family: MJXZERO, MJXTEX-FRB;
-        }
-
-        .TEX-SS {
-            font-family: MJXZERO, MJXTEX-SS;
-        }
-
-        .TEX-SSB {
-            font-family: MJXZERO, MJXTEX-SSB;
-        }
-
-        .TEX-SSI {
-            font-family: MJXZERO, MJXTEX-SSI;
-        }
-
-        .TEX-SC {
-            font-family: MJXZERO, MJXTEX-SC;
-        }
-
-        .TEX-T {
-            font-family: MJXZERO, MJXTEX-T;
-        }
-
-        .TEX-V {
-            font-family: MJXZERO, MJXTEX-V;
-        }
-
-        .TEX-VB {
-            font-family: MJXZERO, MJXTEX-VB;
-        }
-
-        mjx-stretchy-v mjx-c, mjx-stretchy-h mjx-c {
-            font-family: MJXZERO, MJXTEX-S1, MJXTEX-S4, MJXTEX, MJXTEX-A ! important;
-        }
-
-        @font-face /* 0 */ {
-            font-family: MJXZERO;
-            src: url("https://cdn.jsdelivr.net/npm/mathjax@3/es5/output/chtml/fonts/woff-v2/MathJax_Zero.woff") format("woff");
-        }
-
-        @font-face /* 1 */ {
-            font-family: MJXTEX;
-            src: url("https://cdn.jsdelivr.net/npm/mathjax@3/es5/output/chtml/fonts/woff-v2/MathJax_Main-Regular.woff") format("woff");
-        }
-
-        @font-face /* 2 */ {
-            font-family: MJXTEX-B;
-            src: url("https://cdn.jsdelivr.net/npm/mathjax@3/es5/output/chtml/fonts/woff-v2/MathJax_Main-Bold.woff") format("woff");
-        }
-
-        @font-face /* 3 */ {
-            font-family: MJXTEX-I;
-            src: url("https://cdn.jsdelivr.net/npm/mathjax@3/es5/output/chtml/fonts/woff-v2/MathJax_Math-Italic.woff") format("woff");
-        }
-
-        @font-face /* 4 */ {
-            font-family: MJXTEX-MI;
-            src: url("https://cdn.jsdelivr.net/npm/mathjax@3/es5/output/chtml/fonts/woff-v2/MathJax_Main-Italic.woff") format("woff");
-        }
-
-        @font-face /* 5 */ {
-            font-family: MJXTEX-BI;
-            src: url("https://cdn.jsdelivr.net/npm/mathjax@3/es5/output/chtml/fonts/woff-v2/MathJax_Math-BoldItalic.woff") format("woff");
-        }
-
-        @font-face /* 6 */ {
-            font-family: MJXTEX-S1;
-            src: url("https://cdn.jsdelivr.net/npm/mathjax@3/es5/output/chtml/fonts/woff-v2/MathJax_Size1-Regular.woff") format("woff");
-        }
-
-        @font-face /* 7 */ {
-            font-family: MJXTEX-S2;
-            src: url("https://cdn.jsdelivr.net/npm/mathjax@3/es5/output/chtml/fonts/woff-v2/MathJax_Size2-Regular.woff") format("woff");
-        }
-
-        @font-face /* 8 */ {
-            font-family: MJXTEX-S3;
-            src: url("https://cdn.jsdelivr.net/npm/mathjax@3/es5/output/chtml/fonts/woff-v2/MathJax_Size3-Regular.woff") format("woff");
-        }
-
-        @font-face /* 9 */ {
-            font-family: MJXTEX-S4;
-            src: url("https://cdn.jsdelivr.net/npm/mathjax@3/es5/output/chtml/fonts/woff-v2/MathJax_Size4-Regular.woff") format("woff");
-        }
-
-        @font-face /* 10 */ {
-            font-family: MJXTEX-A;
-            src: url("https://cdn.jsdelivr.net/npm/mathjax@3/es5/output/chtml/fonts/woff-v2/MathJax_AMS-Regular.woff") format("woff");
-        }
-
-        @font-face /* 11 */ {
-            font-family: MJXTEX-C;
-            src: url("https://cdn.jsdelivr.net/npm/mathjax@3/es5/output/chtml/fonts/woff-v2/MathJax_Calligraphic-Regular.woff") format("woff");
-        }
-
-        @font-face /* 12 */ {
-            font-family: MJXTEX-CB;
-            src: url("https://cdn.jsdelivr.net/npm/mathjax@3/es5/output/chtml/fonts/woff-v2/MathJax_Calligraphic-Bold.woff") format("woff");
-        }
-
-        @font-face /* 13 */ {
-            font-family: MJXTEX-FR;
-            src: url("https://cdn.jsdelivr.net/npm/mathjax@3/es5/output/chtml/fonts/woff-v2/MathJax_Fraktur-Regular.woff") format("woff");
-        }
-
-        @font-face /* 14 */ {
-            font-family: MJXTEX-FRB;
-            src: url("https://cdn.jsdelivr.net/npm/mathjax@3/es5/output/chtml/fonts/woff-v2/MathJax_Fraktur-Bold.woff") format("woff");
-        }
-
-        @font-face /* 15 */ {
-            font-family: MJXTEX-SS;
-            src: url("https://cdn.jsdelivr.net/npm/mathjax@3/es5/output/chtml/fonts/woff-v2/MathJax_SansSerif-Regular.woff") format("woff");
-        }
-
-        @font-face /* 16 */ {
-            font-family: MJXTEX-SSB;
-            src: url("https://cdn.jsdelivr.net/npm/mathjax@3/es5/output/chtml/fonts/woff-v2/MathJax_SansSerif-Bold.woff") format("woff");
-        }
-
-        @font-face /* 17 */ {
-            font-family: MJXTEX-SSI;
-            src: url("https://cdn.jsdelivr.net/npm/mathjax@3/es5/output/chtml/fonts/woff-v2/MathJax_SansSerif-Italic.woff") format("woff");
-        }
-
-        @font-face /* 18 */ {
-            font-family: MJXTEX-SC;
-            src: url("https://cdn.jsdelivr.net/npm/mathjax@3/es5/output/chtml/fonts/woff-v2/MathJax_Script-Regular.woff") format("woff");
-        }
-
-        @font-face /* 19 */ {
-            font-family: MJXTEX-T;
-            src: url("https://cdn.jsdelivr.net/npm/mathjax@3/es5/output/chtml/fonts/woff-v2/MathJax_Typewriter-Regular.woff") format("woff");
-        }
-
-        @font-face /* 20 */ {
-            font-family: MJXTEX-V;
-            src: url("https://cdn.jsdelivr.net/npm/mathjax@3/es5/output/chtml/fonts/woff-v2/MathJax_Vector-Regular.woff") format("woff");
-        }
-
-        @font-face /* 21 */ {
-            font-family: MJXTEX-VB;
-            src: url("https://cdn.jsdelivr.net/npm/mathjax@3/es5/output/chtml/fonts/woff-v2/MathJax_Vector-Bold.woff") format("woff");
-        }
-    </style>
+<!--   Google tag (gtag.js)-->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-X8M7T669YV"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-X8M7T669YV');
+  </script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8">
+  <meta name="description"
+        content="Track Anything Behind Everything">
+<title>Track Anything Behind Everything</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="src/css/bulma.min.css">
+  <link rel="stylesheet" href="src/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="src/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.8.0/codemirror.min.css">
+
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="src/css/index.css">
+  <!-- <link rel="stylesheet" href="src/css/app.css"> -->
+  <!-- <link rel="icon" href="src/images/favicon.svg"> -->
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.8.0/codemirror.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.5.3/clipboard.min.js"></script>
+  <script type="text/javascript" async
+    src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
+  <script src="src/js/bulma-carousel.min.js"></script>
+  <script src="src/js/bulma-slider.min.js"></script>
+  <script src="src/js/app.js"></script>
+  <script src="src/js/synced_video_selector.js"></script>
 </head>
+<body onresize="reload();">
 
-<!-- cover -->
-<body>
-<section>
-    <div class="jumbotron text-center mt-0">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col">
-                    <h2 style="font-size:30px;">Track Anything Behind Everything</h2>
-                    <h3 style="color:#6e6e6e;">Zero-Shot Amodal Video Object Segmentation</h3>
-                    <hr>
-                    <h6><a href="https://finlay-hudson.github.io/" target="_blank">Finlay G. C. Hudson</a><sup>1</sup>,
-                        <a href="https://www-users.cs.york.ac.uk/wsmith/" target="_blank">William A. P.
-                            Smith</a><sup>1</sup>,
-                        <br>
-                        <br>
-                        <p><sup>1</sup> <a href="https://sites.google.com/york.ac.uk/vglyork" style="color:#212529">The
-                            University of York</a>&nbsp;
-                            <br>
-                        </p>
+<section class="hero" style="padding-bottom: 0; margin-bottom: 0;background-color: #fcedd9;">
+  <div class="hero-body" style="padding-bottom: 0; margin-bottom: 0;background-color: #fcedd9;">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title" style="font-size: 32pt;"><span style="font-weight: bolder;">Generative Omnimatte</span>
+            <br><span style="font-weight:normal">Learning to Decompose Video into Layers</span></h1>
+          <div class="is-size-5 publication-authors" id="div-row-authors">
+			      <span class="author-block">
+              <a href="https://finlay-hudson.github.io/">Finlay G. C. Hudson</a><sup>1</sup>&nbsp&nbsp</span>
+            <span class="author-block">
+                <a href="https://www-users.york.ac.uk/~waps101/">William A. P. Smith</a><sup>1</sup>&nbsp&nbsp</span>
+          </div>
 
-                        <!--            <div class="row justify-content-center">-->
-                        <!--              <div class="column">-->
-                        <!--                  <p class="mb-5"><a class="btn btn-large btn-light" href="https://arxiv.org/abs/2206.03858" role="button" target="_blank">-->
-                        <!--                    <i class="fa fa-file"></i> Paper </a> </p>-->
-                        <!--              </div>-->
-                        <!--              <div class="column">-->
-                        <!--                  <p class="mb-5"><a class="btn btn-large btn-light" id="code_soon" href="https://github.com/JADGardner/RENI" role="button" target="_blank" disabled="1">-->
-                        <!--                <i class="fa fa-github-alt"></i> Code </a> </p>-->
-                        <!--              </div>-->
-                        <!--              <div class="column">-->
-                        <!--                  <p class="mb-5"><a class="btn btn-large btn-light" id="code_soon" href="https://drive.google.com/drive/folders/1pMx2oolATFSRIZ2iRc9x2cNrqZQDB1En" role="button" target="_blank" disabled="1">-->
-                        <!--                <i class="fa fa-github-alt"></i> Dataset </a> </p>-->
-                        <!--              </div>-->
-                        <!-- <div class="column">
-                            <p class="mb-5"><a class="btn btn-large btn-light" href="https://jadgardner.github.io/" role="button" target="_blank">
-                              <i class="fa fa-file"></i> Supplementary</a> </p>
-                        </div> -->
-                </div>
-
-                </h6></div>
-        </div>
-    </div>
-    </div>
-</section>
-
-<!-- abstract -->
-<section>
-    <div class="container">
-        <div class="row">
-            <div class="col-12 text-center">
-                <h3>Abstract</h3>
-                <hr style="margin-top:0px">
-<!--                <div class="row justify-content-center" style="align-items:center; display:flex;">-->
-<!--                    <video playsinline="" autoplay="autoplay" loop="loop" preload="" muted="muted" id="header_vid"-->
-<!--                           width="95%">-->
-<!--                        <source src="RENI/imgs/teaser.m4v" type="video/mp4">-->
-<!--                    </video>-->
-<!--                </div>-->
-                <br>
-                <p class="text-justify">
-                    We present Track Anything Behind Everything (TABE), a novel dataset, pipeline, and evaluation
-                    framework for zero-shot amodal completion from visible masks. Unlike existing methods that require
-                    pretrained class labels, our approach uses a single query mask from the first frame where the object
-                    is visible, enabling flexible, zero-shot inference. Our dataset, TABE-51 provides highly accurate
-                    ground truth amodal segmentation masks without the need for human estimation or 3D reconstruction.
-                    Our TABE pipeline is specifically designed to handle amodal completion, even in scenarios where
-                    objects are completely occluded. We also introduce a specialised evaluation framework that isolates
-                    amodal completion performance, free from the influence of traditional visual segmentation metrics.
-                    Dataset, model and code will be made available.
-                </p>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup>University of York  </span>
+          </div>
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <span class="link-block"></span>
+                <!-- <a href=""
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>PDF</span>
+                </a> -->
+                <a href=""
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+                <a href=""
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                    <!-- <i class="fa-brands fa-youtube"></i> -->
+                    <svg class="svg-inline--fa fa-youtube fa-w-18" aria-hidden="true" focusable="false" data-prefix="fab" data-icon="youtube" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" data-fa-i2svg=""><path fill="currentColor" d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z"></path></svg>
+                  </span>
+                  <span>Code</span>
+                </a>
+                <a href=""
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fa fa-book"></i>
+                  </span>
+                  <span>Dataset</span>
+                </a>
+              </span>
             </div>
+
+          </div>
         </div>
-    </div>
-
-</section>
-<br>
-
-<!--<section>-->
-<!--    <div class="container">-->
-<!--        <div class="row">-->
-<!--            <div class="col-12 text-center">-->
-<!--                <h3>Rotation-Equivariant Conditional Spherical Neural Fields</h3>-->
-<!--                <hr style="margin-top:0px">-->
-<!--                <p class="text-justify">-->
-<!--                    We extend Vector Neurons to a neural field representation-->
-<!--                    for spherical images, constructing a generative model of spherical-->
-<!--                    signals that is rotation-equivariant-->
-<!--                    with respect to the latent representation of the signal. Since our-->
-<!--                    neural field is equivariant we do not need to augment our-->
-<!--                    training data over the space of rotations. Observing a-->
-<!--                    spherical signal once means we can reconstruct it with the same-->
-<!--                    accuracy in any rotation.-->
-<!--                    &lt;!&ndash;Grid row&ndash;&gt;-->
-<!--                </p>-->
-<!--                <div class="row">-->
-<!--                    &lt;!&ndash;Grid column&ndash;&gt;-->
-<!--                    <div class="col-lg-12">-->
-<!--                        <img src="RENI/imgs/conditional_spherical_neural_fields.svg" class="img-fluid mb-4" alt=""-->
-<!--                             data-wow-delay="0.3s">-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--    </div>-->
-<!--</section>-->
-<!--<br>-->
-
-<!--<section>-->
-<!--    <div class="container">-->
-<!--        <div class="row">-->
-<!--            <div class="col-12 text-center">-->
-<!--                <h3>RENI - A Rotation-Equivariant Natural Illumination Model</h3>-->
-<!--                <hr style="margin-top:0px">-->
-<!--                <p class="text-justify">-->
-<!--                    Applying our rotation-equivariant conditional spherical neural field we create-->
-<!--                    a statistical model of natural illumination. Natural environments-->
-<!--                    have a canonical “up” direction (defined by gravity) but arbitrary rotation about this vertical-->
-<!--                    axis.-->
-<!--                    We therefore restricted our invariance to rotations only about the vertical (y)-axis. Training on-->
-<!--                    our-->
-<!--                    curated dataset of 1.6K HDR equirectangular images of natural scenes we demonstrate better-->
-<!--                    performance than-->
-<!--                    both Spherical Harmonics and Spherical Gaussians at reconstructing natural illumination environments-->
-<!--                    using-->
-<!--                    a latent dimensionality of equal size.-->
-<!--                    &lt;!&ndash;Grid row&ndash;&gt;-->
-<!--                <div class="row justify-content-center" style="align-items:center; display:flex;">-->
-<!--                    &lt;!&ndash;Grid column&ndash;&gt;-->
-<!--                    <div class="col pr-3">-->
-<!--                        <img src="RENI/imgs/comparison.svg" class="img-fluid mb-4"">-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--    </div>-->
-<!--</section>-->
-<!--<br>-->
-
-<!--<section>-->
-<!--    <div class="container">-->
-<!--        <div class="row">-->
-<!--            <div class="col-12 text-center">-->
-<!--                <h5>Illumination Prior</h5>-->
-<!--                <hr style="margin-top:0px">-->
-<!--                <p class="text-justify">-->
-<!--                    Sampling from and interpolating through RENI's latent space will only produce plausible illumination-->
-<!--                    environments. This-->
-<!--                    can be used to constrain inverse rendering problems or as a generator of realistic synthetic data.-->
-<!--                <div class="row justify-content-center" style="align-items:center; display:flex;">-->
-<!--                    <video playsinline="" autoplay="autoplay" loop="loop" preload="" muted="muted" id="header_vid"-->
-<!--                           width="70%">-->
-<!--                        <source src="RENI/imgs/random_interpolations.m4v" type="video/mp4">-->
-<!--                    </video>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--    </div>-->
-<!--</section>-->
-<!--<br>-->
-
-<!--<section>-->
-<!--    <div class="container">-->
-<!--        <div class="row">-->
-<!--            <div class="col-12 text-center">-->
-<!--                <h5>Inverse Rendering</h5>-->
-<!--                <hr style="margin-top:0px">-->
-<!--                <p class="text-justify">-->
-<!--                    We implemented a normalised Blinn-Phong environment map shader in PyTorch3D, enabling fully-->
-<!--                    differentiable rendering.-->
-<!--                    Fitting RENI to a render of a 3D object with fixed geometry, pose, camera and material parameters-->
-<!--                    such that only lighting in the scene is unknown.-->
-<!--                    &lt;!&ndash;Grid row&ndash;&gt;-->
-<!--                <div class="row justify-content-center" style="align-items:center; display:flex;">-->
-<!--                    &lt;!&ndash;Grid column&ndash;&gt;-->
-<!--                    <div class="col pr-3">-->
-<!--                        <img src="RENI/imgs/inverse_rendering.svg" class="img-fluid mb-4"">-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--    </div>-->
-<!--</section>-->
-<!--<br>-->
-
-<!--<section>-->
-<!--    <div class="container">-->
-<!--        <div class="row">-->
-<!--            <div class="col-12 text-center">-->
-<!--                <h5>Environment Map Completion</h5>-->
-<!--                <hr style="margin-top:0px">-->
-<!--                <p class="text-justify">-->
-<!--                    RENI can hallucinate plausible completions of the environments when provided only a small cutout in-->
-<!--                    it's-->
-<!--                    training loss, making sensible estimations about the possible colours and shapes of land and sky and-->
-<!--                    often predicts-->
-<!--                    accurate sun locations despite the sun being outside the image crop.-->
-<!--                    &lt;!&ndash;Grid row&ndash;&gt;-->
-<!--                </p>-->
-<!--                <div class="row">-->
-<!--                    &lt;!&ndash;Grid column&ndash;&gt;-->
-<!--                    <div class="col-lg-12">-->
-<!--                        <img src="RENI/imgs/inpainting.svg" class="img-fluid mb-4" alt="" data-wow-delay="0.3s">-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--    </div>-->
-<!--</section>-->
-<!--<br>-->
-
-<section>
-    <div class="container">
-        <div class="row">
-            <div class="col-12 text-center">
-                <h3>Dataset</h3>
-                <hr style="margin-top:0px">
-                <p class="text-justify">
-                    We have curated a dataset (TABE-51), a video amodal segmentation dataset that provides high-quality
-                    ground truth labels for occluded objects. The dataset contains 51 scenes with over 2000 frames and
-                    provides a robust benchmark for evaluating how well segmentation methods track and predict occluded
-                    objects throughout entire video sequences.
-                    <!--Grid row-->
-                </p>
-                <div class="row">
-                    <!--Grid column-->
-                    <div class="col-lg-12">
-                        <img src="imgs/data_collection_img_w_scissors_white_gaps.png" class="img-fluid mb-4" alt="" data-wow-delay="0.3s">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<br>
-
-<!--<section>-->
-<!--    <div class="container">-->
-<!--        <div class="row">-->
-<!--            <div class="col-12 text-center">-->
-<!--                <h3>Dataset</h3>-->
-<!--                <hr style="margin-top:0px">-->
-<!--                <p class="text-justify">-->
-<!--                    We have curated a dataset (TABE-51), a video amodal segmentation dataset that provides high-quality-->
-<!--                    ground truth labels for occluded objects. The dataset contains 51 scenes with over 2000 frames and-->
-<!--                    provides a robust benchmark for evaluating how well segmentation methods track and predict occluded-->
-<!--                    objects throughout entire video sequences.-->
-<!--                    &lt;!&ndash;                    The dataset can be downloaded <a&ndash;&gt;-->
-<!--                    &lt;!&ndash;                        href="https://drive.google.com/drive/folders/1pMx2oolATFSRIZ2iRc9x2cNrqZQDB1En">here</a>.&ndash;&gt;-->
-<!--                    &lt;!&ndash;Grid row&ndash;&gt;-->
-<!--            </div>-->
-<!--        </div>-->
-<!--        <div class="row">-->
-<!--            &lt;!&ndash;Grid column&ndash;&gt;-->
-<!--            <div class="col-lg-12">-->
-<!--                <img src="tabe/imgs/data_collection_img_w_scissors_white_gaps.png", class="img-fluid mb-4" alt="" data-wow-delay="0.3s">-->
-<!--            </div>-->
-<!--        </div>-->
-<!--        &lt;!&ndash;        <div class="row justify-content-center mb-4">&ndash;&gt;-->
-<!--        &lt;!&ndash;Grid column&ndash;&gt;-->
-<!--        &lt;!&ndash;            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">&ndash;&gt;-->
-<!--        &lt;!&ndash;                <img src="RENI/imgs/dataset/001.png" class="img-fluid">&ndash;&gt;-->
-<!--        &lt;!&ndash;            </div>&ndash;&gt;-->
-<!--        &lt;!&ndash;            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">&ndash;&gt;-->
-<!--        &lt;!&ndash;                <img src="RENI/imgs/dataset/002.png" class="img-fluid">&ndash;&gt;-->
-<!--        &lt;!&ndash;            </div>&ndash;&gt;-->
-<!--        &lt;!&ndash;            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">&ndash;&gt;-->
-<!--        &lt;!&ndash;                <img src="RENI/imgs/dataset/003.png" class="img-fluid">&ndash;&gt;-->
-<!--        &lt;!&ndash;            </div>&ndash;&gt;-->
-<!--        &lt;!&ndash;        </div>&ndash;&gt;-->
-<!--        &lt;!&ndash;        <div></div>&ndash;&gt;-->
-<!--        &lt;!&ndash;        <div class="row justify-content-center mb-4">&ndash;&gt;-->
-<!--        &lt;!&ndash;            &lt;!&ndash;Grid column&ndash;&gt;&ndash;&gt;-->
-<!--        &lt;!&ndash;            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">&ndash;&gt;-->
-<!--        &lt;!&ndash;                <img src="RENI/imgs/dataset/004.png" class="img-fluid">&ndash;&gt;-->
-<!--        &lt;!&ndash;            </div>&ndash;&gt;-->
-<!--        &lt;!&ndash;            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">&ndash;&gt;-->
-<!--        &lt;!&ndash;                <img src="RENI/imgs/dataset/005.png" class="img-fluid">&ndash;&gt;-->
-<!--        &lt;!&ndash;            </div>&ndash;&gt;-->
-<!--        &lt;!&ndash;            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">&ndash;&gt;-->
-<!--        &lt;!&ndash;                <img src="RENI/imgs/dataset/006.png" class="img-fluid">&ndash;&gt;-->
-<!--        &lt;!&ndash;            </div>&ndash;&gt;-->
-<!--        &lt;!&ndash;        </div>&ndash;&gt;-->
-<!--        &lt;!&ndash;        <div class="row justify-content-center">&ndash;&gt;-->
-<!--        &lt;!&ndash;            &lt;!&ndash;Grid column&ndash;&gt;&ndash;&gt;-->
-<!--        &lt;!&ndash;            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">&ndash;&gt;-->
-<!--        &lt;!&ndash;                <img src="RENI/imgs/dataset/007.png" class="img-fluid">&ndash;&gt;-->
-<!--        &lt;!&ndash;            </div>&ndash;&gt;-->
-<!--        &lt;!&ndash;            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">&ndash;&gt;-->
-<!--        &lt;!&ndash;                <img src="RENI/imgs/dataset/008.png" class="img-fluid">&ndash;&gt;-->
-<!--        &lt;!&ndash;            </div>&ndash;&gt;-->
-<!--        &lt;!&ndash;            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">&ndash;&gt;-->
-<!--        &lt;!&ndash;                <img src="RENI/imgs/dataset/009.png" class="img-fluid">&ndash;&gt;-->
-<!--        &lt;!&ndash;            </div>&ndash;&gt;-->
-<!--        &lt;!&ndash;        </div>&ndash;&gt;-->
-<!--    </div>-->
-<!--</section>-->
-<!--<br>-->
-
-
-<!-- citing -->
-<!--<div class="container">-->
-<!--    <div class="row ">-->
-<!--        <div class="col-12">-->
-<!--            <h3>Citation</h3>-->
-<!--            <hr style="margin-top:0px">-->
-<!--            <pre style="background-color: #e9eeef;padding: 1.25em 1.5em"><code>@inproceedings{-->
-<!--gardner2022rotationequivariant,-->
-<!--title={Rotation-Equivariant Conditional Spherical Neural Fields for Learning a Natural Illumination Prior},-->
-<!--author={James A D Gardner and Bernhard Egger and William A P Smith},-->
-<!--booktitle={Advances in Neural Information Processing Systems},-->
-<!--editor={Alice H. Oh and Alekh Agarwal and Danielle Belgrave and Kyunghyun Cho},-->
-<!--year={2022},-->
-<!--url={https://openreview.net/forum?id=cj6K4IWVomU}-->
-<!--}</code></pre>-->
-<!--        </div>-->
-<!--    </div>-->
-<!--</div>-->
-
-<!-- <div class="container">
-  <div class="row ">
-    <div class="col-12">
-        <h3>Citation</h3>
-        <hr style="margin-top:0px">
-            <pre style="background-color: #e9eeef;padding: 1.25em 1.5em"><code>@inproceedings{sun2022neuconw,
-title={Neural {3D} Reconstruction in the Wild},
-author={Sun, Jiaming and Chen, Xi and Wang, Qianqian and Li, Zhengqi and Averbuch-Elor, Hadar and Zhou, Xiaowei and Snavely, Noah},
-booktitle={SIGGRAPH Conference Proceedings},
-year={2022}
-}</code></pre>
+      </div>
     </div>
   </div>
-</div> -->
+</section>
+
+<section class="section" id="abstract">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!--<nav class="section-nav">-->
+<!--  <ul>-->
+<!--    <li class=""><a href="#sec:demo">Generative Omnimatte</a></li>-->
+<!--    <li class=""><a href="#sec:comparison-omnimatte">Comparison: Omnimatte</a></li>-->
+<!--    <li class=""><a href="#sec:comparison-removal">Comparison: Removal</a></li>-->
+<!--    <li class=""><a href="#sec:method">Our Method</a></li>-->
+<!--    <li class=""><a href="#sec:ablation-data">Ablation: Training Data</a></li>-->
+<!--    <li class=""><a href="#sec:ablation-condition">Ablation: Input Condition</a></li>-->
+<!--    <li class=""><a href="#sec:attention-analysis">Self-Attention Analysis</a></li>-->
+<!--  </ul>-->
+<!--</nav> -->
 
 
-<!--<footer class="text-center" style="margin-bottom:10px; font-size: medium;">-->
-<!--    <hr>-->
-<!--    Thanks to <a href="https://jiamingsun.ml/" target="_blank">Jiaming Sun</a> for the <a-->
-<!--        href="https://zju3dv.github.io/neuralrecon-w/" target="_blank">website template</a>.-->
-<!--</footer>-->
+<!--<section id='sec:demo' class="hero is-small">-->
+<!--  <div class="container" style="margin-top: 0; padding-top: 0;" >-->
+
+<!--    <div class="container-fluid" style="margin-top: 0; padding-top: 0;">-->
+<!--      &lt;!&ndash; <h2 class="title has-text-centered is-3">Demo</h2>-->
+<!--      <h2 class="title has-text-centered is-size-5" style="font-weight: 400; font-style: italic;">-->
+<!--        Demo-->
+<!--      </h2> &ndash;&gt;-->
+<!--      <div class="" style="margin-top: 0; padding-top: 0;">-->
+<!--          <div class="col-2"></div>-->
+<!--          <div class="col-md-8">-->
+<!--              <script>-->
+<!--                  activeDemoMethodPill = "zipnerf"-->
+<!--                  activeDemoScenePill = document.querySelector('.demo-scene-pill.active-pill');-->
+<!--                  activeDemoModePill = document.querySelector('.demo-mode-pill.active-pill');-->
+<!--              </script>-->
+<!--              <div class="has-text-centered text-center">-->
+<!--                  <div class="video-container" style="padding: 0;">-->
+<!--                      <video class="video" style="width: 72%;" m id="demoVideo0" loop playsinline autoplay muted>-->
+<!--                          <source src="videos/cgt_frames_0002.mp4" />-->
+<!--                      </video>-->
+<!--                  </div>-->
+<!--                  <div class="text-center" style="color: black; display: none;" id="demo-mode-pills">-->
+<!--                      <div class="btn-group btn-group-sm">-->
+<!--                          <span class="button is-normal demo-mode-pill active" data-value="layer"-->
+<!--                              onclick="selectDemoVideo(activeDemoMethodPill, activeDemoScenePill, this)">-->
+<!--                              Layer Visualization-->
+<!--                          </span>-->
+<!--                      </div>-->
+<!--                  </div>-->
+<!--                  <div class="column" >-->
+<!--                    <div class="columns method-labels" style="width: 80%; margin-left: 10%;">-->
+<!--                      <div class="column has-text-centered method-label" id=""></div>-->
+<!--                      <div class="column has-text-centered method-label">-->
+<!--                        Input video-->
+<!--                      </div>-->
+<!--                      <div class="column has-text-centered method-label" id=""></div>-->
+<!--                      <div class="column has-text-centered method-label" id=""></div>-->
+<!--                      <div class="column has-text-centered method-label">-->
+<!--                        Omnimatte layers-->
+<!--                      </div>-->
+<!--                      <div class="column has-text-centered method-label" id=""></div>-->
+<!--                    </div>-->
+<!--              </div>-->
+
+
+<!--                  <br>-->
+<!--                  <script>-->
+<!--                      video0 = document.getElementById("demoVideo0");-->
+<!--                  </script>-->
+
+<!--                  <div class="pill-row scene-pills" id="demo-scene-pills">-->
+<!--                    <span class="pill demo-scene-pill active" data-value="lego_animation_pause-occlusion" onclick="selectDemoVideo(activeDemoMethodPill, this, activeDemoModePill)">-->
+<!--                        <img class="thumbnail-img" src="imgs/data_collection_img_w_scissors_white_gaps.png" alt="lego" width="64">-->
+<!--                    </span>-->
+<!--                    <span class="pill demo-scene-pill active" data-value="lego_animation_pause-occlusion" onclick="selectDemoVideo(activeDemoMethodPill, this, activeDemoModePill)">-->
+<!--                        <img class="thumbnail-img" src="imgs/overview-1.png" alt="lego" width="64">-->
+<!--                    </span>-->
+<!--                    &lt;!&ndash; <span class="pill demo-scene-pill" data-value="people-jumping_animation" onclick="selectDemoVideo(activeDemoMethodPill, this, activeDemoModePill)">-->
+<!--                      <img class="thumbnail-img" src="assets/thumbnails/people-jumping.png" alt="" width="96">-->
+<!--                    </span> &ndash;&gt;-->
+
+<!--                  </div>-->
+<!--                  <br/>-->
+<!--                  <h2 class="title has-text-centered is-size-5 " style="font-weight: 400; line-height: 32px;">-->
+<!--                    Our method decomposes a video into a set of RGBA omnimatte layers,<br>where each layer consists of a fully-visible object and its associated effects like shadows and reflections.-->
+<!--                  </h2>-->
+<!--                  <script>-->
+<!--                      activeDemoMethodPill = document.querySelector('.demo-method-pill.active-pill');-->
+<!--                      activeDemoScenePill = document.querySelector('.demo-scene-pill.active-pill');-->
+<!--                      activeDemoModePill = document.querySelector('.demo-mode-pill.active-pill');-->
+<!--                  </script>-->
+<!--              </div>-->
+<!--          </div>-->
+<!--          <div class="col-2"></div>-->
+
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</section>-->
+
+
+<section id='sec-edit' class="hero is-light is-small">
+  <div class="hero-body">
+
+    <div class="container">
+      <!-- <h2 class="has-text-centered title">
+          <b>Video editing</b>
+      </h2> -->
+      <div id="demo-carousel" class="carousel results-carousel">
+          <div class="item">
+            <video poster="" autoplay muted loop playsinline height="100%">
+              <source src="./videos/cgt_frames_0002.mp4"
+                      type="video/mp4">
+            </video>
+          </div>
+          <div class="item">
+            <video poster="" autoplay muted loop playsinline height="100%">
+              <source src="./videos/cgt_frames_0002.mp4"
+                      type="video/mp4">
+            </video>
+          </div>
+      </div>
+
+    </div>
+    <h2 class="title has-text-centered is-size-5" style="font-weight: 400; line-height: 32px; font-style: italic; padding-top: 20px;">
+      Our omnimattes enable a wide range of video editing for users.
+      (Scroll to view more videos)
+    </h2>
+  </div>
+</section>
+
+<section id='sec-sidebyside-edit' class="hero is-light is-small">
+  <div class="hero-body">
+
+    <div class="container"  style="padding-left: 5%; padding-right: 5%;">
+      <!-- <h2 class="has-text-centered title">
+          <b>Video editing</b>
+      </h2> -->
+      <div id="sidebyside-carousel" class="carousel results-carousel">
+          <div class="item">
+            <video poster="" autoplay muted loop playsinline height="100%">
+              <source src="videos/cgt_frames_0002.mp4"
+                      type="video/mp4">
+            </video>
+          </div>
+          <div class="item">
+            <video poster="" autoplay muted loop playsinline height="100%">
+              <source src="videos/cgt_frames_0011.mp4"
+                      type="video/mp4">
+            </video>
+          </div>
+          <div class="item">
+            <video poster="" autoplay muted loop playsinline height="100%">
+              <source src="videos/cgt_frames_0026.mp4"
+                      type="video/mp4">
+            </video>
+          </div>
+      </div>
+
+    </div>
+    <h2 class="title has-text-centered is-size-5" style="font-weight: 400; line-height: 32px; font-style: italic; padding-top: 20px;">
+      Our omnimattes enable a wide range of video editing for users. <br>
+      (Scroll to view more videos)
+    </h2>
+  </div>
+</section>
+<br>
+<br>
+
+<footer class="footer">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="content is-centered">
+        <p>
+          Thanks to <a
+          href="https://gen-omnimatte.github.io/">gen-omnimatte</a> for the template.
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
 <!--<script>-->
-<!--    MathJax = {-->
-<!--        tex: {inlineMath: [['$', '$'], ['\\(', '\\)']]}-->
-<!--    };-->
+<!--  $(document).ready(function() {-->
+<!--    bulmaCarousel.attach('.carousel', {-->
+<!--      slidesToScroll: 1,-->
+<!--      slidesToShow: 1,-->
+<!--      loop: true-->
+<!--    });-->
+<!--  });-->
 <!--</script>-->
-<!--<script id="MathJax-script" async="" src="src/tex-chtml.js"></script>-->
-
 
 </body>
 </html>
