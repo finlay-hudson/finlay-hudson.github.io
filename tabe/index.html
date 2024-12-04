@@ -79,7 +79,7 @@
                               </span>
                               <span>PDF</span>
                             </a> -->
-                            <a href=""
+                            <a href="https://arxiv.org/abs/2411.19210"
                                class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
                       <i class="ai ai-arxiv"></i>
@@ -230,14 +230,33 @@
               </script>
               <div class="has-text-centered text-center">
                 <div class="pill-row scene-pills">
-                  <span class="pill abldata-scene-pill active" data-value="puppy-walk-fg=01_highlight_" onclick="selectAblDataVideo(activeAblDataMethodPill, this, activeAblDataModePill)">
-                    <img class="thumbnail-img" src="assets/thumbnails/puppy-walk.png" width="64">
+                  <span class="pill abldata-scene-pill" data-value="plant_stool_1" onclick="selectAblDataVideo(activeAblDataMethodPill, this, activeAblDataModePill)">
+                    <img class="thumbnail-img" src="imgs/thumbnails/plant_stool_1.jpg" width="64">
                   </span>
-                  <!-- <span class="pill abldata-scene-pill " data-value="car-puddle-fg=-1" onclick="selectAblDataVideo(activeAblDataMethodPill, this, activeAblDataModePill)">
-                    <img class="thumbnail-img" src="assets/thumbnails/car-puddle.png" width="64">
-                  </span> -->
-                  <span class="pill abldata-scene-pill" data-value="boat-fg=-1" onclick="selectAblDataVideo(activeAblDataMethodPill, this, activeAblDataModePill)">
-                    <img class="thumbnail-img" src="assets/thumbnails/boat.png" width="64">
+                    <span class="pill abldata-scene-pill active" data-value="cat_car_5" onclick="selectAblDataVideo(activeAblDataMethodPill, this, activeAblDataModePill)">
+                    <img class="thumbnail-img" src="imgs/thumbnails/cat_car_5.jpg" width="64">
+                  </span>
+                    <span class="pill abldata-scene-pill" data-value="blue_towel_roll_1" onclick="selectAblDataVideo(activeAblDataMethodPill, this, activeAblDataModePill)">
+                    <img class="thumbnail-img" src="imgs/thumbnails/blue_towel_roll_1.jpg" width="64">
+                  </span>
+                    <span class="pill abldata-scene-pill" data-value="bus_1" onclick="selectAblDataVideo(activeAblDataMethodPill, this, activeAblDataModePill)">
+                    <img class="thumbnail-img" src="imgs/thumbnails/bus_1.jpg" width="64">
+                  </span>
+                    </span>
+                    <span class="pill abldata-scene-pill" data-value="door_walkthrough_1" onclick="selectAblDataVideo(activeAblDataMethodPill, this, activeAblDataModePill)">
+                    <img class="thumbnail-img" src="imgs/thumbnails/door_walkthrough_1.jpg" width="64">
+                  </span>
+                    </span>
+                    <span class="pill abldata-scene-pill" data-value="paper_plane_2" onclick="selectAblDataVideo(activeAblDataMethodPill, this, activeAblDataModePill)">
+                    <img class="thumbnail-img" src="imgs/thumbnails/paper_plane_2.jpg" width="64">
+                  </span>
+                    </span>
+                    <span class="pill abldata-scene-pill" data-value="goose_1" onclick="selectAblDataVideo(activeAblDataMethodPill, this, activeAblDataModePill)">
+                    <img class="thumbnail-img" src="imgs/thumbnails/goose_1.jpg" width="64">
+                  </span>
+                    </span>
+                    <span class="pill abldata-scene-pill" data-value="walk_outside_conversation_2" onclick="selectAblDataVideo(activeAblDataMethodPill, this, activeAblDataModePill)">
+                    <img class="thumbnail-img" src="imgs/thumbnails/walk_outside_conversation_2.jpg" width="64">
                   </span>
                   <br/>
                 </div>
@@ -260,27 +279,30 @@
               </div>
               <div class="video-container" style="max-height: 480px;">
                   <video class="video" style="max-width: 100%;" id="abldataVideo0" loop playsinline autoplay muted>
-                      <source src="assets/videos/ablation_data/puppy-walk-fg=01_highlight_with-mask_mask-dilated.mp4" />
+                      <source src="videos/dataset_vids/walk_outside_conversation_2.mp4" />
                   </video>
                   <div class="column">
                     <div class="columns method-labels">
                       <div class="column has-text-centered method-label">
-                          Input
+                          Background
                       </div>
                       <div class="column has-text-centered method-label">
-                          Trimask
+                          Background Seg
                       </div>
                       <div class="column has-text-centered method-label">
-                          Omnimatte-only
+                          Foreground
                       </div>
                       <div class="column has-text-centered method-label">
-                          + Tripod
+                          Foreground Seg
                       </div>
                       <div class="column has-text-centered method-label">
-                          + Kubric
+                          Combined
                       </div>
                       <div class="column has-text-centered method-label">
-                          + Object-Paste (full)
+                          Visible Mask
+                      </div>
+                        <div class="column has-text-centered method-label">
+                          Ground Truth Mask
                       </div>
                     </div>
                   </div>
@@ -297,11 +319,12 @@
       </div>
       <div class="has-text-justified  text-description ">
         <p>
-          We assess the individual contributions of each dataset category to our model's performance by incrementally adding each category to the training set.
-          While the Omnimatte data provides basic examples of shadows in real-world videos, it primarily features static backgrounds and single objects.
-          The Tripod data provides additional real-world scenarios to handle better water effects, such as reflections and boat wakes.
-          Our Kubric synthetic data strengthens the models' ability to handle multi-object scenes.
-          Finally, the Object-Paste data reduces undesired background changes and improves inpainting quality.
+<!--          We assess the individual contributions of each dataset category to our model's performance by incrementally adding each category to the training set.-->
+<!--          While the Omnimatte data provides basic examples of shadows in real-world videos, it primarily features static backgrounds and single objects.-->
+<!--          The Tripod data provides additional real-world scenarios to handle better water effects, such as reflections and boat wakes.-->
+<!--          Our Kubric synthetic data strengthens the models' ability to handle multi-object scenes.-->
+<!--          Finally, the Object-Paste data reduces undesired background changes and improves inpainting quality.-->
+            TODO WRITE ABOUT THE DATASET CREATION PROCESS
         </p>
       </div>
     </div>
@@ -356,7 +379,7 @@
           </div>
           <div class="video-container">
               <video class="video" id="traindataVideo0" loop playsinline autoplay muted>
-                  <source src="videos/train_data/TABE-51.mp4" />
+                  <source src="videos/results_vids/TABE-51.mp4" />
               </video>
               <div class="column">
                 <div class="columns">

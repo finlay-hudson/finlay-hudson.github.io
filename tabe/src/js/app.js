@@ -230,8 +230,8 @@ $(document).ready(function () {
     //
     // // activeAblDataMethodPill = $('.abldata-method-pill').filter('.active')[0];
     // // activeAblDataModePill = $('.abldata-mode-pill').filter('.active')[0];
-    // activeAblDataScenePill = $('.abldata-scene-pill').filter('.active')[0];
-    // selectAblDataVideo(activeAblDataMethodPill, activeAblDataScenePill, activeAblDataModePill);
+    activeAblDataScenePill = $('.abldata-scene-pill').filter('.active')[0];
+    selectAblDataVideo(activeAblDataMethodPill, activeAblDataScenePill, activeAblDataModePill);
     //
     // // activeAblCondMethodPill = $('.ablcond-method-pill').filter('.active')[0];
     // // activeAblCondModePill = $('.ablcond-mode-pill').filter('.active')[0];
@@ -258,15 +258,14 @@ $(document).ready(function () {
     // // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
     // $(".navbar-burger").toggleClass("is-active");
     // $(".navbar-menu").toggleClass("is-active");
-
     // });
-    var frame = document.getElementById('div-container-embed-video');
-    frame.onload = function() {
-        width = Number($(frame).css('width').replace('px', ''));
-        height = width * 0.56
-        frame.style.height = String(height) + 'px';
-        console.log($(frame).css('height'));
-    };
+    // var frame = document.getElementById('div-container-embed-video');
+    // frame.onload = function() {
+    //     width = Number($(frame).css('width').replace('px', ''));
+    //     height = width * 0.56
+    //     frame.style.height = String(height) + 'px';
+    //     console.log($(frame).css('height'));
+    // };
 
 });
 
@@ -666,7 +665,7 @@ function selectAblDataVideo(methodPill, scenePill, modePill) {
     pill = scenePill.getAttribute("data-value");
 
     var video_active = document.getElementById("abldataVideo0");
-    video_active.src = "assets/videos/ablation_data/" + pill + "with-mask_mask-dilated.mp4";
+    video_active.src = "videos/dataset_vids/" + pill + ".mp4";
     video_active.load();
 }
 
@@ -705,7 +704,7 @@ function selectTrainDataVideo(methodPill, scenePill, modePill) {
     p_desc.innerHTML = train_data_desc;
 
     var video_active = document.getElementById("traindataVideo0");
-    video_active.src = "videos/train_data/" + pill + ".mp4";
+    video_active.src = "videos/results_vids/" + pill + ".mp4";
     video_active.load();
 }
 
