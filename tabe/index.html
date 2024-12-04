@@ -1,119 +1,399 @@
 <!DOCTYPE html>
 <html>
 <head>
-<!--   Google tag (gtag.js)-->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-X8M7T669YV"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
+    <!--   Google tag (gtag.js)-->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-X8M7T669YV"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
 
-    gtag('config', 'G-X8M7T669YV');
-  </script>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta charset="utf-8">
-  <meta name="description"
-        content="Track Anything Behind Everything">
-<title>Track Anything Behind Everything</title>
+        function gtag() {
+            dataLayer.push(arguments);
+        }
 
-  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
-        rel="stylesheet">
+        gtag('js', new Date());
 
-  <link rel="stylesheet" href="src/css/bulma.min.css">
-  <link rel="stylesheet" href="src/css/bulma-carousel.min.css">
-  <link rel="stylesheet" href="src/css/bulma-slider.min.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.8.0/codemirror.min.css">
+        gtag('config', 'G-X8M7T669YV');
+    </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <meta name="description"
+          content="Track Anything Behind Everything">
+    <title>Track Anything Behind Everything</title>
 
-  <link rel="stylesheet"
-        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
-  <link rel="stylesheet" href="src/css/index.css">
-  <!-- <link rel="stylesheet" href="src/css/app.css"> -->
-  <!-- <link rel="icon" href="src/images/favicon.svg"> -->
+    <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+          rel="stylesheet">
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.8.0/codemirror.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.5.3/clipboard.min.js"></script>
-  <script type="text/javascript" async
-    src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
-  </script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+    <link rel="stylesheet" href="src/css/bulma.min.css">
+    <link rel="stylesheet" href="src/css/bulma-carousel.min.css">
+    <link rel="stylesheet" href="src/css/bulma-slider.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.8.0/codemirror.min.css">
 
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
-  <script src="src/js/bulma-carousel.min.js"></script>
-  <script src="src/js/bulma-slider.min.js"></script>
-  <script src="src/js/app.js"></script>
-  <script src="src/js/synced_video_selector.js"></script>
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+    <link rel="stylesheet" href="src/css/index.css">
+    <!-- <link rel="stylesheet" href="src/css/app.css"> -->
+    <!-- <link rel="icon" href="src/images/favicon.svg"> -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.8.0/codemirror.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.5.3/clipboard.min.js"></script>
+    <script type="text/javascript" async
+            src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
+    <script src="src/js/bulma-carousel.min.js"></script>
+    <script src="src/js/bulma-slider.min.js"></script>
+    <script src="src/js/app.js"></script>
+    <script src="src/js/synced_video_selector.js"></script>
 </head>
 <body onresize="reload();">
 
 <section class="hero" style="padding-bottom: 0; margin-bottom: 0;background-color: #fcedd9;">
-  <div class="hero-body" style="padding-bottom: 0; margin-bottom: 0;background-color: #fcedd9;">
-    <div class="container is-max-desktop">
-      <div class="columns is-centered">
-        <div class="column has-text-centered">
-          <h1 class="title is-1 publication-title" style="font-size: 32pt;"><span style="font-weight: bolder;">Generative Omnimatte</span>
-            <br><span style="font-weight:normal">Learning to Decompose Video into Layers</span></h1>
-          <div class="is-size-5 publication-authors" id="div-row-authors">
+    <div class="hero-body" style="padding-bottom: 0; margin-bottom: 0;background-color: #fcedd9;">
+        <div class="container is-max-desktop">
+            <div class="columns is-centered">
+                <div class="column has-text-centered">
+                    <h1 class="title is-1 publication-title" style="font-size: 32pt;"><span
+                            style="font-weight: bolder;">Track Anything Behind Everything</span>
+                        <br><span style="font-weight:normal">Zero-Shot Amodal Video Object Segmentation</span></h1>
+                    <div class="is-size-5 publication-authors" id="div-row-authors">
 			      <span class="author-block">
               <a href="https://finlay-hudson.github.io/">Finlay G. C. Hudson</a><sup>1</sup>&nbsp&nbsp</span>
-            <span class="author-block">
+                        <span class="author-block">
                 <a href="https://www-users.york.ac.uk/~waps101/">William A. P. Smith</a><sup>1</sup>&nbsp&nbsp</span>
-          </div>
+                    </div>
 
-          <div class="is-size-5 publication-authors">
-            <span class="author-block"><sup>1</sup>University of York  </span>
-          </div>
-          <div class="column has-text-centered">
-            <div class="publication-links">
-              <span class="link-block"></span>
-                <!-- <a href=""
-                   class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                      <i class="fas fa-file-pdf"></i>
-                  </span>
-                  <span>PDF</span>
-                </a> -->
-                <a href=""
-                   class="external-link button is-normal is-rounded is-dark">
+                    <div class="is-size-5 publication-authors">
+                        <span class="author-block"><sup>1</sup>University of York  </span>
+                    </div>
+                    <div class="column has-text-centered">
+                        <div class="publication-links">
+                            <span class="link-block"></span>
+                            <!-- <a href=""
+                               class="external-link button is-normal is-rounded is-dark">
+                              <span class="icon">
+                                  <i class="fas fa-file-pdf"></i>
+                              </span>
+                              <span>PDF</span>
+                            </a> -->
+                            <a href=""
+                               class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
                       <i class="ai ai-arxiv"></i>
                   </span>
-                  <span>Paper</span>
-                </a>
-                <a href=""
-                   class="external-link button is-normal is-rounded is-dark">
+                                <span>Paper</span>
+                            </a>
+                            <a href=""
+                               class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
                     <!-- <i class="fa-brands fa-youtube"></i> -->
-                    <svg class="svg-inline--fa fa-youtube fa-w-18" aria-hidden="true" focusable="false" data-prefix="fab" data-icon="youtube" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" data-fa-i2svg=""><path fill="currentColor" d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z"></path></svg>
+                    <svg class="svg-inline--fa fa-youtube fa-w-18" aria-hidden="true" focusable="false"
+                         data-prefix="fab" data-icon="youtube" role="img" xmlns="http://www.w3.org/2000/svg"
+                         viewBox="0 0 576 512" data-fa-i2svg=""><path fill="currentColor"
+                                                                      d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z"></path></svg>
                   </span>
-                  <span>Code</span>
-                </a>
-                <a href=""
-                   class="external-link button is-normal is-rounded is-dark">
+                                <span>Code</span>
+                            </a>
+                            <a href=""
+                               class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
                       <i class="fa fa-book"></i>
                   </span>
-                  <span>Dataset</span>
-                </a>
-              </span>
-            </div>
+                                <span>Dataset</span>
+                            </a>
+                            </span>
+                        </div>
 
-          </div>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
     </div>
-  </div>
 </section>
 
 <section class="section" id="abstract">
-  <div class="container is-max-desktop">
-    <div class="columns is-centered">
-      <div class="column">
+    <div class="container is-max-desktop">
+        <div class="columns is-centered">
+            <div class="column">
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- abstract -->
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h2 class="title has-text-centered is-3">Abstract</h2>
+                <hr style="margin-top:-20px">
+                <!--                <div class="row justify-content-center" style="align-items:center; display:flex;">-->
+                <!--                    <video playsinline="" autoplay="autoplay" loop="loop" preload="" muted="muted" id="header_vid"-->
+                <!--                           width="95%">-->
+                <!--                        <source src="RENI/imgs/teaser.m4v" type="video/mp4">-->
+                <!--                    </video>-->
+                <!--                </div>-->
+                <!--                <br>-->
+                <div class="has-text-justified" style="width: 72%; margin-left: 14%;">
+                    We present Track Anything Behind Everything (TABE), a novel dataset, pipeline, and evaluation
+                    framework for zero-shot amodal completion from visible masks. Unlike existing methods that require
+                    pretrained class labels, our approach uses a single query mask from the first frame where the object
+                    is visible, enabling flexible, zero-shot inference. Our dataset, TABE-51 provides highly accurate
+                    ground truth amodal segmentation masks without the need for human estimation or 3D reconstruction.
+                    Our TABE pipeline is specifically designed to handle amodal completion, even in scenarios where
+                    objects are completely occluded. We also introduce a specialised evaluation framework that isolates
+                    amodal completion performance, free from the influence of traditional visual segmentation metrics.
+                    Dataset, model and code will be made available.
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+<br>
+
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h2 class="title has-text-centered is-3">Dataset</h2>
+                <hr style="margin-top:-20px">
+                <div class="has-text-justified" style="width: 72%; margin-left: 14%;">
+                    We have curated a dataset (TABE-51), a video amodal segmentation dataset that provides high-quality
+                    ground truth labels for occluded objects. The dataset contains 51 scenes with over 2000 frames and
+                    provides a robust benchmark for evaluating how well segmentation methods track and predict occluded
+                    objects throughout entire video sequences.
+
+                    TODO NEED TO GET SOME DATASET VIDEOS AND THEN SHOW THEM HERE
+                </div>
+                <br>
+<!--                <div class="row">-->
+<!--                    &lt;!&ndash;Grid column&ndash;&gt;-->
+<!--                    <div class="col-lg-12 has-text-centered text-center">-->
+<!--                        <img class="img-fluid mb-4" src="imgs/data_collection_img_w_scissors_white_gaps.png"-->
+<!--                             width="1200"-->
+<!--                             style="display: block; margin-left: auto; margin-right: auto; border: 2px solid #000;">-->
+<!--                        &lt;!&ndash;                        <img src="imgs/data_collection_img_w_scissors_white_gaps.png" class="img-fluid mb-4" alt=""&ndash;&gt;-->
+<!--                        &lt;!&ndash;                             data-wow-delay="0.3s">&ndash;&gt;-->
+<!--                    </div>-->
+<!--                </div>-->
+            </div>
+        </div>
+    </div>
+</section>
+<br>
+
+<!--SHOW SOME EXAMPLES OF THE DATASET, show img1, img2 and then combined-->
+
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h2 class="title has-text-centered is-3">Dataset Creation</h2>
+                <hr style="margin-top:-20px">
+                <div class="has-text-justified" style="width: 72%; margin-left: 14%;">
+                   SHOWCASE SOME EXAMPLES OF THE DATASET IN HERE, and HOW IT WAS CREATED ie each of the layers from left to right
+                </div>
+                <br>
+                <div class="row">
+                    <!--Grid column-->
+                    <div class="col-lg-12 has-text-centered text-center">
+                        <img class="img-fluid mb-4" src="imgs/data_collection_img_w_scissors_white_gaps.png"
+                             width="1200"
+                             style="display: block; margin-left: auto; margin-right: auto; border: 2px solid #000;">
+                        <!--                        <img src="imgs/data_collection_img_w_scissors_white_gaps.png" class="img-fluid mb-4" alt=""-->
+                        <!--                             data-wow-delay="0.3s">-->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+
+    <!-- <div class="container-fluid" style="margin-left: -25%; margin-right: -25%;"> -->
+    <div class="container-fluid">
+      <h2 class="title has-text-centered is-3">HERE WE SHOULD SHOW ALL THE LAYERS OF THE DATASET</h2>
+      <h2 class="title has-text-centered is-size-5" style="font-weight: 400; font-style: italic;">
+      </h2>
+
+      <div class="row py-5 mt-5 bg-dark"  style="width: 100vw; margin-left: calc(-50vw + 50%);">
+          <!-- <div class="col-2"></div> -->
+          <!-- <div class="col-md-8"> -->
+          <div>
+              <script>
+                  activeAblDataMethodPill = document.querySelector('.abldata-method-pill.active-pill');
+                  activeAblDataScenePill = document.querySelector('.abldata-scene-pill.active-pill');
+                  activeAblDataModePill = document.querySelector('.abldata-mode-pill.active-pill');
+              </script>
+              <div class="has-text-centered text-center">
+                <div class="pill-row scene-pills">
+                  <span class="pill abldata-scene-pill active" data-value="puppy-walk-fg=01_highlight_" onclick="selectAblDataVideo(activeAblDataMethodPill, this, activeAblDataModePill)">
+                    <img class="thumbnail-img" src="assets/thumbnails/puppy-walk.png" width="64">
+                  </span>
+                  <!-- <span class="pill abldata-scene-pill " data-value="car-puddle-fg=-1" onclick="selectAblDataVideo(activeAblDataMethodPill, this, activeAblDataModePill)">
+                    <img class="thumbnail-img" src="assets/thumbnails/car-puddle.png" width="64">
+                  </span> -->
+                  <span class="pill abldata-scene-pill" data-value="boat-fg=-1" onclick="selectAblDataVideo(activeAblDataMethodPill, this, activeAblDataModePill)">
+                    <img class="thumbnail-img" src="assets/thumbnails/boat.png" width="64">
+                  </span>
+                  <br/>
+                </div>
+                <div class="text-center" style="color: black;" id="abldata-method-pills">
+                  <div class="btn-group btn-group-sm">
+                      <span class="button is-normal abldata-method-pill" data-value="none" id="btn-abladata" style="display: none;"
+                          onclick="selectAblDataVideo(this, activeAblDataScenePill, activeAblDataModePill)">
+                          abla data
+                      </span>
+                  </div>
+              </div>
+              <br>
+              <div class="text-center" style="color: black; display: none;" id="abldata-mode-pills">
+                <div class="btn-group btn-group-sm">
+                    <span class="button is-normal abldata-mode-pill active" data-value="bg"
+                        onclick="selectAblDataVideo(activeAblDataMethodPill, activeAblDataScenePill, this)">
+                        Background
+                    </span>
+                </div>
+              </div>
+              <div class="video-container" style="max-height: 480px;">
+                  <video class="video" style="max-width: 100%;" id="abldataVideo0" loop playsinline autoplay muted>
+                      <source src="assets/videos/ablation_data/puppy-walk-fg=01_highlight_with-mask_mask-dilated.mp4" />
+                  </video>
+                  <div class="column">
+                    <div class="columns method-labels">
+                      <div class="column has-text-centered method-label">
+                          Input
+                      </div>
+                      <div class="column has-text-centered method-label">
+                          Trimask
+                      </div>
+                      <div class="column has-text-centered method-label">
+                          Omnimatte-only
+                      </div>
+                      <div class="column has-text-centered method-label">
+                          + Tripod
+                      </div>
+                      <div class="column has-text-centered method-label">
+                          + Kubric
+                      </div>
+                      <div class="column has-text-centered method-label">
+                          + Object-Paste (full)
+                      </div>
+                    </div>
+                  </div>
+              </div>
+              <script>
+                  activeAblDataMethodPill = document.querySelector('.abldata-method-pill.active-pill');
+                  activeAblDataScenePill = document.querySelector('.abldata-scene-pill.active-pill');
+                  activeAblDataModePill = document.querySelector('.abldata-mode-pill.active-pill');
+              </script>
+            </div>
+          </div>
+
+          <!-- <div class="col-2"></div> -->
+      </div>
+      <div class="has-text-justified  text-description ">
+        <p>
+          We assess the individual contributions of each dataset category to our model's performance by incrementally adding each category to the training set.
+          While the Omnimatte data provides basic examples of shadows in real-world videos, it primarily features static backgrounds and single objects.
+          The Tripod data provides additional real-world scenarios to handle better water effects, such as reflections and boat wakes.
+          Our Kubric synthetic data strengthens the models' ability to handle multi-object scenes.
+          Finally, the Object-Paste data reduces undesired background changes and improves inpainting quality.
+        </p>
+      </div>
+    </div>
+  </div>
+
+</section>
+<br>
+
+<section id='sec:method' class="hero is-small" style="background-color: #ffffff;">
+  <div class="container">
+      <div id='subsec:train_data'  class="row py-5 mt-5 bg-dark">
+        <h2 class="title has-text-centered is-size-4">
+          Results
+        </h2>
+
+        <!-- BEGIN RESULTS -->
+          <script>
+              activeTrainDataMethodPill = document.querySelector('.traindata-method-pill.active-pill');
+              activeTrainDataScenePill = document.querySelector('.traindata-scene-pill.active-pill');
+              activeTrainDataModePill = document.querySelector('.traindata-mode-pill.active-pill');
+          </script>
+          <div class="has-text-centered text-center">
+            <div class="pill-row scene-pills" style="display: none;">
+              <span class="pill traindata-scene-pill active" data-value="none" onclick="selectTrainDataVideo(activeTrainDataMethodPill, this, activeTrainDataModePill)">
+                <img class="thumbnail-img" src="imgs/overview-1.png" width="64">
+              </span>
+            </div>
+            <div class="text-center" style="color: black;" id="traindata-method-pills">
+              <div class="btn-group btn-group-sm">
+                  <span class="button is-normal traindata-method-pill active" data-value="TABE-51"
+                      onclick="selectTrainDataVideo(this, activeTrainDataScenePill, activeTrainDataModePill)">
+                      TABE-51
+                  </span>
+                  <span class="button is-normal traindata-method-pill" data-value="DAVIS-2017"
+                      onclick="selectTrainDataVideo(this, activeTrainDataScenePill, activeTrainDataModePill)">
+                      DAVIS-2017
+                  </span>
+                  <span class="button is-normal traindata-method-pill" data-value="OVIS"
+                      onclick="selectTrainDataVideo(this, activeTrainDataScenePill, activeTrainDataModePill)">
+                      OVIS
+                  </span>
+              </div>
+          </div>
+          <br>
+          <div class="text-center" style="color: black; display: none;" id="traindata-mode-pills">
+            <div class="btn-group btn-group-sm">
+                <span class="button is-normal traindata-mode-pill active" data-value="none"
+                    onclick="selectTrainDataVideo(activeTrainDataMethodPill, activeTrainDataScenePill, this)">
+                    none
+                </span>
+            </div>
+          </div>
+          <div class="video-container">
+              <video class="video" id="traindataVideo0" loop playsinline autoplay muted>
+                  <source src="videos/train_data/TABE-51.mp4" />
+              </video>
+              <div class="column">
+                <div class="columns">
+                  <div class="column has-text-centered method-label">
+                  </div>
+                </div>
+              </div>
+          </div>
+          <script>
+              activeTrainDataMethodPill = document.querySelector('.traindata-method-pill.active-pill');
+              activeTrainDataScenePill = document.querySelector('.traindata-scene-pill.active-pill');
+              activeTrainDataModePill = document.querySelector('.traindata-mode-pill.active-pill');
+          </script>
+        </div>
+        <!--END TRAINING DATA-->
+      </div>
+      <div class="has-text-justified" id="div-traindata-text-container">
+        <p id="p-traindata-desc" class="has-text-justified text-description">
+            <span data-value="TABE-51" onclick="selectTrainDataVideo(this, null, null)">(i) <b>TABE-51</b></span>: "Here we talk..."
+            <br><br>
+            <span data-value="DAVIES-2017" onclick="selectTrainDataVideo(this, null, null)">(ii) <b>DAVIES-2017</b></span>: Add desc
+            <br><br>
+            <span data-value="OVIS" onclick="selectTrainDataVideo(this, null, null)">(iii) <b>OVIS</b></span>: Add desc
+            <br><br>
+        </p>
+      </div>
+       <div class="has-text-justified  text-description ">
+        <p>
+          We assess TABE performance on various datasets.
+        </p>
+      </div>
+      <!-- <div class="row py-5 mt-5 bg-dark"> -->
       </div>
     </div>
   </div>
 </section>
+
 
 <!--<nav class="section-nav">-->
 <!--  <ul>-->
@@ -211,84 +491,86 @@
 
 
 <section id='sec-edit' class="hero is-light is-small">
-  <div class="hero-body">
+    <div class="hero-body">
 
-    <div class="container">
-      <!-- <h2 class="has-text-centered title">
-          <b>Video editing</b>
-      </h2> -->
-      <div id="demo-carousel" class="carousel results-carousel">
-          <div class="item">
-            <video poster="" autoplay muted loop playsinline height="100%">
-              <source src="./videos/cgt_frames_0002.mp4"
-                      type="video/mp4">
-            </video>
-          </div>
-          <div class="item">
-            <video poster="" autoplay muted loop playsinline height="100%">
-              <source src="./videos/cgt_frames_0002.mp4"
-                      type="video/mp4">
-            </video>
-          </div>
-      </div>
+        <div class="container">
+            <!-- <h2 class="has-text-centered title">
+                <b>Video editing</b>
+            </h2> -->
+            <div id="demo-carousel" class="carousel results-carousel">
+                <div class="item">
+                    <video poster="" autoplay muted loop playsinline height="100%">
+                        <source src="./videos/cgt_frames_0002.mp4"
+                                type="video/mp4">
+                    </video>
+                </div>
+                <div class="item">
+                    <video poster="" autoplay muted loop playsinline height="100%">
+                        <source src="./videos/cgt_frames_0002.mp4"
+                                type="video/mp4">
+                    </video>
+                </div>
+            </div>
 
+        </div>
+        <h2 class="title has-text-centered is-size-5"
+            style="font-weight: 400; line-height: 32px; font-style: italic; padding-top: 20px;">
+            TABE provides strong results on multiple videos. Here is it against 3 other methods...
+            (Scroll to view more videos)
+        </h2>
     </div>
-    <h2 class="title has-text-centered is-size-5" style="font-weight: 400; line-height: 32px; font-style: italic; padding-top: 20px;">
-      Our omnimattes enable a wide range of video editing for users.
-      (Scroll to view more videos)
-    </h2>
-  </div>
 </section>
 
 <section id='sec-sidebyside-edit' class="hero is-light is-small">
-  <div class="hero-body">
+    <div class="hero-body">
 
-    <div class="container"  style="padding-left: 5%; padding-right: 5%;">
-      <!-- <h2 class="has-text-centered title">
-          <b>Video editing</b>
-      </h2> -->
-      <div id="sidebyside-carousel" class="carousel results-carousel">
-          <div class="item">
-            <video poster="" autoplay muted loop playsinline height="100%">
-              <source src="videos/cgt_frames_0002.mp4"
-                      type="video/mp4">
-            </video>
-          </div>
-          <div class="item">
-            <video poster="" autoplay muted loop playsinline height="100%">
-              <source src="videos/cgt_frames_0011.mp4"
-                      type="video/mp4">
-            </video>
-          </div>
-          <div class="item">
-            <video poster="" autoplay muted loop playsinline height="100%">
-              <source src="videos/cgt_frames_0026.mp4"
-                      type="video/mp4">
-            </video>
-          </div>
-      </div>
+        <div class="container" style="padding-left: 5%; padding-right: 5%;">
+            <!-- <h2 class="has-text-centered title">
+                <b>Video editing</b>
+            </h2> -->
+            <div id="sidebyside-carousel" class="carousel results-carousel">
+                <div class="item">
+                    <video poster="" autoplay muted loop playsinline height="100%">
+                        <source src="videos/cgt_frames_0002.mp4"
+                                type="video/mp4">
+                    </video>
+                </div>
+                <div class="item">
+                    <video poster="" autoplay muted loop playsinline height="100%">
+                        <source src="videos/cgt_frames_0011.mp4"
+                                type="video/mp4">
+                    </video>
+                </div>
+                <div class="item">
+                    <video poster="" autoplay muted loop playsinline height="100%">
+                        <source src="videos/cgt_frames_0026.mp4"
+                                type="video/mp4">
+                    </video>
+                </div>
+            </div>
 
+        </div>
+        <h2 class="title has-text-centered is-size-5"
+            style="font-weight: 400; line-height: 32px; font-style: italic; padding-top: 20px;">
+            Our omnimattes enable a wide range of video editing for users. <br>
+            (Scroll to view more videos)
+        </h2>
     </div>
-    <h2 class="title has-text-centered is-size-5" style="font-weight: 400; line-height: 32px; font-style: italic; padding-top: 20px;">
-      Our omnimattes enable a wide range of video editing for users. <br>
-      (Scroll to view more videos)
-    </h2>
-  </div>
 </section>
 <br>
 <br>
 
 <footer class="footer">
-  <div class="container">
-    <div class="columns is-centered">
-      <div class="content is-centered">
-        <p>
-          Thanks to <a
-          href="https://gen-omnimatte.github.io/">gen-omnimatte</a> for the template.
-        </p>
-      </div>
+    <div class="container">
+        <div class="columns is-centered">
+            <div class="content is-centered">
+                <p>
+                    Thanks to <a
+                        href="https://gen-omnimatte.github.io/">gen-omnimatte</a> for the template.
+                </p>
+            </div>
+        </div>
     </div>
-  </div>
 </footer>
 
 <!--<script>-->

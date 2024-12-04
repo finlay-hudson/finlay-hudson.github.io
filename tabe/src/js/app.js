@@ -210,10 +210,13 @@ $(document).ready(function () {
 
     configure_carousel();
 
+     let defaultMethodPill = document.querySelector('.traindata-method-pill[data-value="TABE-51"]');
+    selectTrainDataVideo(defaultMethodPill, null, null);
+
     // activeDemoMethodPill = $('.demo-method-pill').filter('.active')[0];
-    activeDemoModePill = $('.demo-mode-pill').filter('.active')[0];
-    activeDemoScenePill = $('.demo-scene-pill').filter('.active')[0];
-    selectDemoVideo(null, activeDemoScenePill, activeDemoModePill);
+    // activeDemoModePill = $('.demo-mode-pill').filter('.active')[0];
+    // activeDemoScenePill = $('.demo-scene-pill').filter('.active')[0];
+    // selectDemoVideo(null, activeDemoScenePill, activeDemoModePill);
 
     // activeCompMethodPill = $('.comp-method-pill').filter('.active')[0];
     // activeCompModePill = $('.comp-mode-pill').filter('.active')[0];
@@ -694,16 +697,15 @@ function selectTrainDataVideo(methodPill, scenePill, modePill) {
     methodPill.classList.add("active");
     pill = methodPill.getAttribute("data-value");
     let train_data_desc = {
-        "omnimatte": "We collect omnimatte results from existing omnimatte methods (Omnimatte, Omnimatte3D, and OmnimatteRF) to provide examples of cause-and-effect relationships in real videos.",
-        "tripod": "The Tripod dataset consists of videos captured with stationary cameras, providing pseudo-examples of more complex real-world scenarios, such as water effects and dynamic backgrounds.",
-        "kubric": "We use Kubric to synthesize multi-object scenes with diverse reflections and shadows. we observe that many real-world scenarios exhibit multiple instances of the same object type in a scene, such as dogs, pedestrians, or vehicles. Therefore, we generate scenes with duplicated objects to train the model to handle multiple similar objects. <br><br>For the synthesized Kubric and Object-Paste data, we randomly switch the gray and white colors to encourage the model to learn background preservation and inpainting for gray-labeled regions. The training data is augmented through horizontal and temporal flipping, as well as random cropping.",
-        "objectpaste": "We segment objects from real videos and paste them onto target real videos to strengthen the model’s inpainting capabilities and background preservation. <br><br>For the synthesized Kubric and Object-Paste data, we randomly switch the gray and white colors to encourage the model to learn background preservation and inpainting for gray-labeled regions. The training data is augmented through horizontal and temporal flipping, as well as random cropping.",
+        "TABE-51": "Here we talk...",
+        "DAVIS-2017": "About the datasets...",
+        "OVIS": "And the results...",
     }[pill]
     var p_desc = document.getElementById("p-traindata-desc");
     p_desc.innerHTML = train_data_desc;
 
     var video_active = document.getElementById("traindataVideo0");
-    video_active.src = "assets/videos/train_data/" + pill + ".mp4";
+    video_active.src = "videos/train_data/" + pill + ".mp4";
     video_active.load();
 }
 
