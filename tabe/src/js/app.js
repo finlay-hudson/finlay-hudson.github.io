@@ -165,14 +165,14 @@ function configure_carousel() {
         pagination: false,
 }
     // Initialize all div with carousel class
-    carousel_demo = bulmaCarousel.attach('#demo-carousel', options_show3);
+    // carousel_demo = bulmaCarousel.attach('#demo-carousel', options_show3);
     carousel_sidebyside = bulmaCarousel.attach('#sidebyside-carousel', options_show1);
     
     
-    carousel_demo[0].on('before:show', state => {
-        console.log(state);
-        reload_carousel_videos();
-    });
+    // carousel_demo[0].on('before:show', state => {
+    //     console.log(state);
+    //     reload_carousel_videos();
+    // });
 
     carousel_sidebyside[0].on('before:show', state => {
         console.log(state);
@@ -206,8 +206,8 @@ $(document).ready(function () {
     //     $('[data-toggle="tooltip"]').tooltip()
     // });
 
-    demo_items = document.querySelector('#demo-carousel').querySelectorAll('.item');
-
+    demo_items = document.querySelector('#sidebyside-carousel').querySelectorAll('.item');
+    //
     configure_carousel();
 
      let defaultMethodPill = document.querySelector('.traindata-method-pill[data-value="TABE-51"]');
@@ -696,9 +696,9 @@ function selectTrainDataVideo(methodPill, scenePill, modePill) {
     methodPill.classList.add("active");
     pill = methodPill.getAttribute("data-value");
     let train_data_desc = {
-        "TABE-51": "Here we talk...",
-        "DAVIS-2017": "About the datasets...",
-        "OVIS": "And the results...",
+        "TABE-51": "Here we show results of our TABE-51 dataset with our TABE model pipeline. The top row shows the ground truth amodal mask, the middle row shows the ground truth visible mask while the bottom row shows our TABE pipeline prediction",
+        "DAVIS-2017": "Here we show results on the DAVIS-2017 dataset with our TABE model pipeline. DAVIS-2017 has not ground truth amodal masks so, the top row shows the ground truth visible mask while the bottom row shows our TABE pipeline prediction",
+        "OVIS": "Here we show results on the OVIS dataset with our TABE model pipeline. OVIS has not ground truth amodal masks so, the top row shows the ground truth visible mask while the bottom row shows our TABE pipeline prediction",
     }[pill]
     var p_desc = document.getElementById("p-traindata-desc");
     p_desc.innerHTML = train_data_desc;
@@ -706,6 +706,11 @@ function selectTrainDataVideo(methodPill, scenePill, modePill) {
     var video_active = document.getElementById("traindataVideo0");
     video_active.src = "videos/results_vids/" + pill + ".mp4";
     video_active.load();
+    video_active.style.width = "100%"; // Full width of container
+    video_active.style.maxWidth = "3000px"; // Limit maximum width
+    video_active.style.height = "auto"; // Maintain aspect ratio
+    // video_active.style.display = "block"; // Ensures it's treated as a block element
+    // video_active.style.margin = "0 auto"; // Centers the video horizontally
 }
 
 function selectTrimaskVideo(methodPill, scenePill, modePill) {

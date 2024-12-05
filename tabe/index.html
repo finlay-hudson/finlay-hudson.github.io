@@ -95,7 +95,7 @@
                          viewBox="0 0 576 512" data-fa-i2svg=""><path fill="currentColor"
                                                                       d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z"></path></svg>
                   </span>
-                                <span>Code</span>
+                                <span>Code (Coming Soon)</span>
                             </a>
                             <a href=""
                                class="external-link button is-normal is-rounded is-dark">
@@ -114,14 +114,15 @@
     </div>
 </section>
 
-<section class="section" id="abstract">
-    <div class="container is-max-desktop">
-        <div class="columns is-centered">
-            <div class="column">
-            </div>
-        </div>
-    </div>
-</section>
+<!--<section class="section" id="abstract">-->
+<!--    <div class="container is-max-desktop">-->
+<!--        <div class="columns is-centered">-->
+<!--            <div class="column">-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</section>-->
+<br>
 
 <!-- abstract -->
 <section>
@@ -159,44 +160,18 @@
     <div class="container">
         <div class="row">
             <div class="col-12 text-center">
-                <h2 class="title has-text-centered is-3">Dataset</h2>
-                <hr style="margin-top:-20px">
-                <div class="has-text-justified" style="width: 72%; margin-left: 14%;">
-                    We have curated a dataset (TABE-51), a video amodal segmentation dataset that provides high-quality
-                    ground truth labels for occluded objects. The dataset contains 51 scenes with over 2000 frames and
-                    provides a robust benchmark for evaluating how well segmentation methods track and predict occluded
-                    objects throughout entire video sequences.
-
-                    TODO NEED TO GET SOME DATASET VIDEOS AND THEN SHOW THEM HERE
-                </div>
-                <br>
-<!--                <div class="row">-->
-<!--                    &lt;!&ndash;Grid column&ndash;&gt;-->
-<!--                    <div class="col-lg-12 has-text-centered text-center">-->
-<!--                        <img class="img-fluid mb-4" src="imgs/data_collection_img_w_scissors_white_gaps.png"-->
-<!--                             width="1200"-->
-<!--                             style="display: block; margin-left: auto; margin-right: auto; border: 2px solid #000;">-->
-<!--                        &lt;!&ndash;                        <img src="imgs/data_collection_img_w_scissors_white_gaps.png" class="img-fluid mb-4" alt=""&ndash;&gt;-->
-<!--                        &lt;!&ndash;                             data-wow-delay="0.3s">&ndash;&gt;-->
-<!--                    </div>-->
-<!--                </div>-->
-            </div>
-        </div>
-    </div>
-</section>
-<br>
-
-<!--SHOW SOME EXAMPLES OF THE DATASET, show img1, img2 and then combined-->
-
-<section>
-    <div class="container">
-        <div class="row">
-            <div class="col-12 text-center">
                 <h2 class="title has-text-centered is-3">Dataset Creation</h2>
                 <hr style="margin-top:-20px">
                 <div class="has-text-justified" style="width: 72%; margin-left: 14%;">
-                   SHOWCASE SOME EXAMPLES OF THE DATASET IN HERE, and HOW IT WAS CREATED ie each of the layers from left to right
+                    We have curated a dataset <b>(TABE-51)</b>, a video amodal segmentation dataset that provides high-quality
+                    ground truth labels for occluded objects. The dataset contains 51 scenes with over 2000 frames and
+                    provides a robust benchmark for evaluating how well segmentation methods track and predict occluded
+                    objects throughout entire video sequences. Below showcases the creation process.
                 </div>
+                <!--                <div class="has-text-justified" style="width: 72%; margin-left: 14%;">-->
+                <!--                    SHOWCASE SOME EXAMPLES OF THE DATASET IN HERE, and HOW IT WAS CREATED ie each of the layers from-->
+                <!--                    left to right-->
+                <!--                </div>-->
                 <br>
                 <div class="row">
                     <!--Grid column-->
@@ -212,399 +187,483 @@
         </div>
     </div>
     <div class="container">
+        <div class="has-text-justified" style="width: 72%; margin-left: 14%;">
+                    We record an initial clip of an object without occlusion and then overlay a second clip featuring
+                    the occluding object. This compositing yields realistic video sequences with natural motion and highly
+                    accurate ground truth masks, allowing models to be evaluated on how well they handle occluded
+                    objects in authentic scenarios.
+            </div>
 
-    <!-- <div class="container-fluid" style="margin-left: -25%; margin-right: -25%;"> -->
-    <div class="container-fluid">
-      <h2 class="title has-text-centered is-3">HERE WE SHOULD SHOW ALL THE LAYERS OF THE DATASET</h2>
-      <h2 class="title has-text-centered is-size-5" style="font-weight: 400; font-style: italic;">
-      </h2>
+        <!-- <div class="container-fluid" style="margin-left: -25%; margin-right: -25%;"> -->
+        <div class="container-fluid">
+            <!--            <h2 class="title has-text-centered is-5">Layers of the dataset</h2>-->
+            <!--            <h2 class="title has-text-centered is-size-5" style="font-weight: 400; font-style: italic;">-->
+            </h2>
 
-      <div class="row py-5 mt-5 bg-dark"  style="width: 100vw; margin-left: calc(-50vw + 50%);">
-          <!-- <div class="col-2"></div> -->
-          <!-- <div class="col-md-8"> -->
-          <div>
-              <script>
-                  activeAblDataMethodPill = document.querySelector('.abldata-method-pill.active-pill');
-                  activeAblDataScenePill = document.querySelector('.abldata-scene-pill.active-pill');
-                  activeAblDataModePill = document.querySelector('.abldata-mode-pill.active-pill');
-              </script>
-              <div class="has-text-centered text-center">
-                <div class="pill-row scene-pills">
-                  <span class="pill abldata-scene-pill" data-value="plant_stool_1" onclick="selectAblDataVideo(activeAblDataMethodPill, this, activeAblDataModePill)">
+
+            <div class="row py-5 mt-5 bg-dark" style="width: 100vw; margin-left: calc(-50vw + 50%);">
+                <!-- <div class="col-2"></div> -->
+                <!-- <div class="col-md-8"> -->
+                <div>
+                    <script>
+                        activeAblDataMethodPill = document.querySelector('.abldata-method-pill.active-pill');
+                        activeAblDataScenePill = document.querySelector('.abldata-scene-pill.active-pill');
+                        activeAblDataModePill = document.querySelector('.abldata-mode-pill.active-pill');
+                    </script>
+                    <div class="has-text-centered text-center">
+                        <div class="pill-row scene-pills">
+                  <span class="pill abldata-scene-pill" data-value="plant_stool_1"
+                        onclick="selectAblDataVideo(activeAblDataMethodPill, this, activeAblDataModePill)">
                     <img class="thumbnail-img" src="imgs/thumbnails/plant_stool_1.jpg" width="64">
                   </span>
-                    <span class="pill abldata-scene-pill active" data-value="cat_car_5" onclick="selectAblDataVideo(activeAblDataMethodPill, this, activeAblDataModePill)">
+                            <span class="pill abldata-scene-pill active" data-value="cat_car_5"
+                                  onclick="selectAblDataVideo(activeAblDataMethodPill, this, activeAblDataModePill)">
                     <img class="thumbnail-img" src="imgs/thumbnails/cat_car_5.jpg" width="64">
                   </span>
-                    <span class="pill abldata-scene-pill" data-value="blue_towel_roll_1" onclick="selectAblDataVideo(activeAblDataMethodPill, this, activeAblDataModePill)">
+                            <span class="pill abldata-scene-pill" data-value="blue_towel_roll_1"
+                                  onclick="selectAblDataVideo(activeAblDataMethodPill, this, activeAblDataModePill)">
                     <img class="thumbnail-img" src="imgs/thumbnails/blue_towel_roll_1.jpg" width="64">
                   </span>
-                    <span class="pill abldata-scene-pill" data-value="bus_1" onclick="selectAblDataVideo(activeAblDataMethodPill, this, activeAblDataModePill)">
-                    <img class="thumbnail-img" src="imgs/thumbnails/bus_1.jpg" width="64">
-                  </span>
-                    </span>
-                    <span class="pill abldata-scene-pill" data-value="door_walkthrough_1" onclick="selectAblDataVideo(activeAblDataMethodPill, this, activeAblDataModePill)">
-                    <img class="thumbnail-img" src="imgs/thumbnails/door_walkthrough_1.jpg" width="64">
-                  </span>
-                    </span>
-                    <span class="pill abldata-scene-pill" data-value="paper_plane_2" onclick="selectAblDataVideo(activeAblDataMethodPill, this, activeAblDataModePill)">
-                    <img class="thumbnail-img" src="imgs/thumbnails/paper_plane_2.jpg" width="64">
-                  </span>
-                    </span>
-                    <span class="pill abldata-scene-pill" data-value="goose_1" onclick="selectAblDataVideo(activeAblDataMethodPill, this, activeAblDataModePill)">
+                            </span>
+                            <span class="pill abldata-scene-pill" data-value="goose_1"
+                                  onclick="selectAblDataVideo(activeAblDataMethodPill, this, activeAblDataModePill)">
                     <img class="thumbnail-img" src="imgs/thumbnails/goose_1.jpg" width="64">
                   </span>
-                    </span>
-                    <span class="pill abldata-scene-pill" data-value="walk_outside_conversation_2" onclick="selectAblDataVideo(activeAblDataMethodPill, this, activeAblDataModePill)">
+                            </span>
+                            <span class="pill abldata-scene-pill" data-value="walk_outside_conversation_2"
+                                  onclick="selectAblDataVideo(activeAblDataMethodPill, this, activeAblDataModePill)">
                     <img class="thumbnail-img" src="imgs/thumbnails/walk_outside_conversation_2.jpg" width="64">
                   </span>
-                  <br/>
-                </div>
-                <div class="text-center" style="color: black;" id="abldata-method-pills">
-                  <div class="btn-group btn-group-sm">
-                      <span class="button is-normal abldata-method-pill" data-value="none" id="btn-abladata" style="display: none;"
-                          onclick="selectAblDataVideo(this, activeAblDataScenePill, activeAblDataModePill)">
+                            <span class="pill abldata-scene-pill" data-value="bus_1"
+                                  onclick="selectAblDataVideo(activeAblDataMethodPill, this, activeAblDataModePill)">
+                    <img class="thumbnail-img" src="imgs/thumbnails/bus_1.jpg" width="64">
+                  </span>
+                            </span>
+                            <span class="pill abldata-scene-pill" data-value="door_walkthrough_1"
+                                  onclick="selectAblDataVideo(activeAblDataMethodPill, this, activeAblDataModePill)">
+                    <img class="thumbnail-img" src="imgs/thumbnails/door_walkthrough_1.jpg" width="64">
+                  </span>
+                            </span>
+                            <span class="pill abldata-scene-pill" data-value="paper_plane_2"
+                                  onclick="selectAblDataVideo(activeAblDataMethodPill, this, activeAblDataModePill)">
+                    <img class="thumbnail-img" src="imgs/thumbnails/paper_plane_2.jpg" width="64">
+                  </span>
+
+                            <br/>
+                        </div>
+                        <div class="text-center" style="color: black;" id="abldata-method-pills">
+                            <div class="btn-group btn-group-sm">
+                      <span class="button is-normal abldata-method-pill" data-value="none" id="btn-abladata"
+                            style="display: none;"
+                            onclick="selectAblDataVideo(this, activeAblDataScenePill, activeAblDataModePill)">
                           abla data
                       </span>
-                  </div>
-              </div>
-              <br>
-              <div class="text-center" style="color: black; display: none;" id="abldata-mode-pills">
-                <div class="btn-group btn-group-sm">
+                            </div>
+                        </div>
+                        <br>
+                        <div class="text-center" style="color: black; display: none;" id="abldata-mode-pills">
+                            <div class="btn-group btn-group-sm">
                     <span class="button is-normal abldata-mode-pill active" data-value="bg"
-                        onclick="selectAblDataVideo(activeAblDataMethodPill, activeAblDataScenePill, this)">
+                          onclick="selectAblDataVideo(activeAblDataMethodPill, activeAblDataScenePill, this)">
                         Background
                     </span>
-                </div>
-              </div>
-              <div class="video-container" style="max-height: 480px;">
-                  <video class="video" style="max-width: 100%;" id="abldataVideo0" loop playsinline autoplay muted>
-                      <source src="videos/dataset_vids/walk_outside_conversation_2.mp4" />
-                  </video>
-                  <div class="column">
-                    <div class="columns method-labels">
-                      <div class="column has-text-centered method-label">
-                          Background
-                      </div>
-                      <div class="column has-text-centered method-label">
-                          Background Seg
-                      </div>
-                      <div class="column has-text-centered method-label">
-                          Foreground
-                      </div>
-                      <div class="column has-text-centered method-label">
-                          Foreground Seg
-                      </div>
-                      <div class="column has-text-centered method-label">
-                          Combined
-                      </div>
-                      <div class="column has-text-centered method-label">
-                          Visible Mask
-                      </div>
-                        <div class="column has-text-centered method-label">
-                          Ground Truth Mask
-                      </div>
+                            </div>
+                        </div>
+                        <div class="video-container" style="max-height: 480px;">
+                            <video class="video" style="max-width: 100%;" id="abldataVideo0" loop playsinline autoplay
+                                   muted>
+                                <source src="videos/dataset_vids/walk_outside_conversation_2.mp4"/>
+                            </video>
+                            <div class="column">
+                                <div class="columns method-labels">
+                                    <div class="column has-text-centered method-label">
+                                        Background
+                                    </div>
+                                    <div class="column has-text-centered method-label">
+                                        Background Seg
+                                    </div>
+                                    <div class="column has-text-centered method-label">
+                                        Foreground
+                                    </div>
+                                    <div class="column has-text-centered method-label">
+                                        Foreground Seg
+                                    </div>
+                                    <div class="column has-text-centered method-label">
+                                        Combined
+                                    </div>
+                                    <div class="column has-text-centered method-label">
+                                        Visible Mask
+                                    </div>
+                                    <div class="column has-text-centered method-label">
+                                        Ground Truth Mask
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <script>
+                            activeAblDataMethodPill = document.querySelector('.abldata-method-pill.active-pill');
+                            activeAblDataScenePill = document.querySelector('.abldata-scene-pill.active-pill');
+                            activeAblDataModePill = document.querySelector('.abldata-mode-pill.active-pill');
+                        </script>
                     </div>
-                  </div>
-              </div>
-              <script>
-                  activeAblDataMethodPill = document.querySelector('.abldata-method-pill.active-pill');
-                  activeAblDataScenePill = document.querySelector('.abldata-scene-pill.active-pill');
-                  activeAblDataModePill = document.querySelector('.abldata-mode-pill.active-pill');
-              </script>
-            </div>
-          </div>
+                </div>
 
-          <!-- <div class="col-2"></div> -->
-      </div>
-      <div class="has-text-justified  text-description ">
-        <p>
-<!--          We assess the individual contributions of each dataset category to our model's performance by incrementally adding each category to the training set.-->
-<!--          While the Omnimatte data provides basic examples of shadows in real-world videos, it primarily features static backgrounds and single objects.-->
-<!--          The Tripod data provides additional real-world scenarios to handle better water effects, such as reflections and boat wakes.-->
-<!--          Our Kubric synthetic data strengthens the models' ability to handle multi-object scenes.-->
-<!--          Finally, the Object-Paste data reduces undesired background changes and improves inpainting quality.-->
-            TODO WRITE ABOUT THE DATASET CREATION PROCESS
-        </p>
-      </div>
+                <!-- <div class="col-2"></div> -->
+            </div
+        </div>
     </div>
-  </div>
 
-</section>
-<br>
 
-<section id='sec:method' class="hero is-small" style="background-color: #ffffff;">
-  <div class="container">
-      <div id='subsec:train_data'  class="row py-5 mt-5 bg-dark">
-        <h2 class="title has-text-centered is-size-4">
-          Results
-        </h2>
+    <br>
 
-        <!-- BEGIN RESULTS -->
-          <script>
-              activeTrainDataMethodPill = document.querySelector('.traindata-method-pill.active-pill');
-              activeTrainDataScenePill = document.querySelector('.traindata-scene-pill.active-pill');
-              activeTrainDataModePill = document.querySelector('.traindata-mode-pill.active-pill');
-          </script>
-          <div class="has-text-centered text-center">
-            <div class="pill-row scene-pills" style="display: none;">
-              <span class="pill traindata-scene-pill active" data-value="none" onclick="selectTrainDataVideo(activeTrainDataMethodPill, this, activeTrainDataModePill)">
+    <section>
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center">
+                    <h2 class="title has-text-centered is-3">Method</h2>
+                    <hr style="margin-top:-20px">
+                    <!--                <div class="has-text-justified" style="width: 72%; margin-left: 14%;">-->
+                    <!--                    SHOWCASE SOME EXAMPLES OF THE DATASET IN HERE, and HOW IT WAS CREATED ie each of the layers from-->
+                    <!--                    left to right-->
+                    <!--                </div>-->
+<!--                    <br>-->
+                    <div class="has-text-justified" style="width: 72%; margin-left: 14%;">
+                        We propose a novel zero-shot amodal video object segmentation method. We
+                        call this methodology <b>TABE (Track Anything Behind Everything)</b>. The key
+                        idea is to apply outpainting to the visible regions of the
+                        tracked object using a video diffusion model.
+                        From an input video and prompts to describe the target object in frame 1 (we use point clicks
+                        but this could  also be natural language description), we use a zero-shot
+                        segmentation model to find the query mask. We provide this query mask and the video frames to a
+                        visible VOS method (SAM 2) to compute the visible masks for each
+                        frame (which might be empty if the object is completely
+                        occluded). We use these to produce the visible masked input providing images containing only the
+                        object itself, deforming over time and with missing parts caused by occlusions. It is to these
+                        images that we apply our video diffusion outpainting method, prompting
+                        the model to create a video of only the object on a white background. This provides amodal
+                        video completion output frames. Since sometimes the outpainting process reintroduces some
+                        background elements or other artefacts, we re-run VOS (SAM 2) on these frames with the original
+                        query mask, providing the final segmentation result
+                    </div>
+                    <br>
+                    <div class="row">
+                        <!--Grid column-->
+                        <div class="col-lg-12 has-text-centered text-center">
+                            <img class="img-fluid mb-4" src="imgs/overview-1.png"
+                                 width="1200"
+                                 style="display: block; margin-left: auto; margin-right: auto; border: 2px solid #000;">
+                            <!--                        <img src="imgs/data_collection_img_w_scissors_white_gaps.png" class="img-fluid mb-4" alt=""-->
+                            <!--                             data-wow-delay="0.3s">-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id='sec:method' class="hero is-small" style="background-color: #ffffff;">
+        <div class="container">
+            <div id='subsec:train_data' class="row py-5 mt-5 bg-dark">
+                <h2 class="title has-text-centered is-size-3">
+                    Results
+                </h2>
+
+                <!-- BEGIN RESULTS -->
+                <script>
+                    activeTrainDataMethodPill = document.querySelector('.traindata-method-pill.active-pill');
+                    activeTrainDataScenePill = document.querySelector('.traindata-scene-pill.active-pill');
+                    activeTrainDataModePill = document.querySelector('.traindata-mode-pill.active-pill');
+                </script>
+                <div class="has-text-centered text-center">
+                    <div class="pill-row scene-pills" style="display: none;">
+              <span class="pill traindata-scene-pill active" data-value="none"
+                    onclick="selectTrainDataVideo(activeTrainDataMethodPill, this, activeTrainDataModePill)">
                 <img class="thumbnail-img" src="imgs/overview-1.png" width="64">
               </span>
-            </div>
-            <div class="text-center" style="color: black;" id="traindata-method-pills">
-              <div class="btn-group btn-group-sm">
+                    </div>
+                    <div class="text-center" style="color: black;" id="traindata-method-pills">
+                        <div class="btn-group btn-group-sm">
                   <span class="button is-normal traindata-method-pill active" data-value="TABE-51"
-                      onclick="selectTrainDataVideo(this, activeTrainDataScenePill, activeTrainDataModePill)">
+                        onclick="selectTrainDataVideo(this, activeTrainDataScenePill, activeTrainDataModePill)">
                       TABE-51
                   </span>
-                  <span class="button is-normal traindata-method-pill" data-value="DAVIS-2017"
-                      onclick="selectTrainDataVideo(this, activeTrainDataScenePill, activeTrainDataModePill)">
+                            <span class="button is-normal traindata-method-pill" data-value="DAVIS-2017"
+                                  onclick="selectTrainDataVideo(this, activeTrainDataScenePill, activeTrainDataModePill)">
                       DAVIS-2017
                   </span>
-                  <span class="button is-normal traindata-method-pill" data-value="OVIS"
-                      onclick="selectTrainDataVideo(this, activeTrainDataScenePill, activeTrainDataModePill)">
+                            <span class="button is-normal traindata-method-pill" data-value="OVIS"
+                                  onclick="selectTrainDataVideo(this, activeTrainDataScenePill, activeTrainDataModePill)">
                       OVIS
                   </span>
-              </div>
-          </div>
-          <br>
-          <div class="text-center" style="color: black; display: none;" id="traindata-mode-pills">
-            <div class="btn-group btn-group-sm">
+                        </div>
+                    </div>
+                    <br>
+                    <div class="text-center" style="color: black; display: none;" id="traindata-mode-pills">
+                        <div class="btn-group btn-group-sm">
                 <span class="button is-normal traindata-mode-pill active" data-value="none"
-                    onclick="selectTrainDataVideo(activeTrainDataMethodPill, activeTrainDataScenePill, this)">
+                      onclick="selectTrainDataVideo(activeTrainDataMethodPill, activeTrainDataScenePill, this)">
                     none
                 </span>
+                        </div>
+                    </div>
+                    <div class="video-container">
+                        <video class="video" id="traindataVideo0" loop playsinline autoplay muted>
+                            <source src="videos/results_vids/TABE-51.mp4"/>
+                        </video>
+                        <div class="column">
+                            <div class="columns">
+                                <div class="column has-text-centered method-label">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <script>
+                        activeTrainDataMethodPill = document.querySelector('.traindata-method-pill.active-pill');
+                        activeTrainDataScenePill = document.querySelector('.traindata-scene-pill.active-pill');
+                        activeTrainDataModePill = document.querySelector('.traindata-mode-pill.active-pill');
+                    </script>
+                </div>
+                <!--END TRAINING DATA-->
             </div>
-          </div>
-          <div class="video-container">
-              <video class="video" id="traindataVideo0" loop playsinline autoplay muted>
-                  <source src="videos/results_vids/TABE-51.mp4" />
-              </video>
-              <div class="column">
-                <div class="columns">
-                  <div class="column has-text-centered method-label">
-                  </div>
-                </div>
-              </div>
-          </div>
-          <script>
-              activeTrainDataMethodPill = document.querySelector('.traindata-method-pill.active-pill');
-              activeTrainDataScenePill = document.querySelector('.traindata-scene-pill.active-pill');
-              activeTrainDataModePill = document.querySelector('.traindata-mode-pill.active-pill');
-          </script>
-        </div>
-        <!--END TRAINING DATA-->
-      </div>
-      <div class="has-text-justified" id="div-traindata-text-container">
-        <p id="p-traindata-desc" class="has-text-justified text-description">
-            <span data-value="TABE-51" onclick="selectTrainDataVideo(this, null, null)">(i) <b>TABE-51</b></span>: "Here we talk..."
-            <br><br>
-            <span data-value="DAVIES-2017" onclick="selectTrainDataVideo(this, null, null)">(ii) <b>DAVIES-2017</b></span>: Add desc
-            <br><br>
-            <span data-value="OVIS" onclick="selectTrainDataVideo(this, null, null)">(iii) <b>OVIS</b></span>: Add desc
-            <br><br>
-        </p>
-      </div>
-       <div class="has-text-justified  text-description ">
-        <p>
-          We assess TABE performance on various datasets.
-        </p>
-      </div>
-      <!-- <div class="row py-5 mt-5 bg-dark"> -->
-      </div>
-    </div>
-  </div>
-</section>
-
-
-<!--<nav class="section-nav">-->
-<!--  <ul>-->
-<!--    <li class=""><a href="#sec:demo">Generative Omnimatte</a></li>-->
-<!--    <li class=""><a href="#sec:comparison-omnimatte">Comparison: Omnimatte</a></li>-->
-<!--    <li class=""><a href="#sec:comparison-removal">Comparison: Removal</a></li>-->
-<!--    <li class=""><a href="#sec:method">Our Method</a></li>-->
-<!--    <li class=""><a href="#sec:ablation-data">Ablation: Training Data</a></li>-->
-<!--    <li class=""><a href="#sec:ablation-condition">Ablation: Input Condition</a></li>-->
-<!--    <li class=""><a href="#sec:attention-analysis">Self-Attention Analysis</a></li>-->
-<!--  </ul>-->
-<!--</nav> -->
-
-
-<!--<section id='sec:demo' class="hero is-small">-->
-<!--  <div class="container" style="margin-top: 0; padding-top: 0;" >-->
-
-<!--    <div class="container-fluid" style="margin-top: 0; padding-top: 0;">-->
-<!--      &lt;!&ndash; <h2 class="title has-text-centered is-3">Demo</h2>-->
-<!--      <h2 class="title has-text-centered is-size-5" style="font-weight: 400; font-style: italic;">-->
-<!--        Demo-->
-<!--      </h2> &ndash;&gt;-->
-<!--      <div class="" style="margin-top: 0; padding-top: 0;">-->
-<!--          <div class="col-2"></div>-->
-<!--          <div class="col-md-8">-->
-<!--              <script>-->
-<!--                  activeDemoMethodPill = "zipnerf"-->
-<!--                  activeDemoScenePill = document.querySelector('.demo-scene-pill.active-pill');-->
-<!--                  activeDemoModePill = document.querySelector('.demo-mode-pill.active-pill');-->
-<!--              </script>-->
-<!--              <div class="has-text-centered text-center">-->
-<!--                  <div class="video-container" style="padding: 0;">-->
-<!--                      <video class="video" style="width: 72%;" m id="demoVideo0" loop playsinline autoplay muted>-->
-<!--                          <source src="videos/cgt_frames_0002.mp4" />-->
-<!--                      </video>-->
-<!--                  </div>-->
-<!--                  <div class="text-center" style="color: black; display: none;" id="demo-mode-pills">-->
-<!--                      <div class="btn-group btn-group-sm">-->
-<!--                          <span class="button is-normal demo-mode-pill active" data-value="layer"-->
-<!--                              onclick="selectDemoVideo(activeDemoMethodPill, activeDemoScenePill, this)">-->
-<!--                              Layer Visualization-->
-<!--                          </span>-->
-<!--                      </div>-->
-<!--                  </div>-->
-<!--                  <div class="column" >-->
-<!--                    <div class="columns method-labels" style="width: 80%; margin-left: 10%;">-->
-<!--                      <div class="column has-text-centered method-label" id=""></div>-->
-<!--                      <div class="column has-text-centered method-label">-->
-<!--                        Input video-->
-<!--                      </div>-->
-<!--                      <div class="column has-text-centered method-label" id=""></div>-->
-<!--                      <div class="column has-text-centered method-label" id=""></div>-->
-<!--                      <div class="column has-text-centered method-label">-->
-<!--                        Omnimatte layers-->
-<!--                      </div>-->
-<!--                      <div class="column has-text-centered method-label" id=""></div>-->
-<!--                    </div>-->
-<!--              </div>-->
-
-
-<!--                  <br>-->
-<!--                  <script>-->
-<!--                      video0 = document.getElementById("demoVideo0");-->
-<!--                  </script>-->
-
-<!--                  <div class="pill-row scene-pills" id="demo-scene-pills">-->
-<!--                    <span class="pill demo-scene-pill active" data-value="lego_animation_pause-occlusion" onclick="selectDemoVideo(activeDemoMethodPill, this, activeDemoModePill)">-->
-<!--                        <img class="thumbnail-img" src="imgs/data_collection_img_w_scissors_white_gaps.png" alt="lego" width="64">-->
-<!--                    </span>-->
-<!--                    <span class="pill demo-scene-pill active" data-value="lego_animation_pause-occlusion" onclick="selectDemoVideo(activeDemoMethodPill, this, activeDemoModePill)">-->
-<!--                        <img class="thumbnail-img" src="imgs/overview-1.png" alt="lego" width="64">-->
-<!--                    </span>-->
-<!--                    &lt;!&ndash; <span class="pill demo-scene-pill" data-value="people-jumping_animation" onclick="selectDemoVideo(activeDemoMethodPill, this, activeDemoModePill)">-->
-<!--                      <img class="thumbnail-img" src="assets/thumbnails/people-jumping.png" alt="" width="96">-->
-<!--                    </span> &ndash;&gt;-->
-
-<!--                  </div>-->
-<!--                  <br/>-->
-<!--                  <h2 class="title has-text-centered is-size-5 " style="font-weight: 400; line-height: 32px;">-->
-<!--                    Our method decomposes a video into a set of RGBA omnimatte layers,<br>where each layer consists of a fully-visible object and its associated effects like shadows and reflections.-->
-<!--                  </h2>-->
-<!--                  <script>-->
-<!--                      activeDemoMethodPill = document.querySelector('.demo-method-pill.active-pill');-->
-<!--                      activeDemoScenePill = document.querySelector('.demo-scene-pill.active-pill');-->
-<!--                      activeDemoModePill = document.querySelector('.demo-mode-pill.active-pill');-->
-<!--                  </script>-->
-<!--              </div>-->
-<!--          </div>-->
-<!--          <div class="col-2"></div>-->
-
-<!--      </div>-->
-<!--    </div>-->
-<!--  </div>-->
-<!--</section>-->
-
-
-<section id='sec-edit' class="hero is-light is-small">
-    <div class="hero-body">
-
-        <div class="container">
-            <!-- <h2 class="has-text-centered title">
-                <b>Video editing</b>
-            </h2> -->
-            <div id="demo-carousel" class="carousel results-carousel">
-                <div class="item">
-                    <video poster="" autoplay muted loop playsinline height="100%">
-                        <source src="./videos/cgt_frames_0002.mp4"
-                                type="video/mp4">
-                    </video>
-                </div>
-                <div class="item">
-                    <video poster="" autoplay muted loop playsinline height="100%">
-                        <source src="./videos/cgt_frames_0002.mp4"
-                                type="video/mp4">
-                    </video>
-                </div>
-            </div>
-
-        </div>
-        <h2 class="title has-text-centered is-size-5"
-            style="font-weight: 400; line-height: 32px; font-style: italic; padding-top: 20px;">
-            TABE provides strong results on multiple videos. Here is it against 3 other methods...
-            (Scroll to view more videos)
-        </h2>
-    </div>
-</section>
-
-<section id='sec-sidebyside-edit' class="hero is-light is-small">
-    <div class="hero-body">
-
-        <div class="container" style="padding-left: 5%; padding-right: 5%;">
-            <!-- <h2 class="has-text-centered title">
-                <b>Video editing</b>
-            </h2> -->
-            <div id="sidebyside-carousel" class="carousel results-carousel">
-                <div class="item">
-                    <video poster="" autoplay muted loop playsinline height="100%">
-                        <source src="videos/cgt_frames_0002.mp4"
-                                type="video/mp4">
-                    </video>
-                </div>
-                <div class="item">
-                    <video poster="" autoplay muted loop playsinline height="100%">
-                        <source src="videos/cgt_frames_0011.mp4"
-                                type="video/mp4">
-                    </video>
-                </div>
-                <div class="item">
-                    <video poster="" autoplay muted loop playsinline height="100%">
-                        <source src="videos/cgt_frames_0026.mp4"
-                                type="video/mp4">
-                    </video>
-                </div>
-            </div>
-
-        </div>
-        <h2 class="title has-text-centered is-size-5"
-            style="font-weight: 400; line-height: 32px; font-style: italic; padding-top: 20px;">
-            Our omnimattes enable a wide range of video editing for users. <br>
-            (Scroll to view more videos)
-        </h2>
-    </div>
-</section>
-<br>
-<br>
-
-<footer class="footer">
-    <div class="container">
-        <div class="columns is-centered">
-            <div class="content is-centered">
-                <p>
-                    Thanks to <a
-                        href="https://gen-omnimatte.github.io/">gen-omnimatte</a> for the template.
+            <div class="has-text-justified" id="div-traindata-text-container">
+                <p id="p-traindata-desc" class="has-text-justified text-description">
+                    <span data-value="TABE-51"
+                          onclick="selectTrainDataVideo(this, null, null)">(i) <b>TABE-51</b></span>:
+                    Add desc
+                    <br><br>
+                    <span data-value="DAVIES-2017"
+                          onclick="selectTrainDataVideo(this, null, null)">(ii) <b>DAVIES-2017</b></span>:
+                    Add desc
+                    <br><br>
+                    <span data-value="OVIS" onclick="selectTrainDataVideo(this, null, null)">(iii) <b>OVIS</b></span>:
+                    Add
+                    desc
+                    <br><br>
                 </p>
             </div>
+            <div class="has-text-justified  text-description ">
+                <!--            <p>-->
+                <!--                We assess TABE performance on various datasets.-->
+                <!--            </p>-->
+            </div>
+            <!-- <div class="row py-5 mt-5 bg-dark"> -->
         </div>
-    </div>
-</footer>
+        </div>
+        </div>
+    </section>
 
-<!--<script>-->
-<!--  $(document).ready(function() {-->
-<!--    bulmaCarousel.attach('.carousel', {-->
-<!--      slidesToScroll: 1,-->
-<!--      slidesToShow: 1,-->
-<!--      loop: true-->
-<!--    });-->
-<!--  });-->
-<!--</script>-->
+
+    <!--<nav class="section-nav">-->
+    <!--  <ul>-->
+    <!--    <li class=""><a href="#sec:demo">Generative Omnimatte</a></li>-->
+    <!--    <li class=""><a href="#sec:comparison-omnimatte">Comparison: Omnimatte</a></li>-->
+    <!--    <li class=""><a href="#sec:comparison-removal">Comparison: Removal</a></li>-->
+    <!--    <li class=""><a href="#sec:method">Our Method</a></li>-->
+    <!--    <li class=""><a href="#sec:ablation-data">Ablation: Training Data</a></li>-->
+    <!--    <li class=""><a href="#sec:ablation-condition">Ablation: Input Condition</a></li>-->
+    <!--    <li class=""><a href="#sec:attention-analysis">Self-Attention Analysis</a></li>-->
+    <!--  </ul>-->
+    <!--</nav> -->
+
+
+    <!--<section id='sec:demo' class="hero is-small">-->
+    <!--  <div class="container" style="margin-top: 0; padding-top: 0;" >-->
+
+    <!--    <div class="container-fluid" style="margin-top: 0; padding-top: 0;">-->
+    <!--      &lt;!&ndash; <h2 class="title has-text-centered is-3">Demo</h2>-->
+    <!--      <h2 class="title has-text-centered is-size-5" style="font-weight: 400; font-style: italic;">-->
+    <!--        Demo-->
+    <!--      </h2> &ndash;&gt;-->
+    <!--      <div class="" style="margin-top: 0; padding-top: 0;">-->
+    <!--          <div class="col-2"></div>-->
+    <!--          <div class="col-md-8">-->
+    <!--              <script>-->
+    <!--                  activeDemoMethodPill = "zipnerf"-->
+    <!--                  activeDemoScenePill = document.querySelector('.demo-scene-pill.active-pill');-->
+    <!--                  activeDemoModePill = document.querySelector('.demo-mode-pill.active-pill');-->
+    <!--              </script>-->
+    <!--              <div class="has-text-centered text-center">-->
+    <!--                  <div class="video-container" style="padding: 0;">-->
+    <!--                      <video class="video" style="width: 72%;" m id="demoVideo0" loop playsinline autoplay muted>-->
+    <!--                          <source src="videos/cgt_frames_0002.mp4" />-->
+    <!--                      </video>-->
+    <!--                  </div>-->
+    <!--                  <div class="text-center" style="color: black; display: none;" id="demo-mode-pills">-->
+    <!--                      <div class="btn-group btn-group-sm">-->
+    <!--                          <span class="button is-normal demo-mode-pill active" data-value="layer"-->
+    <!--                              onclick="selectDemoVideo(activeDemoMethodPill, activeDemoScenePill, this)">-->
+    <!--                              Layer Visualization-->
+    <!--                          </span>-->
+    <!--                      </div>-->
+    <!--                  </div>-->
+    <!--                  <div class="column" >-->
+    <!--                    <div class="columns method-labels" style="width: 80%; margin-left: 10%;">-->
+    <!--                      <div class="column has-text-centered method-label" id=""></div>-->
+    <!--                      <div class="column has-text-centered method-label">-->
+    <!--                        Input video-->
+    <!--                      </div>-->
+    <!--                      <div class="column has-text-centered method-label" id=""></div>-->
+    <!--                      <div class="column has-text-centered method-label" id=""></div>-->
+    <!--                      <div class="column has-text-centered method-label">-->
+    <!--                        Omnimatte layers-->
+    <!--                      </div>-->
+    <!--                      <div class="column has-text-centered method-label" id=""></div>-->
+    <!--                    </div>-->
+    <!--              </div>-->
+
+
+    <!--                  <br>-->
+    <!--                  <script>-->
+    <!--                      video0 = document.getElementById("demoVideo0");-->
+    <!--                  </script>-->
+
+    <!--                  <div class="pill-row scene-pills" id="demo-scene-pills">-->
+    <!--                    <span class="pill demo-scene-pill active" data-value="lego_animation_pause-occlusion" onclick="selectDemoVideo(activeDemoMethodPill, this, activeDemoModePill)">-->
+    <!--                        <img class="thumbnail-img" src="imgs/data_collection_img_w_scissors_white_gaps.png" alt="lego" width="64">-->
+    <!--                    </span>-->
+    <!--                    <span class="pill demo-scene-pill active" data-value="lego_animation_pause-occlusion" onclick="selectDemoVideo(activeDemoMethodPill, this, activeDemoModePill)">-->
+    <!--                        <img class="thumbnail-img" src="imgs/overview-1.png" alt="lego" width="64">-->
+    <!--                    </span>-->
+    <!--                    &lt;!&ndash; <span class="pill demo-scene-pill" data-value="people-jumping_animation" onclick="selectDemoVideo(activeDemoMethodPill, this, activeDemoModePill)">-->
+    <!--                      <img class="thumbnail-img" src="assets/thumbnails/people-jumping.png" alt="" width="96">-->
+    <!--                    </span> &ndash;&gt;-->
+
+    <!--                  </div>-->
+    <!--                  <br/>-->
+    <!--                  <h2 class="title has-text-centered is-size-5 " style="font-weight: 400; line-height: 32px;">-->
+    <!--                    Our method decomposes a video into a set of RGBA omnimatte layers,<br>where each layer consists of a fully-visible object and its associated effects like shadows and reflections.-->
+    <!--                  </h2>-->
+    <!--                  <script>-->
+    <!--                      activeDemoMethodPill = document.querySelector('.demo-method-pill.active-pill');-->
+    <!--                      activeDemoScenePill = document.querySelector('.demo-scene-pill.active-pill');-->
+    <!--                      activeDemoModePill = document.querySelector('.demo-mode-pill.active-pill');-->
+    <!--                  </script>-->
+    <!--              </div>-->
+    <!--          </div>-->
+    <!--          <div class="col-2"></div>-->
+
+    <!--      </div>-->
+    <!--    </div>-->
+    <!--  </div>-->
+    <!--</section>-->
+
+
+<!--    <section id='sec-edit' class="hero is-light is-small">-->
+<!--        <div class="hero-body">-->
+
+<!--            <div class="container">-->
+<!--                &lt;!&ndash; <h2 class="has-text-centered title">-->
+<!--                    <b>Video editing</b>-->
+<!--                </h2> &ndash;&gt;-->
+<!--                <div id="demo-carousel" class="carousel results-carousel">-->
+<!--                    <div class="item">-->
+<!--                        <video poster="" autoplay muted loop playsinline height="100%">-->
+<!--                            <source src="./videos/cgt_frames_0002.mp4"-->
+<!--                                    type="video/mp4">-->
+<!--                        </video>-->
+<!--                    </div>-->
+<!--                    <div class="item">-->
+<!--                        <video poster="" autoplay muted loop playsinline height="100%">-->
+<!--                            <source src="./videos/cgt_frames_0002.mp4"-->
+<!--                                    type="video/mp4">-->
+<!--                        </video>-->
+<!--                    </div>-->
+<!--                </div>-->
+
+<!--            </div>-->
+<!--            <h2 class="title has-text-centered is-size-5"-->
+<!--                style="font-weight: 400; line-height: 32px; font-style: italic; padding-top: 20px;">-->
+<!--                TABE provides strong results on multiple videos. Here is it against 3 other methods...-->
+<!--                (Scroll to view more videos)-->
+<!--            </h2>-->
+<!--        </div>-->
+<!--    </section>-->
+
+    <section id='sec-sidebyside-edit' class="hero is-light is-small" style="margin-top: -40px;">
+        <div class="hero-body">
+
+            <div class="container" style="padding-left: 5%; padding-right: 5%;">
+                <h2 class="has-text-centered title">
+                    <b>Qualitative Comparisons Against Other Methods</b>
+                </h2>
+                <div id="sidebyside-carousel" class="carousel results-carousel">
+                    <div class="item">
+                        <video poster="" autoplay muted loop playsinline height="100%">
+                            <source src="videos/qualitative_comparisons/ball_bounce.mp4"
+                                    type="video/mp4">
+                        </video>
+                    </div>
+                    <div class="item">
+                        <video poster="" autoplay muted loop playsinline height="100%">
+                            <source src="videos/qualitative_comparisons/blue_towel_roll_1.mp4"
+                                    type="video/mp4">
+                        </video>
+                    </div>
+                    <div class="item">
+                        <video poster="" autoplay muted loop playsinline height="100%">
+                            <source src="videos/qualitative_comparisons/goose_1.mp4"
+                                    type="video/mp4">
+                        </video>
+                    </div>
+                    <div class="item">
+                        <video poster="" autoplay muted loop playsinline height="100%">
+                            <source src="videos/qualitative_comparisons/paper_plane_2.mp4"
+                                    type="video/mp4">
+                        </video>
+                    </div>
+                    <div class="item">
+                        <video poster="" autoplay muted loop playsinline height="100%">
+                            <source src="videos/qualitative_comparisons/bottle_cap_roll_1.mp4"
+                                    type="video/mp4">
+                        </video>
+                    </div>
+                </div>
+
+            </div>
+            <h2 class="title has-text-centered is-size-5"
+                style="font-weight: 400; line-height: 32px; font-style: italic; padding-top: 20px;">
+                We compare TABE to 3 other SOTA amodal completion methods, namely TCOW, pix2gestalt and sdamodal (references in paper). We showcase our pipelines ability to provide more accurate predictions, even when the object of interest is fully occluded. <br>
+                (Scroll to view more videos)
+            </h2>
+        </div>
+    </section>
+    <br>
+    <br>
+
+    <section class="section" id="BibTeX">
+      <div class="container is-max-desktop content">
+        <h2 class="title">BibTeX</h2>
+        <pre><code>@article{hudson2024track,
+      title={Track Anything Behind Everything: Zero-Shot Amodal Video Object Segmentation},
+      author={Hudson, Finlay GC and Smith, William AP},
+      journal={arXiv preprint arXiv:2411.19210},
+      year={2024}
+    }</code></pre>
+      </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="columns is-centered">
+                <div class="content is-centered">
+                    <p>
+                        Thanks to <a
+                            href="https://gen-omnimatte.github.io/">gen-omnimatte</a> for the template.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!--<script>-->
+    <!--  $(document).ready(function() {-->
+    <!--    bulmaCarousel.attach('.carousel', {-->
+    <!--      slidesToScroll: 1,-->
+    <!--      slidesToShow: 1,-->
+    <!--      loop: true-->
+    <!--    });-->
+    <!--  });-->
+    <!--</script>-->
 
 </body>
 </html>
