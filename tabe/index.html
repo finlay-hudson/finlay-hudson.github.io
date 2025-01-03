@@ -1,19 +1,21 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <!--   Google tag (gtag.js)-->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-X8M7T669YV"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-
-        function gtag() {
-            dataLayer.push(arguments);
-        }
-
-        gtag('js', new Date());
-
-        gtag('config', 'G-X8M7T669YV');
-    </script>
+    <!-- Google Tag Manager -->
+    <script>(function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({
+            'gtm.start':
+                new Date().getTime(), event: 'gtm.js'
+        });
+        var f = d.getElementsByTagName(s)[0],
+            j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
+        j.async = true;
+        j.src =
+            'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+        f.parentNode.insertBefore(j, f);
+    })(window, document, 'script', 'dataLayer', 'GTM-54ZK7PFG');</script>
+    <!-- End Google Tag Manager -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="utf-8">
     <meta name="description"
@@ -50,6 +52,12 @@
     <script src="src/js/synced_video_selector.js"></script>
 </head>
 <body onresize="reload();">
+<!-- Google Tag Manager (noscript) -->
+<noscript>
+    <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-54ZK7PFG"
+            height="0" width="0" style="display:none;visibility:hidden"></iframe>
+</noscript>
+<!-- End Google Tag Manager (noscript) -->
 
 <section class="hero" style="padding-bottom: 0; margin-bottom: 0;background-color: #fcedd9;">
     <div class="hero-body" style="padding-bottom: 0; margin-bottom: 0;background-color: #fcedd9;">
@@ -147,7 +155,8 @@
                 <h2 class="title has-text-centered is-3">Dataset Creation</h2>
                 <hr style="margin-top:-20px">
                 <div class="has-text-justified" style="width: 72%; margin-left: 14%;">
-                    We have curated a dataset <b>(TABE-51)</b>, a video amodal segmentation dataset that provides high-quality
+                    We have curated a dataset <b>(TABE-51)</b>, a video amodal segmentation dataset that provides
+                    high-quality
                     ground truth labels for occluded objects. The dataset contains 51 scenes with over 2000 frames and
                     provides a robust benchmark for evaluating how well segmentation methods track and predict occluded
                     objects throughout entire video sequences. Below showcases the creation process.
@@ -170,11 +179,11 @@
     </div>
     <div class="container">
         <div class="has-text-justified" style="width: 72%; margin-left: 14%;">
-                    We record an initial clip of an object without occlusion and then overlay a second clip featuring
-                    the occluding object. This compositing yields realistic video sequences with natural motion and highly
-                    accurate ground truth masks, allowing models to be evaluated on how well they handle occluded
-                    objects in authentic scenarios.
-            </div>
+            We record an initial clip of an object without occlusion and then overlay a second clip featuring
+            the occluding object. This compositing yields realistic video sequences with natural motion and highly
+            accurate ground truth masks, allowing models to be evaluated on how well they handle occluded
+            objects in authentic scenarios.
+        </div>
 
         <div class="container-fluid">
             </h2>
@@ -305,7 +314,7 @@
                         idea is to apply outpainting to the visible regions of the
                         tracked object using a video diffusion model.
                         From an input video and prompts to describe the target object in frame 1 (we use point clicks
-                        but this could  also be natural language description), we use a zero-shot
+                        but this could also be natural language description), we use a zero-shot
                         segmentation model to find the query mask. We provide this query mask and the video frames to a
                         visible VOS method (SAM 2) to compute the visible masks for each
                         frame (which might be empty if the object is completely
@@ -462,7 +471,9 @@
             </div>
             <h2 class="title has-text-centered is-size-5"
                 style="font-weight: 400; line-height: 32px; font-style: italic; padding-top: 20px;">
-                We compare TABE to 3 other SOTA amodal completion methods, namely TCOW, pix2gestalt and sdamodal (references in paper). We showcase our pipelines ability to provide more accurate predictions, even when the object of interest is fully occluded. <br>
+                We compare TABE to 3 other SOTA amodal completion methods, namely TCOW, pix2gestalt and sdamodal
+                (references in paper). We showcase our pipelines ability to provide more accurate predictions, even when
+                the object of interest is fully occluded. <br>
                 (Scroll to view more videos)
             </h2>
         </div>
@@ -471,15 +482,15 @@
     <br>
 
     <section class="section" id="BibTeX">
-      <div class="container is-max-desktop content">
-        <h2 class="title">BibTeX</h2>
-        <pre><code>@article{hudson2024track,
+        <div class="container is-max-desktop content">
+            <h2 class="title">BibTeX</h2>
+            <pre><code>@article{hudson2024track,
       title={Track Anything Behind Everything: Zero-Shot Amodal Video Object Segmentation},
       author={Hudson, Finlay GC and Smith, William AP},
       journal={arXiv preprint arXiv:2411.19210},
       year={2024}
     }</code></pre>
-      </div>
+        </div>
     </section>
 
     <footer class="footer">
