@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!--    &lt;!&ndash;   Google tag (gtag.js)&ndash;&gt;-->
+<!--    <script async src="https://www.googletagmanager.com/gtag/js?id=G-X8M7T669YV"></script>-->
+<!--    <script>-->
+<!--        window.dataLayer = window.dataLayer || [];-->
+
+<!--        function gtag() {-->
+<!--            dataLayer.push(arguments);-->
+<!--        }-->
+
+<!--        gtag('js', new Date());-->
+
+<!--        gtag('config', 'G-X8M7T669YV');-->
+<!--    </script>-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <meta name="description"
+          content="Iterative Cluster-free Re-ranking">
+    <title>Iterative Cluster-free Re-ranking (ICFRR)</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+          rel="stylesheet">
+
+    <link rel="stylesheet" href="src/css/bulma.min.css">
+    <link rel="stylesheet" href="src/css/bulma-carousel.min.css">
+    <link rel="stylesheet" href="src/css/bulma-slider.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.8.0/codemirror.min.css">
+
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+    <link rel="stylesheet" href="src/css/index.css">
+    <!-- <link rel="stylesheet" href="src/css/app.css"> -->
+    <!-- <link rel="icon" href="src/images/favicon.svg"> -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.8.0/codemirror.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.5.3/clipboard.min.js"></script>
+    <script type="text/javascript" async
+            src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
+    <script src="src/js/bulma-carousel.min.js"></script>
+    <script src="src/js/bulma-slider.min.js"></script>
+    <script src="src/js/app.js"></script>
+    <script src="src/js/synced_video_selector.js"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css">
+    <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,500,600' rel='stylesheet'
+          type='text/css'>
+    <link rel="stylesheet" href="src/css/styles.css">
+
+    <script src="src/js/video_comparison.js"></script>
+
+    <style>
+        .small-bal-container {
+            width: 560px; /* Set the desired width */
+            height: 322px; /* Set the height proportional to the aspect ratio (e.g., 16:9) */
+            margin: 0 auto; /* Center the images */
+            position: relative; /* Maintain the positioning for the slider and labels */
+            overflow: hidden; /* Ensure content stays within the container */
+        }
+
+        .small-bal-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Ensure images scale proportionally */
+        }
+    </style>
+
+</head>
+<body onresize="reload();">
+
+
+<section class="hero" style="padding-bottom: 0; margin-bottom: 0;">
+    <!--    TODO THIS IS WHERE WE CHANGE THE BG COLOUR OF HEADING-->
+    <div class="hero-body" style="padding-bottom: 0; margin-bottom: 0;background-color: #fcf8e3;">
+        <div class="container is-max-desktop">
+            <div class="columns is-centered">
+                <div class="column has-text-centered">
+                    <h1 class="title is-1 publication-title" style="font-size: 32pt;"><span
+                            style="font-weight: bolder;">If At First You Don’t Succeed</span>
+                        <br><span
+                                style="font-weight:normal">Test-time Re-ranking for Zero-shot, Cross-domain Retrieval</span>
+                    </h1>
+                    <div class="is-size-5 publication-authors" id="div-row-authors">
+			      <span class="author-block">
+              <a href="https://finlay-hudson.github.io/">Finlay G. C. Hudson</a><sup>1</sup>&nbsp&nbsp</span>
+                        <span class="author-block">
+                <a href="https://www-users.york.ac.uk/~waps101/">William A. P. Smith</a><sup>1</sup>&nbsp&nbsp</span>
+                    </div>
+
+                    <div class="is-size-5 publication-authors">
+                        <span class="author-block"><sup>1</sup>University of York  </span>
+                    </div>
+                    <div class="column has-text-centered">
+                        <div class="publication-links">
+                            <span class="link-block"></span>
+                            <!-- <a href=""
+                               class="external-link button is-normal is-rounded is-dark">
+                              <span class="icon">
+                                  <i class="fas fa-file-pdf"></i>
+                              </span>
+                              <span>PDF</span>
+                            </a> -->
+                            <!-- TODO NEED TO DO THIS - UPDATE THE ARXIV WITH LATEST PAPER-->
+                            <a href="https://arxiv.org/abs/2411.19210"
+                               class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                                <span>Paper</span>
+                            </a>
+                            <a href=""
+                               class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                    <!-- <i class="fa-brands fa-youtube"></i> -->
+                    <svg class="svg-inline--fa fa-youtube fa-w-18" aria-hidden="true" focusable="false"
+                         data-prefix="fab" data-icon="youtube" role="img" xmlns="http://www.w3.org/2000/svg"
+                         viewBox="0 0 576 512" data-fa-i2svg=""><path fill="currentColor"
+                                                                      d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z"></path></svg>
+                  </span>
+                                <span>Code (Coming Soon)</span>
+                            </a>
+                            </span>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<br>
+
+<!-- abstract -->
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h2 class="title has-text-centered is-3">Abstract</h2>
+                <hr style="margin-top:-20px">
+                <div class="has-text-justified" style="width: 72%; margin-left: 14%;">
+                    We introduce a novel method for zero-shot, cross-domain image retrieval. Our key contribution
+                    is a test-time Iterative Cluster-free Re-ranking (ICFRR) process that
+                    leverages gallery-gallery feature information to establish
+                    semantic links between query and gallery images. This en
+                    ables the retrieval of relevant images even when they do not
+                    exhibit similar visual features but share underlying semantic concepts. This can be combined with
+                    any pre-existing cross-domain feature extraction backbone to improve retrieval performance. However,
+                    when combined with a carefully chosen Vision Transformer backbone and
+                    combination of zero-shot retrieval losses, our approach yields state-of-
+                    the-art results on the Sketchy, TU-Berlin and QuickDraw
+                    sketch-based retrieval benchmarks. We show that our re-ranking also improves performance with other
+                    backbones
+                    and outperforms other re-ranking methods applied with
+                    our backbone. Importantly, unlike many previous methods,
+                    none of the components in our approach are engineered
+                    specifically towards the sketch-based image retrieval task
+                    - it can be generally applied to any cross-domain, zero-shot
+                    retrieval task. We therefore also present new results on zero-
+                    shot cartoon-to-photo and art-to-product retrieval using the
+                    Office-Home dataset.
+                </div>
+            </div>
+        </div>
+        <div class="container">
+
+            <hr class="divider"/>
+            <h2></h2>
+
+
+            <div class="row">
+                <!-- Example 2 -->
+                <div class="col-md-6">
+                    <div id="example2" class="bal-container-big big-bal-container">
+                        <div class="bal-wrapper">
+                            <div class="bal-after">
+                                <img src="imgs/slider_imgs/sketchy_final.png" alt="Example 2 After">
+                                <div class="bal-afterPosition afterLabel">
+                                    With IFCRR
+                                </div>
+                            </div>
+                            <div class="bal-before">
+                                <div class="bal-before-inset">
+                                    <img src="imgs/slider_imgs/sketchy_initial.png" alt="Example 2 Before">
+                                    <div class="bal-beforePosition beforeLabel">
+                                        No ICFRR
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="bal-handle">
+                                <span class="handle-left-arrow"></span>
+                                <span class="handle-right-arrow"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Example 3 -->
+                <div class="col-md-6">
+                    <div id="example3" class="bal-container-big big-bal-container">
+                        <div class="bal-wrapper">
+                            <div class="bal-after">
+                                <img src="imgs/slider_imgs/tuberlin_final.png" alt="Example 3 After">
+                                <div class="bal-afterPosition afterLabel">
+                                    With IFCRR
+                                </div>
+                            </div>
+                            <div class="bal-before">
+                                <div class="bal-before-inset">
+                                    <img src="imgs/slider_imgs/tuberlin_initial.png"
+                                         alt="Example 3 Before">
+                                    <div class="bal-beforePosition beforeLabel">
+                                        No ICFRR
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="bal-handle">
+                                <span class="handle-left-arrow"></span>
+                                <span class="handle-right-arrow"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</section>
+<br>
+
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h2 class="title has-text-centered is-3">ICFRR Explainer</h2>
+                <hr style="margin-top:-20px">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12 text-center">
+                            <video controls width="800" height="450">
+                                <source src="videos/ICFRR_explained.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <div class="has-text-justified" style="width: 72%; margin-left: 14%;">
+                    In the example shown below, the initial query-gallery rank
+                    ing (a) places an incorrect match high in the list (marked
+                    in red). For every gallery image, we now consider their
+                    gallery-gallery ranks (b). In (c) we highlight the positions
+                    of two highly ranked examples in the other gallery ranked
+                    lists. Item 3 is an incorrect match. This is indicated by the
+                    fact that it appears high in the ranked list of gallery images
+                    that are themselves ranked low against the query (items 150 and 151). This will incur a high penalty
+                    for item 3 in its updated distance to query. Item 4 however is a correct match
+                    and this is indicated by appearing high in the ranked list of
+                    gallery images that are themselves ranked high against the
+                    query (items 1, 2 and 5). This will incur a small penalty for
+                    item 4. Once the distances have been updated, we re-rank
+                    (d) and the incorrect match moves further down the query-
+                    gallery ranked list.
+                </div>
+                <br>
+                <div class="row">
+                    <!--Grid column-->
+                    <div class="col-lg-12 has-text-centered text-center">
+                        <img class="img-fluid mb-4" src="imgs/overview.png"
+                             width="1000"
+                             style="display: block; margin-left: auto; margin-right: auto; border: 2px solid #000;">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<br>
+
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h2 class="title has-text-centered is-3">Full Methodology</h2>
+                <hr style="margin-top:-20px">
+                <div class="has-text-justified" style="width: 72%; margin-left: 14%;">
+                    Overview of architecture and train versus test operation. At training time, pairs of images are used
+                    to compute cross-attention to
+                    supervise the cross-attention distillation loss. At test time, individual images are embedded and
+                    ranked followed by our ICFRR re-ranking process.
+                </div>
+                <br>
+                <div class="row">
+                    <!--Grid column-->
+                    <div class="col-lg-12 has-text-centered text-center">
+                        <img class="img-fluid mb-4" src="imgs/methodology.png"
+                             width="1000"
+                             style="display: block; margin-left: auto; margin-right: auto; border: 2px solid #000;">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<br>
+
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h2 class="title has-text-centered is-3">Rationale</h2>
+                <hr style="margin-top:-20px">
+                <div class="has-text-justified" style="width: 72%; margin-left: 14%;">
+                    The initial ranking based on similarities between the embeddings of the visual features of
+                    the query and gallery images will contain a mixture of correct and incorrect matches. However, the
+                    incorrect matches will not be ranked highly if ranked against correct, highly-
+                    ranked gallery images. Since gallery-gallery ranks depend on comparing visual features within the
+                    same domain, the problem is simplified and we are able to extract more semantically-meaningful
+                    matches. This allows initially highly-ranked gallery images to be penalised and
+                    moved down the query-gallery ranked list. Iterating this
+                    process enables discovery of gallery images that are more
+                    distantly connected to the query via multiple gallery-gallery
+                    matches.
+                    <br>
+                    In some cases, although the query and gallery images are of the same class they may continue very
+                    dissimilar visual features.
+                    We provide a concrete example for a query sketch against gallery photos (though note that our
+                    approach is not limited to sketch-photo retrieval). The query sketch
+                    of some wooden doors (A) initially assigns a low rank to
+                    the gallery glass doors (B), even though they both belong to
+                    the same class. However, the gallery image of the church doors (C) contains similar visual features
+                    to the sketch (e.g. curved door shape, wooden material). The church
+                    doors contain some similarity to the glass doors (both are
+                    within door frames) however the shape and materials are
+                    different and so (B) is ranked relatively low in the gallery-
+                    gallery ranks for (C). However, the gallery image of the
+                    street house doors (D) are similar enough to (C) to be highly
+                    ranked (both contain a wooden door within a door frame)
+                    and, in turn, the house doors (D) are similar enough to the
+                    glass doors (B) to be highly ranked in the gallery-gallery
+                    ranks for (D) (rectangular door, within door frame). Our
+                    iterative re-ranking process is able to discover such connections and raise the rank position of
+                    difficult matches such as (B) against a very different query (A).
+                    <br>
+                    This approach emulates the cognitive mechanism employed by the human brain, leveraging thematic
+                    semantic systems to establish meaningful connections between concepts.
+                </div>
+                <br>
+                <div class="row">
+                    <!--Grid column-->
+                    <div class="col-lg-12 has-text-centered text-center">
+                        <img class="img-fluid mb-4" src="imgs/rationale.png"
+                             width="1000"
+                             style="display: block; margin-left: auto; margin-right: auto; border: 2px solid #000;">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<br>
+
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h2 class="title has-text-centered is-3">Qualitative Results</h2>
+                <hr style="margin-top:-20px">
+                <div class="has-text-justified" style="width: 72%; margin-left: 14%;">
+                    Below we showcase some results of our IFCRR method across different datasets.
+                    A reranking step of 0 is the similarities outputted from the model.
+                    Then it goes through iterations of our ICFRR method.
+                </div>
+
+                <div class="container">
+                    <!--                    <hr class="divider"/>-->
+                    <h2></h2>
+                    <br>
+                    <!--                <div id='subsec:train_data' class="row py-5 mt-5 bg-dark">-->
+                    <!--                    <h2 class="title has-text-centered is-size-3">-->
+                    <!--                        Results-->
+                    <!--                    </h2>-->
+
+                    <!-- BEGIN RESULTS -->
+                    <script>
+                        activeTrainDataMethodPill = document.querySelector('.traindata-method-pill.active-pill');
+                        activeTrainDataScenePill = document.querySelector('.traindata-scene-pill.active-pill');
+                        activeTrainDataModePill = document.querySelector('.traindata-mode-pill.active-pill');
+                    </script>
+                    <div class="has-text-centered text-center">
+                        <div class="pill-row scene-pills" style="display: none;">
+              <span class="pill traindata-scene-pill active" data-value="none"
+                    onclick="selectTrainDataVideo(activeTrainDataMethodPill, this, activeTrainDataModePill)">
+                <img class="thumbnail-img" src="../tabe/imgs/overview-1.png" width="64">
+              </span>
+                        </div>
+                        <div class="text-center" style="color: black;" id="traindata-method-pills">
+                            <div class="btn-group btn-group-sm">
+                  <span class="button is-normal traindata-method-pill active" data-value="TU-BERLIN"
+                        onclick="selectTrainDataVideo(this, activeTrainDataScenePill, activeTrainDataModePill)">
+                      TU-BERLIN
+                  </span>
+                                <span class="button is-normal traindata-method-pill" data-value="SKETCHY"
+                                      onclick="selectTrainDataVideo(this, activeTrainDataScenePill, activeTrainDataModePill)">
+                      SKETCHY
+                  </span>
+                                <span class="button is-normal traindata-method-pill" data-value="OFFICE-HOME"
+                                      onclick="selectTrainDataVideo(this, activeTrainDataScenePill, activeTrainDataModePill)">
+                      OFFICE-HOME
+                  </span>
+                            </div>
+                        </div>
+                        <!--                        <br>-->
+                        <div class="text-center" style="color: black; display: none;" id="traindata-mode-pills">
+                            <div class="btn-group btn-group-sm">
+                <span class="button is-normal traindata-mode-pill active" data-value="none"
+                      onclick="selectTrainDataVideo(activeTrainDataMethodPill, activeTrainDataScenePill, this)">
+                    none
+                </span>
+                            </div>
+                        </div>
+                        <div class="video-container">
+                            <video class="video" id="traindataVideo0" loop playsinline autoplay muted style="
+                                                                                                display: block;
+                                                                                                margin: 0 auto;
+                                                                                                position: absolute;
+                                                                                                top: 42%;
+                                                                                                left: 50%;
+                                                                                                transform: translate(-50%, -50%);
+                                                                                                width: 130%;
+                                                                                                height: 140%;
+                                                                                                max-width: 6000px;">
+                                <source src="videos/stitched_animation_TU-BERLIN.mp4"/>
+                            </video>
+                            <div class="column">
+                                <div class="columns">
+                                    <div class="column has-text-centered method-label">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <script>
+                            activeTrainDataMethodPill = document.querySelector('.traindata-method-pill.active-pill');
+                            activeTrainDataScenePill = document.querySelector('.traindata-scene-pill.active-pill');
+                            activeTrainDataModePill = document.querySelector('.traindata-mode-pill.active-pill');
+                        </script>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section>
+    <div class="container" style="margin-top: -140px;">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h2 class="title has-text-centered is-3">Quantitative Results</h2>
+                <hr style="margin-top:-20px">
+                <div class="has-text-justified" style="width: 72%; margin-left: 14%;">
+                </div>
+                <br>
+                <div class="row">
+                    <!--Grid column-->
+                    <div class="col-lg-12 has-text-centered text-center">
+                        <img class="img-fluid mb-4" src="imgs/results.png"
+                             width="1200"
+                             style="display: block; margin-left: auto; margin-right: auto; border: 2px solid #000;">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<br>
+
+
+<footer class="footer">
+    <div class="container">
+        <div class="columns is-centered">
+            <div class="content is-centered">
+                <p>
+                    Thanks to <a
+                        href="https://gen-omnimatte.github.io/">gen-omnimatte</a> and <a
+                        href="https://repo-sam.inria.fr/fungraph/3d-gaussian-splatting/">3d-gaussian-splatting</a> for
+                    templates for some of the features on this page.
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script src="https://polyfill.io/v3/polyfill.js?features=IntersectionObserver"></script>
+<script src="src/js/yall.js"></script>
+<script>
+    yall({
+        observeChanges: true
+    });
+</script>
+<script src="src/js/scripts.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.bundle.min.js">
+</script>
+<script src="https://uploads-ssl.webflow.com/51e0d73d83d06baa7a00000f/js/webflow.fd002feec.js"></script>
+<!-- Import the component -->
+
+<script>
+    document.addEventListener('DOMContentLoaded', (event) => {
+        var video = document.getElementById('speed025');
+        video.playbackRate = 0.1; // Play at half speed
+    });
+</script>
+
+<script>
+    new BeforeAfter({
+        id: '#example2'
+    });
+</script>
+
+<script>
+    new BeforeAfter({
+        id: '#example3'
+    });
+</script>
+
+</body>
+</html>
