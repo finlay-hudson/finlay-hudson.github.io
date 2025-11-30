@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- Google Tag Manager -->
+    <script>(function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({
+            'gtm.start':
+                new Date().getTime(), event: 'gtm.js'
+        });
+        var f = d.getElementsByTagName(s)[0],
+            j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
+        j.async = true;
+        j.src =
+            'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+        f.parentNode.insertBefore(j, f);
+    })(window, document, 'script', 'dataLayer', 'GTM-54ZK7PFG');</script>
+    <!-- End Google Tag Manager -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <meta name="description"
+          content="Track Anything Behind Everything">
+    <title>Track Anything Behind Everything</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+          rel="stylesheet">
+
+    <link rel="stylesheet" href="src/css/bulma.min.css">
+    <link rel="stylesheet" href="src/css/bulma-carousel.min.css">
+    <link rel="stylesheet" href="src/css/bulma-slider.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.8.0/codemirror.min.css">
+
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+    <link rel="stylesheet" href="src/css/index.css">
+    <!-- <link rel="stylesheet" href="src/css/app.css"> -->
+    <!-- <link rel="icon" href="src/images/favicon.svg"> -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.8.0/codemirror.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.5.3/clipboard.min.js"></script>
+    <script type="text/javascript" async
+            src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
+    <script src="src/js/bulma-carousel.min.js"></script>
+    <script src="src/js/bulma-slider.min.js"></script>
+    <script src="src/js/app.js"></script>
+    <script src="src/js/synced_video_selector.js"></script>
+</head>
+<body onresize="reload();">
+<!-- Google Tag Manager (noscript) -->
+<noscript>
+    <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-54ZK7PFG"
+            height="0" width="0" style="display:none;visibility:hidden"></iframe>
+</noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+<section class="hero" style="padding-bottom: 0; margin-bottom: 0;background-color: #fce4c0;">
+    <div class="hero-body" style="padding-bottom: 0; margin-bottom: 0;background-color: #fce4c0;">
+        <div class="container is-max-desktop">
+            <div class="columns is-centered">
+                <div class="column has-text-centered">
+                    <h1 class="title is-1 publication-title" style="font-size: 32pt;"><span
+                            style="font-weight: bolder;">TAPVid-360</span>
+                        <br><span
+                                style="font-weight:normal">Tracking Any Point in 360 from Narrow Field of View Video</span>
+                    </h1>
+                    <div class="is-size-5 publication-authors" id="div-row-authors">
+			      <span class="author-block">
+                <a href="https://finlay-hudson.github.io/">Finlay G. C. Hudson</a><sup>1</sup>&nbsp&nbsp</span>
+                        <span class="author-block">
+                <a href="https://jadgardner.github.io/">James A. D. Gardner</a><sup>1</sup>&nbsp&nbsp</span>
+                        <span class="author-block">
+                <a href="https://www-users.york.ac.uk/~waps101/">William A. P. Smith</a><sup>1</sup>&nbsp&nbsp</span>
+                    </div>
+
+                    <div class="is-size-5 publication-authors">
+                        <span class="author-block"><sup>1</sup>University of York  </span>
+                    </div>
+                    <div class="column has-text-centered">
+                        <div class="publication-links">
+                            <span class="link-block"></span>
+
+                            <!-- Paper Link -->
+                            <a href="https://openreview.net/pdf?id=s3LwZ0k6ia"
+                               class="external-link button is-normal is-rounded is-dark">
+                                <span class="icon">
+                                    <i class="ai ai-arxiv"></i>
+                                </span>
+                                <span>Paper</span>
+                            </a>
+
+                            <!-- GitHub Code Link -->
+                            <a href="https://github.com/finlay-hudson/TAPVid360"
+                               class="external-link button is-normal is-rounded is-dark">
+                                <span class="icon">
+                                    <i class="fab fa-github" aria-hidden="true"></i>
+                                </span>
+                                <span>Code</span>
+                            </a>
+
+                            <!-- Dataset Link -->
+                            <a href="https://huggingface.co/datasets/fhudson96/TAPVid360-10k"
+                               class="external-link button is-normal is-rounded is-dark">
+                                <span class="icon">
+                                    <i class="fa fa-book"></i>
+                                </span>
+                                <span>Dataset - TAPVid360-10k</span>
+                            </a>
+
+                            <!-- GitHub Code for Dataset Generation -->
+                            <!--                            <a href="https://github.com/finlay-hudson/TABE51-generation" class="external-link button is-normal is-rounded is-dark">-->
+                            <!--                                <span class="icon">-->
+                            <!--                                    <i class="fab fa-github" aria-hidden="true"></i>-->
+                            <!--                                </span>-->
+                            <!--                                <span>Code - Dataset Generation</span>-->
+                            <!--                            </a>-->
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<br>
+
+<h3 class="title has-text-centered is-3"></h3>
+
+<!--<section>-->
+<!--    <div class="container">-->
+<!--        <div class="row">-->
+<!--            <div class="col-12 text-center">-->
+<!--                <h2 class="title has-text-centered is-size-5"&ndash;&gt;-->
+<!--                    style="font-weight: 400; line-height: 32px; font-style: italic; padding-top: 20px;">-->
+<!--                    Note: This page is still currently a work in progress.-->
+<!--                </h2>-->
+<!--                <br>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</section>-->
+<section id='sec-sidebyside-edit' class="hero is-light is-small" style="margin-top: -40px;">
+    <div class="hero-body">
+
+        <div class="container" style="padding-left: 5%; padding-right: 5%;">
+            <h3 class="title has-text-centered is-size-5"
+                style="font-weight: 400; line-height: 32px; font-style: italic; padding-top: 0px;">
+                Note: This page is still a work in progress.
+                <br>
+            </h3>
+        </div>
+</section>
+
+<!-- abstract -->
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h2 class="title has-text-centered is-3">Abstract</h2>
+                <hr style="margin-top:-20px">
+                <div class="has-text-justified" style="width: 72%; margin-left: 14%;">
+                    Humans excel at constructing panoramic mental models of their surroundings, maintaining object
+                    permanence and inferring scene structure beyond visible regions. In contrast, current artificial
+                    vision systems struggle with persistent, panoramic understanding, often processing scenes
+                    egocentrically on a frame-by-frame basis. This limitation is pronounced in the Track Any Point (TAP)
+                    task, where existing methods fail to track 2D points outside the field of view. To address this, we
+                    introduce TAP-Vid 360, a novel task that requires predicting the 3D direction to queried scene
+                    points across a video sequence, even when far outside the narrow field of view of the observed
+                    video. This task fosters learning allocentric scene representations without needing dynamic 4D
+                    ground truth scene models for training. Instead, we exploit 360 videos as a source of supervision,
+                    resampling them into narrow field-of-view perspectives while computing ground truth directions by
+                    tracking points across the full panorama using a 2D pipeline. We introduce a new dataset and
+                    benchmark, TAP360-10k comprising 10k perspective videos with ground truth directional point
+                    tracking. Our baseline adapts CoTracker3 to predict per-point rotations for direction updates,
+                    outperforming existing TAP and TAP-Vid 3D methods.
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+<br>
+
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h2 class="title has-text-centered is-3">Task</h2>
+                <hr style="margin-top:-20px">
+                <div class="has-text-justified" style="width: 72%; margin-left: 14%;">
+                    We introduce the TAPVid-360 task. Here, given query points as pixel coordinates
+                    in the first frame, the goal is to track the 3D direction (in the camera coordinate frame) to
+                    the scene point corresponding to the query point. Intuitively, we are asking the model to
+                    persistently predict in which direction a point is but (unlike TAPVid 3D) not its distance. This
+                    corresponds to a human being able to approximately point to where they believe a chair is
+                    behind them without knowing exactly how far away it is.
+                </div>
+                <br>
+                <div class="row">
+                    <!--Grid column-->
+                    <!--                        <div class="col-lg-12 has-text-centered text-center">-->
+                    <!--                            <img class="img-fluid mb-4" src="imgs/overview-1.png"-->
+                    <!--                                 width="1200"-->
+                    <!--                                 style="display: block; margin-left: auto; margin-right: auto; border: 2px solid #000;">-->
+                    <!--                        </div>-->
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h2 class="title has-text-centered is-3">Dataset Creation</h2>
+                <hr style="margin-top:-20px">
+                <div class="has-text-justified" style="width: 72%; margin-left: 14%;">
+                    We have curated a dataset <b>(TAPVid360-10k)</b>, TODO
+                </div>
+                <br>
+                <div class="row">
+                    <!--Grid column-->
+                    <div class="col-lg-12 has-text-centered text-center">
+                        <img class="img-fluid mb-4" src="imgs/data_collection_technique.png"
+                             width="1200"
+                             style="display: block; margin-left: auto; margin-right: auto; border: 2px solid #000;">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--    <div class="container">-->
+    <!--        <div class="has-text-justified" style="width: 72%; margin-left: 14%;">-->
+
+    <!--        </div>-->
+
+    <!--        <div class="container-fluid">-->
+    <!--            </h2>-->
+
+
+    <!--            <div class="row py-5 mt-5 bg-dark" style="width: 100vw; margin-left: calc(-50vw + 50%);">-->
+    <!--                <div>-->
+    <!--                    <script>-->
+    <!--                        activeAblDataMethodPill = document.querySelector('.abldata-method-pill.active-pill');-->
+    <!--                        activeAblDataScenePill = document.querySelector('.abldata-scene-pill.active-pill');-->
+    <!--                        activeAblDataModePill = document.querySelector('.abldata-mode-pill.active-pill');-->
+    <!--                    </script>-->
+    <!--                    <div class="has-text-centered text-center">-->
+    <!--                        <div class="pill-row scene-pills">-->
+    <!--                  <span class="pill abldata-scene-pill" data-value="plant_stool_1"-->
+    <!--                        onclick="selectAblDataVideo(activeAblDataMethodPill, this, activeAblDataModePill)">-->
+    <!--                    <img class="thumbnail-img" src="imgs/thumbnails/plant_stool_1.jpg" width="64">-->
+    <!--                  </span>-->
+    <!--                            <span class="pill abldata-scene-pill active" data-value="cat_car_5"-->
+    <!--                                  onclick="selectAblDataVideo(activeAblDataMethodPill, this, activeAblDataModePill)">-->
+    <!--                    <img class="thumbnail-img" src="imgs/thumbnails/cat_car_5.jpg" width="64">-->
+    <!--                  </span>-->
+    <!--                            <span class="pill abldata-scene-pill" data-value="blue_towel_roll_1"-->
+    <!--                                  onclick="selectAblDataVideo(activeAblDataMethodPill, this, activeAblDataModePill)">-->
+    <!--                    <img class="thumbnail-img" src="imgs/thumbnails/blue_towel_roll_1.jpg" width="64">-->
+    <!--                  </span>-->
+    <!--                            </span>-->
+    <!--                            <span class="pill abldata-scene-pill" data-value="goose_1"-->
+    <!--                                  onclick="selectAblDataVideo(activeAblDataMethodPill, this, activeAblDataModePill)">-->
+    <!--                    <img class="thumbnail-img" src="imgs/thumbnails/goose_1.jpg" width="64">-->
+    <!--                  </span>-->
+    <!--                            </span>-->
+    <!--                            <span class="pill abldata-scene-pill" data-value="walk_outside_conversation_2"-->
+    <!--                                  onclick="selectAblDataVideo(activeAblDataMethodPill, this, activeAblDataModePill)">-->
+    <!--                    <img class="thumbnail-img" src="imgs/thumbnails/walk_outside_conversation_2.jpg" width="64">-->
+    <!--                  </span>-->
+    <!--                            <span class="pill abldata-scene-pill" data-value="bus_1"-->
+    <!--                                  onclick="selectAblDataVideo(activeAblDataMethodPill, this, activeAblDataModePill)">-->
+    <!--                    <img class="thumbnail-img" src="imgs/thumbnails/bus_1.jpg" width="64">-->
+    <!--                  </span>-->
+    <!--                            </span>-->
+    <!--                            <span class="pill abldata-scene-pill" data-value="door_walkthrough_1"-->
+    <!--                                  onclick="selectAblDataVideo(activeAblDataMethodPill, this, activeAblDataModePill)">-->
+    <!--                    <img class="thumbnail-img" src="imgs/thumbnails/door_walkthrough_1.jpg" width="64">-->
+    <!--                  </span>-->
+    <!--                            </span>-->
+    <!--                            <span class="pill abldata-scene-pill" data-value="paper_plane_2"-->
+    <!--                                  onclick="selectAblDataVideo(activeAblDataMethodPill, this, activeAblDataModePill)">-->
+    <!--                    <img class="thumbnail-img" src="imgs/thumbnails/paper_plane_2.jpg" width="64">-->
+    <!--                  </span>-->
+
+    <!--                            <br/>-->
+    <!--                        </div>-->
+    <!--                        <div class="text-center" style="color: black;" id="abldata-method-pills">-->
+    <!--                            <div class="btn-group btn-group-sm">-->
+    <!--                      <span class="button is-normal abldata-method-pill" data-value="none" id="btn-abladata"-->
+    <!--                            style="display: none;"-->
+    <!--                            onclick="selectAblDataVideo(this, activeAblDataScenePill, activeAblDataModePill)">-->
+    <!--                          abla data-->
+    <!--                      </span>-->
+    <!--                            </div>-->
+    <!--                        </div>-->
+    <!--                        <br>-->
+    <!--                        <div class="text-center" style="color: black; display: none;" id="abldata-mode-pills">-->
+    <!--                            <div class="btn-group btn-group-sm">-->
+    <!--                    <span class="button is-normal abldata-mode-pill active" data-value="bg"-->
+    <!--                          onclick="selectAblDataVideo(activeAblDataMethodPill, activeAblDataScenePill, this)">-->
+    <!--                        Background-->
+    <!--                    </span>-->
+    <!--                            </div>-->
+    <!--                        </div>-->
+    <!--                        <div class="video-container" style="max-height: 480px;">-->
+    <!--                            <video class="video" style="max-width: 100%;" id="abldataVideo0" loop playsinline autoplay-->
+    <!--                                   muted>-->
+    <!--                                <source src="videos/dataset_vids/walk_outside_conversation_2.mp4"/>-->
+    <!--                            </video>-->
+    <!--                            <div class="column">-->
+    <!--                                <div class="columns method-labels">-->
+    <!--                                    <div class="column has-text-centered method-label">-->
+    <!--                                        Background-->
+    <!--                                    </div>-->
+    <!--                                    <div class="column has-text-centered method-label">-->
+    <!--                                        Background Seg-->
+    <!--                                    </div>-->
+    <!--                                    <div class="column has-text-centered method-label">-->
+    <!--                                        Foreground-->
+    <!--                                    </div>-->
+    <!--                                    <div class="column has-text-centered method-label">-->
+    <!--                                        Foreground Seg-->
+    <!--                                    </div>-->
+    <!--                                    <div class="column has-text-centered method-label">-->
+    <!--                                        Combined-->
+    <!--                                    </div>-->
+    <!--                                    <div class="column has-text-centered method-label">-->
+    <!--                                        Visible Mask-->
+    <!--                                    </div>-->
+    <!--                                    <div class="column has-text-centered method-label">-->
+    <!--                                        Ground Truth Mask-->
+    <!--                                    </div>-->
+    <!--                                </div>-->
+    <!--                            </div>-->
+    <!--                        </div>-->
+    <!--                        <script>-->
+    <!--                            activeAblDataMethodPill = document.querySelector('.abldata-method-pill.active-pill');-->
+    <!--                            activeAblDataScenePill = document.querySelector('.abldata-scene-pill.active-pill');-->
+    <!--                            activeAblDataModePill = document.querySelector('.abldata-mode-pill.active-pill');-->
+    <!--                        </script>-->
+    <!--                    </div>-->
+    <!--                </div>-->
+
+    <!--                &lt;!&ndash; <div class="col-2"></div> &ndash;&gt;-->
+    <!--            </div-->
+    <!--        </div>-->
+    <!--    </div>-->
+
+
+    <br>
+
+    <section id='sec:method' class="hero is-small" style="background-color: #ffffff;">
+        <div class="container">
+            <div id='subsec:train_data' class="row py-5 mt-5 bg-dark">
+                <h2 class="title has-text-centered is-size-3">
+                    Results
+                </h2>
+
+                <!-- BEGIN RESULTS -->
+                <script>
+                    activeTrainDataMethodPill = document.querySelector('.traindata-method-pill.active-pill');
+                    activeTrainDataScenePill = document.querySelector('.traindata-scene-pill.active-pill');
+                    activeTrainDataModePill = document.querySelector('.traindata-mode-pill.active-pill');
+                </script>
+                <div class="has-text-centered text-center">
+                    <div class="pill-row scene-pills" style="display: none;">
+              <span class="pill traindata-scene-pill active" data-value="none"
+                    onclick="selectTrainDataVideo(activeTrainDataMethodPill, this, activeTrainDataModePill)">
+                <img class="thumbnail-img" src="imgs/results_example_img_1.png" width="64">
+              </span>
+                    </div>
+                    <div class="text-center" style="color: black;" id="traindata-method-pills">
+                        <div class="btn-group btn-group-sm">
+                  <span class="button is-normal traindata-method-pill active" data-value="Example 1"
+                        onclick="selectTrainDataVideo(this, activeTrainDataScenePill, activeTrainDataModePill)">
+                      Example 1
+                  </span>
+                            <!--                            <span class="button is-normal traindata-method-pill" data-value="DAVIS-2017"-->
+                            <!--                                  onclick="selectTrainDataVideo(this, activeTrainDataScenePill, activeTrainDataModePill)">-->
+                            <!--                      DAVIS-2017-->
+                            <!--                  </span>-->
+                            <!--                            <span class="button is-normal traindata-method-pill" data-value="OVIS"-->
+                            <!--                                  onclick="selectTrainDataVideo(this, activeTrainDataScenePill, activeTrainDataModePill)">-->
+                            <!--                      OVIS-->
+                            <!--                  </span>-->
+                        </div>
+                    </div>
+                    <br>
+                    <div class="text-center" style="color: black; display: none;" id="traindata-mode-pills">
+                        <div class="btn-group btn-group-sm">
+                <span class="button is-normal traindata-mode-pill active" data-value="none"
+                      onclick="selectTrainDataVideo(activeTrainDataMethodPill, activeTrainDataScenePill, this)">
+                    none
+                </span>
+                        </div>
+                    </div>
+                    <!--                    <div class="video-container">-->
+                    <!--                        <video class="video" id="traindataVideo0" loop playsinline autoplay muted>-->
+                    <!--                            <source src="imgs/results_example_img_1.png"/>-->
+                    <!--                        </video>-->
+                    <!--                        <div class="column">-->
+                    <!--                            <div class="columns">-->
+                    <!--                                <div class="column has-text-centered method-label">-->
+                    <!--                                </div>-->
+                    <!--                            </div>-->
+                    <!--                        </div>-->
+                    <!--                    </div>-->
+                    <div class="col-lg-12 has-text-centered text-center">-->
+                        <img class="img-fluid mb-4" src="imgs/results_example_img_1.png"
+                             width="1200"
+                             style="display: block; margin-left: auto; margin-right: auto; border: 2px solid #000;">
+                    </div>
+                    <script>
+                        activeTrainDataMethodPill = document.querySelector('.traindata-method-pill.active-pill');
+                        activeTrainDataScenePill = document.querySelector('.traindata-scene-pill.active-pill');
+                        activeTrainDataModePill = document.querySelector('.traindata-mode-pill.active-pill');
+                    </script>
+                </div>
+                <!--END TRAINING DATA-->
+            </div>
+            <div class="has-text-justified" id="div-traindata-text-container">
+                <p id="p-traindata-desc" class="has-text-justified text-description">
+                    <span data-value="Example 1"
+                          onclick="selectTrainDataVideo(this, null, null)">(i) <b>Example 1</b></span>:
+                    Add desc
+                    <br><br>
+                    <!--                    <span data-value="DAVIES-2017"-->
+                    <!--                          onclick="selectTrainDataVideo(this, null, null)">(ii) <b>DAVIES-2017</b></span>:-->
+                    <!--                    Add desc-->
+                    <!--                    <br><br>-->
+                    <!--                    <span data-value="OVIS" onclick="selectTrainDataVideo(this, null, null)">(iii) <b>OVIS</b></span>:-->
+                    <!--                    Add-->
+                    <!--                    desc-->
+                    <!--                    <br><br>-->
+                </p>
+            </div>
+            <div class="has-text-justified  text-description ">
+            </div>
+        </div>
+        </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center">
+                    <h2 class="title has-text-centered is-3">CoTracker360: A TAPVid-360 Baseline</h2>
+                    <hr style="margin-top:-20px">
+                    <div class="has-text-justified" style="width: 72%; margin-left: 14%;">
+                        As a baseline model, we modify the recent CoTracker3 method to predict directions instead of
+                        point estimates. The original CoTracker3 predicts point displacements relative to the first
+                        frame. This
+                        is an easier representation for the model to reason about compared to directly regressing
+                        absolute
+                        point position at each frame. We follow the same approach except that we apply a rotation to the
+                        direction at the first frame. Accordingly, we replace the last layer of the CoTracker3 decoder
+                        with a
+                        linear layer with 9 outputs and linear activation. We reshape this to a 3 × 3 matrix and project
+                        to the
+                        closest rotation matrix using special orthogonal Procrustes orthonormalization.
+                        To produce output, we convert the initial query point positions from pixel coordinates to
+                        directions
+                        using the intrinsic parameters of the camera. These unit vector directions are then rotated
+                        using the
+                        rotation matrices predicted for this point for each frame
+                    </div>
+                    <br>
+                    <div class="row">
+                        <!--Grid column-->
+                        <!--                        <div class="col-lg-12 has-text-centered text-center">-->
+                        <!--                            <img class="img-fluid mb-4" src="imgs/overview-1.png"-->
+                        <!--                                 width="1200"-->
+                        <!--                                 style="display: block; margin-left: auto; margin-right: auto; border: 2px solid #000;">-->
+                        <!--                        </div>-->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <br>
+    <section id='sec-sidebyside-edit' class="hero is-light is-small" style="margin-top: -40px;">
+        <div class="hero-body">
+
+            <div class="container" style="padding-left: 5%; padding-right: 5%;">
+                <h2 class="has-text-centered title">
+                    <b>Benchmark Results</b>
+                </h2>
+                <div class="row">
+                    <!--Grid column-->
+                    <div class="col-lg-12 has-text-centered text-center">
+                        <img class="img-fluid mb-4" src="imgs/results_table.png"
+                             width="1200"
+                             style="display: block; margin-left: auto; margin-right: auto; border: 2px solid #000;">
+                    </div>
+                </div>
+                <div class="row">
+                    <!--Grid column-->
+                    <div class="col-lg-12 has-text-centered text-center">
+                        <img class="img-fluid mb-4" src="imgs/results_example_img_1.png"
+                             width="1200"
+                             style="display: block; margin-left: auto; margin-right: auto; border: 2px solid #000;">
+                    </div>
+                </div>
+
+
+                <!--                <div id="sidebyside-carousel" class="carousel results-carousel">-->
+                <!--                    <div class="item">-->
+                <!--                        <video poster="" autoplay muted loop playsinline height="100%">-->
+                <!--                            <source src="videos/qualitative_comparisons/ball_bounce.mp4"-->
+                <!--                                    type="video/mp4">-->
+                <!--                        </video>-->
+                <!--                    </div>-->
+                <!--                    <div class="item">-->
+                <!--                        <video poster="" autoplay muted loop playsinline height="100%">-->
+                <!--                            <source src="videos/qualitative_comparisons/blue_towel_roll_1.mp4"-->
+                <!--                                    type="video/mp4">-->
+                <!--                        </video>-->
+                <!--                    </div>-->
+                <!--                    <div class="item">-->
+                <!--                        <video poster="" autoplay muted loop playsinline height="100%">-->
+                <!--                            <source src="videos/qualitative_comparisons/goose_1.mp4"-->
+                <!--                                    type="video/mp4">-->
+                <!--                        </video>-->
+                <!--                    </div>-->
+                <!--                    <div class="item">-->
+                <!--                        <video poster="" autoplay muted loop playsinline height="100%">-->
+                <!--                            <source src="videos/qualitative_comparisons/paper_plane_2.mp4"-->
+                <!--                                    type="video/mp4">-->
+                <!--                        </video>-->
+                <!--                    </div>-->
+                <!--                    <div class="item">-->
+                <!--                        <video poster="" autoplay muted loop playsinline height="100%">-->
+                <!--                            <source src="videos/qualitative_comparisons/bottle_cap_roll_1.mp4"-->
+                <!--                                    type="video/mp4">-->
+                <!--                        </video>-->
+                <!--                    </div>-->
+                <!--                </div>-->
+
+            </div>
+            <!--            <h2 class="title has-text-centered is-size-5"-->
+            <!--                style="font-weight: 400; line-height: 32px; font-style: italic; padding-top: 20px;">-->
+            <!--                We compare TABE to 3 other SOTA amodal completion methods, namely TCOW, pix2gestalt and sdamodal-->
+            <!--                (references in paper). We showcase our pipelines ability to provide more accurate predictions, even when-->
+            <!--                the object of interest is fully occluded. <br>-->
+            <!--                (Scroll to view more videos)-->
+            <!--            </h2>-->
+        </div>
+    </section>
+    <br>
+    <br>
+
+    <section class="section" id="BibTeX">
+        <div class="container is-max-desktop content">
+            <h2 class="title">BibTeX - TODO</h2>
+            <pre><code>@inproceedings{hudson2025tapvid,
+      title={TAPVid-360: Tracking Any Point in 360 from Narrow Field of View Video},
+      author={Hudson, Finlay and Gardner, James AD and Smith, William AP},
+      booktitle={The Thirty-ninth Annual Conference on Neural Information Processing Systems Datasets and Benchmarks Track},
+      year={2025}
+    }</code></pre>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="columns is-centered">
+                <div class="content is-centered">
+                    <p>
+                        Thanks to <a
+                            href="https://gen-omnimatte.github.io/">gen-omnimatte</a> for the template.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
+
