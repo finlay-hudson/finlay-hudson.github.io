@@ -665,7 +665,7 @@ function selectAblDataVideo(methodPill, scenePill, modePill) {
     pill = scenePill.getAttribute("data-value");
 
     var video_active = document.getElementById("abldataVideo0");
-    video_active.src = "videos/dataset_vids/" + pill + ".mp4";
+    video_active.src = "videos/dataset_examples_downsampled/" + pill + ".mp4";
     video_active.load();
 }
 

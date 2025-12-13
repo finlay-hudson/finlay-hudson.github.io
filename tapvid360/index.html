@@ -19,8 +19,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="utf-8">
     <meta name="description"
-          content="Track Anything Behind Everything">
-    <title>Track Anything Behind Everything</title>
+          content="TAPVid-360">
+    <title>TAPVid-360</title>
 
     <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
           rel="stylesheet">
@@ -144,19 +144,33 @@
 <!--        </div>-->
 <!--    </div>-->
 <!--</section>-->
-<section id='sec-sidebyside-edit' class="hero is-light is-small" style="margin-top: -40px;">
-    <div class="hero-body">
+<!--<section id='sec-sidebyside-edit' class="hero is-light is-small" style="margin-top: -40px;">-->
+<!--    <div class="hero-body">-->
 
-        <div class="container" style="padding-left: 5%; padding-right: 5%;">
-            <h3 class="title has-text-centered is-size-5"
-                style="font-weight: 400; line-height: 32px; font-style: italic; padding-top: 0px;">
-                Note: This page is still a work in progress.
-                <br>
-            </h3>
-        </div>
-</section>
+<!--        <div class="container" style="padding-left: 5%; padding-right: 5%;">-->
+<!--            <h3 class="title has-text-centered is-size-5"-->
+<!--                style="font-weight: 400; line-height: 32px; font-style: italic; padding-top: 0px;">-->
+<!--                Note: This page is still a work in progress.-->
+<!--                <br>-->
+<!--            </h3>-->
+<!--        </div>-->
+<!--</section>-->
 
 <!-- abstract -->
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center" style="text-align: center;">
+                <video width="80%" autoplay loop muted playsinline
+                       style="border-radius: 10px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); display: block; margin: 0 auto;">
+                    <source src="videos/showcase_vid_with_overlay.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+        </div>
+    </div>
+</section>
+
 <section>
     <div class="container">
         <div class="row">
@@ -182,8 +196,8 @@
             </div>
         </div>
     </div>
-
 </section>
+
 <br>
 
 <section>
@@ -215,13 +229,124 @@
 </section>
 
 <section>
+
+
+    <div class="container">
+        <div class="container-fluid">
+            <h2 class="title has-text-centered is-3">TAPVid360-10k Dataset</h2>
+            <h6 class="title has-text-centered" style="font-size: 1.75rem;">Examples</h6>
+
+            <div class="row py-3 mt-1 bg-dark" style="width: 100vw; margin-left: calc(-50vw + 50%);">
+                <div>
+                    <script>
+                        activeAblDataMethodPill = document.querySelector('.abldata-method-pill.active-pill');
+                        activeAblDataScenePill = document.querySelector('.abldata-scene-pill.active-pill');
+                        activeAblDataModePill = document.querySelector('.abldata-mode-pill.active-pill');
+                    </script>
+                    <div class="has-text-centered text-center">
+                        <div class="pill-row scene-pills">
+                  <span class="pill abldata-scene-pill" data-value="4TgkiFpLJdw_clip_0050-0_ROT-PERSPECTIVE_SAMPLER"
+                        onclick="selectAblDataVideo(activeAblDataMethodPill, this, activeAblDataModePill)">
+                    <img class="thumbnail-img"
+                         src="imgs/dataset_examples_thumbnails/4TgkiFpLJdw_clip_0050-0_ROT-PERSPECTIVE_SAMPLER.jpg"
+                         width="128">
+                  </span>
+                            <span class="pill abldata-scene-pill" data-value="cq2H6HKmj1E_clip_0010-2_ROT-RANDOM"
+                                  onclick="selectAblDataVideo(activeAblDataMethodPill, this, activeAblDataModePill)">
+                    <img class="thumbnail-img"
+                         src="imgs/dataset_examples_thumbnails/cq2H6HKmj1E_clip_0010-2_ROT-RANDOM.jpg"
+                         width="128">
+                  </span>
+                            <span class="pill abldata-scene-pill" data-value="DEvf5Wam0e8_clip_0007-2_ROT-SPIRAL"
+                                  onclick="selectAblDataVideo(activeAblDataMethodPill, this, activeAblDataModePill)">
+                    <img class="thumbnail-img"
+                         src="imgs/dataset_examples_thumbnails/DEvf5Wam0e8_clip_0007-2_ROT-SPIRAL.jpg"
+                         width="128">
+                  </span>
+                            <span class="pill abldata-scene-pill" data-value="dHMht7mBos0_clip_0013-2_ROT-REID"
+                                  onclick="selectAblDataVideo(activeAblDataMethodPill, this, activeAblDataModePill)">
+                    <img class="thumbnail-img"
+                         src="imgs/dataset_examples_thumbnails/dHMht7mBos0_clip_0013-2_ROT-REID.jpg"
+                         width="128">
+                  </span>
+                            <span class="pill abldata-scene-pill" data-value="hbdGQQqxA48_clip_0003-0_ROT-RANDOM"
+                                  onclick="selectAblDataVideo(activeAblDataMethodPill, this, activeAblDataModePill)">
+                    <img class="thumbnail-img"
+                         src="imgs/dataset_examples_thumbnails/hbdGQQqxA48_clip_0003-0_ROT-RANDOM.jpg"
+                         width="128">
+                  </span>
+                            <span class="pill abldata-scene-pill" data-value="K_rkqeE8mcY_clip_0006-1_ROT-SPIN_Y"
+                                  onclick="selectAblDataVideo(activeAblDataMethodPill, this, activeAblDataModePill)">
+                    <img class="thumbnail-img"
+                         src="imgs/dataset_examples_thumbnails/K_rkqeE8mcY_clip_0006-1_ROT-SPIN_Y.jpg"
+                         width="128">
+                  </span>
+
+                            <br/>
+                        </div>
+                        <div class="text-center" style="color: black;" id="abldata-method-pills">
+                            <div class="btn-group btn-group-sm">
+                      <span class="button is-normal abldata-method-pill" data-value="none" id="btn-abladata"
+                            style="display: none;"
+                            onclick="selectAblDataVideo(this, activeAblDataScenePill, activeAblDataModePill)">
+                          abla data
+                      </span>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="text-center" style="color: black; display: none;" id="abldata-mode-pills">
+                            <div class="btn-group btn-group-sm">
+                    <span class="button is-normal abldata-mode-pill active" data-value="bg"
+                          onclick="selectAblDataVideo(activeAblDataMethodPill, activeAblDataScenePill, this)">
+                        Background
+                    </span>
+                            </div>
+                        </div>
+                        <div class="video-container" style="max-height: 1000px;">
+                            <video class="video" style="max-width: 100%;" id="abldataVideo0" loop playsinline autoplay
+                                   muted>
+                                <source src="videos/dataset_examples_downsampled/4TgkiFpLJdw_clip_0050-0_ROT-PERSPECTIVE_SAMPLER.mp4"/>
+                            </video>
+                            <div class="columns method-labels" style="display: flex; width: 100%;">
+                                <div class="column has-text-centered method-label"
+                                     style="position: relative; left: 40px; top: -15px">
+                                    Perspective Video (What the Model Sees)
+                                </div>
+
+                                <div class="column has-text-centered method-label"
+                                     style="position: relative; left: -30px; top: -15px">
+                                    Equirectangular With Tracking Points For Visualisation (Full 360 View)
+                                </div>
+                            </div>
+                        </div>
+                        <script>
+                            activeAblDataMethodPill = document.querySelector('.abldata-method-pill.active-pill');
+                            activeAblDataScenePill = document.querySelector('.abldata-scene-pill.active-pill');
+                            activeAblDataModePill = document.querySelector('.abldata-mode-pill.active-pill');
+                        </script>
+                    </div>
+                </div>
+
+                <!-- <div class="col-2"></div> -->
+            </div>
+        </div>
+    </div>
+    <br>
+
     <div class="container">
         <div class="row">
             <div class="col-12 text-center">
-                <h2 class="title has-text-centered is-3">Dataset Creation</h2>
+                <h6 class="title has-text-centered" style="font-size: 1.75rem;">Creation Methodology</h6>
                 <hr style="margin-top:-20px">
                 <div class="has-text-justified" style="width: 72%; margin-left: 14%;">
-                    We have curated a dataset <b>(TAPVid360-10k)</b>, TODO
+                    We have curated a dataset <b>(TAPVid360-10k)</b>. The pipeline begins by employing Lang-SAM on
+                    the initial frame of a pre-filtered 360° video, utilising specific text prompts (e.g., 'person',
+                    'car') to segment dynamic objects of interest. These segmentation masks are then temporally
+                    propagated across the full video sequence via SAM 2. We subsequently extract dynamic 2D perspective
+                    viewports centred on each object mask, within which CoTracker3 is applied to generate robust
+                    point tracks. These 2D tracks are then inversely projected back onto the 360° spherical domain.
+                    Finally, we simulate novel camera trajectories to generate new 2D perspective sequences, using the
+                    associated ground truth 3D directional rays as training data for our model.
                 </div>
                 <br>
                 <div class="row">
@@ -235,354 +360,198 @@
             </div>
         </div>
     </div>
-    <!--    <div class="container">-->
-    <!--        <div class="has-text-justified" style="width: 72%; margin-left: 14%;">-->
 
-    <!--        </div>-->
+</section>
 
-    <!--        <div class="container-fluid">-->
-    <!--            </h2>-->
-
-
-    <!--            <div class="row py-5 mt-5 bg-dark" style="width: 100vw; margin-left: calc(-50vw + 50%);">-->
-    <!--                <div>-->
-    <!--                    <script>-->
-    <!--                        activeAblDataMethodPill = document.querySelector('.abldata-method-pill.active-pill');-->
-    <!--                        activeAblDataScenePill = document.querySelector('.abldata-scene-pill.active-pill');-->
-    <!--                        activeAblDataModePill = document.querySelector('.abldata-mode-pill.active-pill');-->
-    <!--                    </script>-->
-    <!--                    <div class="has-text-centered text-center">-->
-    <!--                        <div class="pill-row scene-pills">-->
-    <!--                  <span class="pill abldata-scene-pill" data-value="plant_stool_1"-->
-    <!--                        onclick="selectAblDataVideo(activeAblDataMethodPill, this, activeAblDataModePill)">-->
-    <!--                    <img class="thumbnail-img" src="imgs/thumbnails/plant_stool_1.jpg" width="64">-->
-    <!--                  </span>-->
-    <!--                            <span class="pill abldata-scene-pill active" data-value="cat_car_5"-->
-    <!--                                  onclick="selectAblDataVideo(activeAblDataMethodPill, this, activeAblDataModePill)">-->
-    <!--                    <img class="thumbnail-img" src="imgs/thumbnails/cat_car_5.jpg" width="64">-->
-    <!--                  </span>-->
-    <!--                            <span class="pill abldata-scene-pill" data-value="blue_towel_roll_1"-->
-    <!--                                  onclick="selectAblDataVideo(activeAblDataMethodPill, this, activeAblDataModePill)">-->
-    <!--                    <img class="thumbnail-img" src="imgs/thumbnails/blue_towel_roll_1.jpg" width="64">-->
-    <!--                  </span>-->
-    <!--                            </span>-->
-    <!--                            <span class="pill abldata-scene-pill" data-value="goose_1"-->
-    <!--                                  onclick="selectAblDataVideo(activeAblDataMethodPill, this, activeAblDataModePill)">-->
-    <!--                    <img class="thumbnail-img" src="imgs/thumbnails/goose_1.jpg" width="64">-->
-    <!--                  </span>-->
-    <!--                            </span>-->
-    <!--                            <span class="pill abldata-scene-pill" data-value="walk_outside_conversation_2"-->
-    <!--                                  onclick="selectAblDataVideo(activeAblDataMethodPill, this, activeAblDataModePill)">-->
-    <!--                    <img class="thumbnail-img" src="imgs/thumbnails/walk_outside_conversation_2.jpg" width="64">-->
-    <!--                  </span>-->
-    <!--                            <span class="pill abldata-scene-pill" data-value="bus_1"-->
-    <!--                                  onclick="selectAblDataVideo(activeAblDataMethodPill, this, activeAblDataModePill)">-->
-    <!--                    <img class="thumbnail-img" src="imgs/thumbnails/bus_1.jpg" width="64">-->
-    <!--                  </span>-->
-    <!--                            </span>-->
-    <!--                            <span class="pill abldata-scene-pill" data-value="door_walkthrough_1"-->
-    <!--                                  onclick="selectAblDataVideo(activeAblDataMethodPill, this, activeAblDataModePill)">-->
-    <!--                    <img class="thumbnail-img" src="imgs/thumbnails/door_walkthrough_1.jpg" width="64">-->
-    <!--                  </span>-->
-    <!--                            </span>-->
-    <!--                            <span class="pill abldata-scene-pill" data-value="paper_plane_2"-->
-    <!--                                  onclick="selectAblDataVideo(activeAblDataMethodPill, this, activeAblDataModePill)">-->
-    <!--                    <img class="thumbnail-img" src="imgs/thumbnails/paper_plane_2.jpg" width="64">-->
-    <!--                  </span>-->
-
-    <!--                            <br/>-->
-    <!--                        </div>-->
-    <!--                        <div class="text-center" style="color: black;" id="abldata-method-pills">-->
-    <!--                            <div class="btn-group btn-group-sm">-->
-    <!--                      <span class="button is-normal abldata-method-pill" data-value="none" id="btn-abladata"-->
-    <!--                            style="display: none;"-->
-    <!--                            onclick="selectAblDataVideo(this, activeAblDataScenePill, activeAblDataModePill)">-->
-    <!--                          abla data-->
-    <!--                      </span>-->
-    <!--                            </div>-->
-    <!--                        </div>-->
-    <!--                        <br>-->
-    <!--                        <div class="text-center" style="color: black; display: none;" id="abldata-mode-pills">-->
-    <!--                            <div class="btn-group btn-group-sm">-->
-    <!--                    <span class="button is-normal abldata-mode-pill active" data-value="bg"-->
-    <!--                          onclick="selectAblDataVideo(activeAblDataMethodPill, activeAblDataScenePill, this)">-->
-    <!--                        Background-->
-    <!--                    </span>-->
-    <!--                            </div>-->
-    <!--                        </div>-->
-    <!--                        <div class="video-container" style="max-height: 480px;">-->
-    <!--                            <video class="video" style="max-width: 100%;" id="abldataVideo0" loop playsinline autoplay-->
-    <!--                                   muted>-->
-    <!--                                <source src="videos/dataset_vids/walk_outside_conversation_2.mp4"/>-->
-    <!--                            </video>-->
-    <!--                            <div class="column">-->
-    <!--                                <div class="columns method-labels">-->
-    <!--                                    <div class="column has-text-centered method-label">-->
-    <!--                                        Background-->
-    <!--                                    </div>-->
-    <!--                                    <div class="column has-text-centered method-label">-->
-    <!--                                        Background Seg-->
-    <!--                                    </div>-->
-    <!--                                    <div class="column has-text-centered method-label">-->
-    <!--                                        Foreground-->
-    <!--                                    </div>-->
-    <!--                                    <div class="column has-text-centered method-label">-->
-    <!--                                        Foreground Seg-->
-    <!--                                    </div>-->
-    <!--                                    <div class="column has-text-centered method-label">-->
-    <!--                                        Combined-->
-    <!--                                    </div>-->
-    <!--                                    <div class="column has-text-centered method-label">-->
-    <!--                                        Visible Mask-->
-    <!--                                    </div>-->
-    <!--                                    <div class="column has-text-centered method-label">-->
-    <!--                                        Ground Truth Mask-->
-    <!--                                    </div>-->
-    <!--                                </div>-->
-    <!--                            </div>-->
-    <!--                        </div>-->
-    <!--                        <script>-->
-    <!--                            activeAblDataMethodPill = document.querySelector('.abldata-method-pill.active-pill');-->
-    <!--                            activeAblDataScenePill = document.querySelector('.abldata-scene-pill.active-pill');-->
-    <!--                            activeAblDataModePill = document.querySelector('.abldata-mode-pill.active-pill');-->
-    <!--                        </script>-->
-    <!--                    </div>-->
-    <!--                </div>-->
-
-    <!--                &lt;!&ndash; <div class="col-2"></div> &ndash;&gt;-->
-    <!--            </div-->
-    <!--        </div>-->
-    <!--    </div>-->
-
-
-    <br>
-
-    <section id='sec:method' class="hero is-small" style="background-color: #ffffff;">
-        <div class="container">
-            <div id='subsec:train_data' class="row py-5 mt-5 bg-dark">
-                <h2 class="title has-text-centered is-size-3">
-                    Results
-                </h2>
-
-                <!-- BEGIN RESULTS -->
-                <script>
-                    activeTrainDataMethodPill = document.querySelector('.traindata-method-pill.active-pill');
-                    activeTrainDataScenePill = document.querySelector('.traindata-scene-pill.active-pill');
-                    activeTrainDataModePill = document.querySelector('.traindata-mode-pill.active-pill');
-                </script>
-                <div class="has-text-centered text-center">
-                    <div class="pill-row scene-pills" style="display: none;">
-              <span class="pill traindata-scene-pill active" data-value="none"
-                    onclick="selectTrainDataVideo(activeTrainDataMethodPill, this, activeTrainDataModePill)">
-                <img class="thumbnail-img" src="imgs/results_example_img_1.png" width="64">
-              </span>
-                    </div>
-                    <div class="text-center" style="color: black;" id="traindata-method-pills">
-                        <div class="btn-group btn-group-sm">
-                  <span class="button is-normal traindata-method-pill active" data-value="Example 1"
-                        onclick="selectTrainDataVideo(this, activeTrainDataScenePill, activeTrainDataModePill)">
-                      Example 1
-                  </span>
-                            <!--                            <span class="button is-normal traindata-method-pill" data-value="DAVIS-2017"-->
-                            <!--                                  onclick="selectTrainDataVideo(this, activeTrainDataScenePill, activeTrainDataModePill)">-->
-                            <!--                      DAVIS-2017-->
-                            <!--                  </span>-->
-                            <!--                            <span class="button is-normal traindata-method-pill" data-value="OVIS"-->
-                            <!--                                  onclick="selectTrainDataVideo(this, activeTrainDataScenePill, activeTrainDataModePill)">-->
-                            <!--                      OVIS-->
-                            <!--                  </span>-->
-                        </div>
-                    </div>
-                    <br>
-                    <div class="text-center" style="color: black; display: none;" id="traindata-mode-pills">
-                        <div class="btn-group btn-group-sm">
-                <span class="button is-normal traindata-mode-pill active" data-value="none"
-                      onclick="selectTrainDataVideo(activeTrainDataMethodPill, activeTrainDataScenePill, this)">
-                    none
-                </span>
-                        </div>
-                    </div>
-                    <!--                    <div class="video-container">-->
-                    <!--                        <video class="video" id="traindataVideo0" loop playsinline autoplay muted>-->
-                    <!--                            <source src="imgs/results_example_img_1.png"/>-->
-                    <!--                        </video>-->
-                    <!--                        <div class="column">-->
-                    <!--                            <div class="columns">-->
-                    <!--                                <div class="column has-text-centered method-label">-->
-                    <!--                                </div>-->
-                    <!--                            </div>-->
+<section class="hero is-light is-small">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center">
+                <br>
+                <h2 class="title has-text-centered is-3">CoTracker360: A TAPVid-360 Baseline</h2>
+                <hr style="margin-top:-20px">
+                <div class="has-text-justified" style="width: 72%; margin-left: 14%;">
+                    As a baseline model, we modify the recent CoTracker3 method to predict directions instead of
+                    point estimates. The original CoTracker3 predicts point displacements relative to the first
+                    frame. This
+                    is an easier representation for the model to reason about compared to directly regressing
+                    absolute
+                    point position at each frame. We follow the same approach except that we apply a rotation to the
+                    direction at the first frame. Accordingly, we replace the last layer of the CoTracker3 decoder
+                    with a
+                    linear layer with 9 outputs and linear activation. We reshape this to a 3 × 3 matrix and project
+                    to the
+                    closest rotation matrix using special orthogonal Procrustes orthonormalization.
+                    To produce output, we convert the initial query point positions from pixel coordinates to
+                    directions
+                    using the intrinsic parameters of the camera. These unit vector directions are then rotated
+                    using the
+                    rotation matrices predicted for this point for each frame
+                </div>
+                <br>
+                <div class="row">
+                    <!--Grid column-->
+                    <!--                        <div class="col-lg-12 has-text-centered text-center">-->
+                    <!--                            <img class="img-fluid mb-4" src="imgs/overview-1.png"-->
+                    <!--                                 width="1200"-->
+                    <!--                                 style="display: block; margin-left: auto; margin-right: auto; border: 2px solid #000;">-->
                     <!--                        </div>-->
-                    <!--                    </div>-->
-                    <div class="col-lg-12 has-text-centered text-center">-->
-                        <img class="img-fluid mb-4" src="imgs/results_example_img_1.png"
-                             width="1200"
-                             style="display: block; margin-left: auto; margin-right: auto; border: 2px solid #000;">
-                    </div>
-                    <script>
-                        activeTrainDataMethodPill = document.querySelector('.traindata-method-pill.active-pill');
-                        activeTrainDataScenePill = document.querySelector('.traindata-scene-pill.active-pill');
-                        activeTrainDataModePill = document.querySelector('.traindata-mode-pill.active-pill');
-                    </script>
                 </div>
-                <!--END TRAINING DATA-->
-            </div>
-            <div class="has-text-justified" id="div-traindata-text-container">
-                <p id="p-traindata-desc" class="has-text-justified text-description">
-                    <span data-value="Example 1"
-                          onclick="selectTrainDataVideo(this, null, null)">(i) <b>Example 1</b></span>:
-                    Add desc
-                    <br><br>
-                    <!--                    <span data-value="DAVIES-2017"-->
-                    <!--                          onclick="selectTrainDataVideo(this, null, null)">(ii) <b>DAVIES-2017</b></span>:-->
-                    <!--                    Add desc-->
-                    <!--                    <br><br>-->
-                    <!--                    <span data-value="OVIS" onclick="selectTrainDataVideo(this, null, null)">(iii) <b>OVIS</b></span>:-->
-                    <!--                    Add-->
-                    <!--                    desc-->
-                    <!--                    <br><br>-->
-                </p>
-            </div>
-            <div class="has-text-justified  text-description ">
             </div>
         </div>
-        </div>
-        </div>
-    </section>
+    </div>
+</section>
 
-    <section>
-        <div class="container">
+<section id='sec-sidebyside-edit' class="hero is-light is-small" style="margin-top: -40px;">
+    <div class="hero-body">
+
+        <div class="container" style="padding-left: 5%; padding-right: 5%;">
+            <h6 class="has-text-centered title"><b>Benchmark Results</b></h6>
+
             <div class="row">
-                <div class="col-12 text-center">
-                    <h2 class="title has-text-centered is-3">CoTracker360: A TAPVid-360 Baseline</h2>
-                    <hr style="margin-top:-20px">
-                    <div class="has-text-justified" style="width: 72%; margin-left: 14%;">
-                        As a baseline model, we modify the recent CoTracker3 method to predict directions instead of
-                        point estimates. The original CoTracker3 predicts point displacements relative to the first
-                        frame. This
-                        is an easier representation for the model to reason about compared to directly regressing
-                        absolute
-                        point position at each frame. We follow the same approach except that we apply a rotation to the
-                        direction at the first frame. Accordingly, we replace the last layer of the CoTracker3 decoder
-                        with a
-                        linear layer with 9 outputs and linear activation. We reshape this to a 3 × 3 matrix and project
-                        to the
-                        closest rotation matrix using special orthogonal Procrustes orthonormalization.
-                        To produce output, we convert the initial query point positions from pixel coordinates to
-                        directions
-                        using the intrinsic parameters of the camera. These unit vector directions are then rotated
-                        using the
-                        rotation matrices predicted for this point for each frame
-                    </div>
-                    <br>
-                    <div class="row">
-                        <!--Grid column-->
-                        <!--                        <div class="col-lg-12 has-text-centered text-center">-->
-                        <!--                            <img class="img-fluid mb-4" src="imgs/overview-1.png"-->
-                        <!--                                 width="1200"-->
-                        <!--                                 style="display: block; margin-left: auto; margin-right: auto; border: 2px solid #000;">-->
-                        <!--                        </div>-->
-                    </div>
+                <div class="col-lg-12 has-text-centered text-center">
+                    <img class="img-fluid mb-4" src="imgs/results_table.png"
+                         width="1200"
+                         style="display: block; margin-left: auto; margin-right: auto; border: 2px solid #000;">
                 </div>
             </div>
-        </div>
-    </section>
 
-    <br>
-    <section id='sec-sidebyside-edit' class="hero is-light is-small" style="margin-top: -40px;">
-        <div class="hero-body">
+            <div id="sidebyside-carousel" class="carousel results-carousel">
 
-            <div class="container" style="padding-left: 5%; padding-right: 5%;">
-                <h2 class="has-text-centered title">
-                    <b>Benchmark Results</b>
-                </h2>
-                <div class="row">
-                    <!--Grid column-->
-                    <div class="col-lg-12 has-text-centered text-center">
-                        <img class="img-fluid mb-4" src="imgs/results_table.png"
-                             width="1200"
-                             style="display: block; margin-left: auto; margin-right: auto; border: 2px solid #000;">
-                    </div>
-                </div>
-                <div class="row">
-                    <!--Grid column-->
-                    <div class="col-lg-12 has-text-centered text-center">
-                        <img class="img-fluid mb-4" src="imgs/results_example_img_1.png"
-                             width="1200"
-                             style="display: block; margin-left: auto; margin-right: auto; border: 2px solid #000;">
-                    </div>
+                <div class="item item-1">
+                    <img src="imgs/benchmark_results/0kp1Kq3Omn0_clip_0001-0.png" alt="0kp1Kq3Omn0_clip_0001-0"
+                         style="width: 100%;">
                 </div>
 
+                <div class="item item-2">
+                    <img src="imgs/benchmark_results/iN883iwd-9s_clip_0006-0.png" alt="iN883iwd-9s_clip_0006-0"
+                         style="width: 100%;">
+                </div>
 
-                <!--                <div id="sidebyside-carousel" class="carousel results-carousel">-->
-                <!--                    <div class="item">-->
-                <!--                        <video poster="" autoplay muted loop playsinline height="100%">-->
-                <!--                            <source src="videos/qualitative_comparisons/ball_bounce.mp4"-->
-                <!--                                    type="video/mp4">-->
-                <!--                        </video>-->
-                <!--                    </div>-->
-                <!--                    <div class="item">-->
-                <!--                        <video poster="" autoplay muted loop playsinline height="100%">-->
-                <!--                            <source src="videos/qualitative_comparisons/blue_towel_roll_1.mp4"-->
-                <!--                                    type="video/mp4">-->
-                <!--                        </video>-->
-                <!--                    </div>-->
-                <!--                    <div class="item">-->
-                <!--                        <video poster="" autoplay muted loop playsinline height="100%">-->
-                <!--                            <source src="videos/qualitative_comparisons/goose_1.mp4"-->
-                <!--                                    type="video/mp4">-->
-                <!--                        </video>-->
-                <!--                    </div>-->
-                <!--                    <div class="item">-->
-                <!--                        <video poster="" autoplay muted loop playsinline height="100%">-->
-                <!--                            <source src="videos/qualitative_comparisons/paper_plane_2.mp4"-->
-                <!--                                    type="video/mp4">-->
-                <!--                        </video>-->
-                <!--                    </div>-->
-                <!--                    <div class="item">-->
-                <!--                        <video poster="" autoplay muted loop playsinline height="100%">-->
-                <!--                            <source src="videos/qualitative_comparisons/bottle_cap_roll_1.mp4"-->
-                <!--                                    type="video/mp4">-->
-                <!--                        </video>-->
-                <!--                    </div>-->
-                <!--                </div>-->
+                <div class="item item-3">
+                    <img src="imgs/benchmark_results/4UykbcD6j_s_clip_0005-0.png" alt="4UykbcD6j_s_clip_0005-0"
+                         style="width: 100%;">
+                </div>
+
+                <div class="item item-4">
+                    <img src="imgs/benchmark_results/IwJUroxbFGU_clip_0002-0.png" alt="IwJUroxbFGU_clip_0002-0"
+                         style="width: 100%;">
+                </div>
+
+                <div class="item item-5">
+                    <img src="imgs/benchmark_results/-8e6OA9u1o8_clip_0006-0.png" alt="-8e6OA9u1o8_clip_0006-0"
+                         style="width: 100%;">
+                </div>
+
+                <div class="item item-6">
+                    <img src="imgs/benchmark_results/jG5uuqrN9ss_clip_0007-0.png" alt="jG5uuqrN9ss_clip_0007-0"
+                         style="width: 100%;">
+                </div>
+
+                <div class="item item-7">
+                    <img src="imgs/benchmark_results/eXjjXy_PAIs_clip_0060-0.png" alt="eXjjXy_PAIs_clip_0060-0"
+                         style="width: 100%;">
+                </div>
+
+                <div class="item item-8">
+                    <img src="imgs/benchmark_results/Li4RZrHAdoQ_clip_0000-4.png" alt="Li4RZrHAdoQ_clip_0000-4"
+                         style="width: 100%;">
+                </div>
+
+                <div class="item item-9">
+                    <img src="imgs/benchmark_results/FejOekmpi54_clip_0004-3.png" alt="FejOekmpi54_clip_0004-3"
+                         style="width: 100%;">
+                </div>
+
+                <div class="item item-10">
+                    <img src="imgs/benchmark_results/Nd_K7o7ciQ0_clip_0005-0.png" alt="Nd_K7o7ciQ0_clip_0005-0"
+                         style="width: 100%;">
+                </div>
+
+                <div class="item item-11">
+                    <img src="imgs/benchmark_results/_foWnFW6IKw_clip_0008-1.png" alt="_foWnFW6IKw_clip_0008-1"
+                         style="width: 100%;">
+                </div>
+
+                <div class="item item-12">
+                    <img src="imgs/benchmark_results/yz5dNRE9xEY_clip_0001-0.png" alt="yz5dNRE9xEY_clip_0001-0"
+                         style="width: 100%;">
+                </div>
+
+                <div class="item item-13">
+                    <img src="imgs/benchmark_results/fUsxpySK2oc_clip_0001-0.png" alt="fUsxpySK2oc_clip_0001-0"
+                         style="width: 100%;">
+                </div>
+
+                <div class="item item-14">
+                    <img src="imgs/benchmark_results/zKjFF9Fqt4I_clip_0027-0.png" alt="zKjFF9Fqt4I_clip_0027-0"
+                         style="width: 100%;">
+                </div>
+
+                <div class="item item-15">
+                    <img src="imgs/benchmark_results/hbdGQQqxA48_clip_0003-0.png" alt="hbdGQQqxA48_clip_0003-0"
+                         style="width: 100%;">
+                </div>
+
+                <div class="item item-16">
+                    <img src="imgs/benchmark_results/zSq98cDh4eo_clip_0003-0.png" alt="zSq98cDh4eo_clip_0003-0"
+                         style="width: 100%;">
+                </div>
+
+                <div class="item item-17">
+                    <img src="imgs/benchmark_results/hbdGQQqxA48_clip_0003-1.png" alt="hbdGQQqxA48_clip_0003-1"
+                         style="width: 100%;">
+                </div>
+
+                <div class="item item-18">
+                    <img src="imgs/benchmark_results/zVoUj-90vcg_clip_0003-0.png" alt="zVoUj-90vcg_clip_0003-0"
+                         style="width: 100%;">
+                </div>
+
+                <div class="item item-19">
+                    <img src="imgs/benchmark_results/I6FO_BAGysc_clip_0007-0.png" alt="I6FO_BAGysc_clip_0007-0"
+                         style="width: 100%;">
+                </div>
 
             </div>
-            <!--            <h2 class="title has-text-centered is-size-5"-->
-            <!--                style="font-weight: 400; line-height: 32px; font-style: italic; padding-top: 20px;">-->
-            <!--                We compare TABE to 3 other SOTA amodal completion methods, namely TCOW, pix2gestalt and sdamodal-->
-            <!--                (references in paper). We showcase our pipelines ability to provide more accurate predictions, even when-->
-            <!--                the object of interest is fully occluded. <br>-->
-            <!--                (Scroll to view more videos)-->
-            <!--            </h2>-->
+            <h2 class="title has-text-centered is-size-5"
+                style="font-weight: 400; line-height: 32px; font-style: italic; padding-top: 20px;">
+                We benchmark TAPVid-360 using our CoTracker360 baseline and show it outperforms adapted
+                state-of-the-art TAP and TAPVid 3D methods. <br>
+                (Scroll to view more results)
+            </h2>
         </div>
-    </section>
-    <br>
-    <br>
+    </div>
+</section>
 
-    <section class="section" id="BibTeX">
-        <div class="container is-max-desktop content">
-            <h2 class="title">BibTeX - TODO</h2>
-            <pre><code>@inproceedings{hudson2025tapvid,
+<div class="item item-13 has-text-centered"><img src="imgs/tapvid_logo.png" alt="tapvid_logo"
+                                                 style="width: 30%;">
+</div>
+
+<section class="section" id="BibTeX">
+    <div class="container is-max-desktop content">
+        <h2 class="title">BibTeX</h2>
+        <pre><code>@inproceedings{hudson2025tapvid,
       title={TAPVid-360: Tracking Any Point in 360 from Narrow Field of View Video},
       author={Hudson, Finlay and Gardner, James AD and Smith, William AP},
       booktitle={The Thirty-ninth Annual Conference on Neural Information Processing Systems Datasets and Benchmarks Track},
       year={2025}
     }</code></pre>
-        </div>
-    </section>
+    </div>
+</section>
 
-    <footer class="footer">
-        <div class="container">
-            <div class="columns is-centered">
-                <div class="content is-centered">
-                    <p>
-                        Thanks to <a
-                            href="https://gen-omnimatte.github.io/">gen-omnimatte</a> for the template.
-                    </p>
-                </div>
+<footer class="footer">
+    <div class="container">
+        <div class="columns is-centered">
+            <div class="content is-centered">
+                <p>
+                    Thanks to <a
+                        href="https://gen-omnimatte.github.io/">gen-omnimatte</a> for the template.
+                </p>
             </div>
         </div>
-    </footer>
+    </div>
+</footer>
 
 </body>
 </html>
