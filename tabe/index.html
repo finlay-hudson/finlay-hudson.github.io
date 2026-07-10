@@ -98,20 +98,32 @@
                             </a>
 
                             <!-- Dataset Link -->
-                            <a href="https://drive.google.com/file/d/1q5u8aqCt2lZUYVb1M9XuveSi7U1EGP7G/view?usp=sharing" class="external-link button is-normal is-rounded is-dark">
-                                <span class="icon">
-                                    <i class="fa fa-book"></i>
-                                </span>
-                                <span>Dataset - TABE-51</span>
-                            </a>
+<!--                            <a href="https://drive.google.com/file/d/1q5u8aqCt2lZUYVb1M9XuveSi7U1EGP7G/view?usp=sharing" class="external-link button is-normal is-rounded is-dark">-->
+<!--                                <span class="icon">-->
+<!--                                    <i class="fa fa-book"></i>-->
+<!--                                </span>-->
+<!--                                <span>Dataset - TABE-51</span>-->
+<!--                            </a>-->
+<!--                            <a>-->
+<!--                                <span class="icon">-->
+<!--                                    <i class="fa fa-book"></i>-->
+<!--                                </span>-->
+<!--                                <span>Dataset - TABE-51 - COMING SOON</span>-->
+<!--                            </a>-->
 
                             <!-- GitHub Code for Dataset Generation -->
-                            <a href="https://github.com/finlay-hudson/TABE51-generation" class="external-link button is-normal is-rounded is-dark">
-                                <span class="icon">
-                                    <i class="fab fa-github" aria-hidden="true"></i>
-                                </span>
-                                <span>Code - Dataset Generation</span>
-                            </a>
+<!--                            <a href="https://github.com/finlay-hudson/TABE51-generation" class="external-link button is-normal is-rounded is-dark">-->
+<!--                                <span class="icon">-->
+<!--                                    <i class="fab fa-github" aria-hidden="true"></i>-->
+<!--                                </span>-->
+<!--                                <span>Code - Dataset Generation</span>-->
+<!--                            </a>-->
+<!--                            <a>-->
+<!--                                <span class="icon">-->
+<!--                                    <i class="fab fa-github" aria-hidden="true"></i>-->
+<!--                                </span>-->
+<!--                                <span>Code - Dataset Generation - COMING SOON</span>-->
+<!--                            </a>-->
                         </div>
 
                     </div>
@@ -129,8 +141,19 @@
             <div class="col-12 text-center">
                 <h2 class="title has-text-centered is-3">Abstract</h2>
                 <hr style="margin-top:-20px">
+<!--                <div class="has-text-justified" style="width: 72%; margin-left: 14%;">-->
+<!--                    We present Track Anything Behind Everything (TABE), a novel dataset, pipeline, and evaluation-->
+<!--                    framework for zero-shot amodal completion from visible masks. Unlike existing methods that require-->
+<!--                    pretrained class labels, our approach uses a single query mask from the first frame where the object-->
+<!--                    is visible, enabling flexible, zero-shot inference. Our dataset, TABE-51 provides highly accurate-->
+<!--                    ground truth amodal segmentation masks without the need for human estimation or 3D reconstruction.-->
+<!--                    Our TABE pipeline is specifically designed to handle amodal completion, even in scenarios where-->
+<!--                    objects are completely occluded. We also introduce a specialised evaluation framework that isolates-->
+<!--                    amodal completion performance, free from the influence of traditional visual segmentation metrics.-->
+<!--                    Dataset, model and code will be made available.-->
+<!--                </div>-->
                 <div class="has-text-justified" style="width: 72%; margin-left: 14%;">
-                    We present Track Anything Behind Everything (TABE), a novel dataset, pipeline, and evaluation
+                    We present Track Anything Behind Everything (TABE), pipeline, and evaluation
                     framework for zero-shot amodal completion from visible masks. Unlike existing methods that require
                     pretrained class labels, our approach uses a single query mask from the first frame where the object
                     is visible, enabling flexible, zero-shot inference. Our dataset, TABE-51 provides highly accurate
@@ -147,156 +170,156 @@
 </section>
 <br>
 
-<section>
-    <div class="container">
-        <div class="row">
-            <div class="col-12 text-center">
-                <h2 class="title has-text-centered is-3">Dataset Creation</h2>
-                <hr style="margin-top:-20px">
-                <div class="has-text-justified" style="width: 72%; margin-left: 14%;">
-                    We have curated a dataset <b>(TABE-51)</b>, a video amodal segmentation dataset that provides
-                    high-quality
-                    ground truth labels for occluded objects. The dataset contains 51 scenes with over 2000 frames and
-                    provides a robust benchmark for evaluating how well segmentation methods track and predict occluded
-                    objects throughout entire video sequences. Below showcases the creation process.
-                </div>
-                <!--                <div class="has-text-justified" style="width: 72%; margin-left: 14%;">-->
-                <!--                    SHOWCASE SOME EXAMPLES OF THE DATASET IN HERE, and HOW IT WAS CREATED ie each of the layers from-->
-                <!--                    left to right-->
-                <!--                </div>-->
-                <br>
-                <div class="row">
-                    <!--Grid column-->
-                    <div class="col-lg-12 has-text-centered text-center">
-                        <img class="img-fluid mb-4" src="imgs/data_collection_img_w_scissors_white_gaps_small.png"
-                             width="1200"
-                             style="display: block; margin-left: auto; margin-right: auto; border: 2px solid #000;">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="container">
-        <div class="has-text-justified" style="width: 72%; margin-left: 14%;">
-            We record an initial clip of an object without occlusion and then overlay a second clip featuring
-            the occluding object. This compositing yields realistic video sequences with natural motion and highly
-            accurate ground truth masks, allowing models to be evaluated on how well they handle occluded
-            objects in authentic scenarios.
-        </div>
+<!--<section>-->
+<!--    <div class="container">-->
+<!--        <div class="row">-->
+<!--            <div class="col-12 text-center">-->
+<!--                <h2 class="title has-text-centered is-3">Dataset Creation</h2>-->
+<!--                <hr style="margin-top:-20px">-->
+<!--                <div class="has-text-justified" style="width: 72%; margin-left: 14%;">-->
+<!--                    We have curated a dataset <b>(TABE-51)</b>, a video amodal segmentation dataset that provides-->
+<!--                    high-quality-->
+<!--                    ground truth labels for occluded objects. The dataset contains 51 scenes with over 2000 frames and-->
+<!--                    provides a robust benchmark for evaluating how well segmentation methods track and predict occluded-->
+<!--                    objects throughout entire video sequences. Below showcases the creation process.-->
+<!--                </div>-->
+<!--                &lt;!&ndash;                <div class="has-text-justified" style="width: 72%; margin-left: 14%;">&ndash;&gt;-->
+<!--                &lt;!&ndash;                    SHOWCASE SOME EXAMPLES OF THE DATASET IN HERE, and HOW IT WAS CREATED ie each of the layers from&ndash;&gt;-->
+<!--                &lt;!&ndash;                    left to right&ndash;&gt;-->
+<!--                &lt;!&ndash;                </div>&ndash;&gt;-->
+<!--                <br>-->
+<!--                <div class="row">-->
+<!--                    &lt;!&ndash;Grid column&ndash;&gt;-->
+<!--                    <div class="col-lg-12 has-text-centered text-center">-->
+<!--                        <img class="img-fluid mb-4" src="imgs/data_collection_img_w_scissors_white_gaps_small.png"-->
+<!--                             width="1200"-->
+<!--                             style="display: block; margin-left: auto; margin-right: auto; border: 2px solid #000;">-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--    <div class="container">-->
+<!--        <div class="has-text-justified" style="width: 72%; margin-left: 14%;">-->
+<!--            We record an initial clip of an object without occlusion and then overlay a second clip featuring-->
+<!--            the occluding object. This compositing yields realistic video sequences with natural motion and highly-->
+<!--            accurate ground truth masks, allowing models to be evaluated on how well they handle occluded-->
+<!--            objects in authentic scenarios.-->
+<!--        </div>-->
 
-        <div class="container-fluid">
-            </h2>
+<!--        <div class="container-fluid">-->
+<!--            </h2>-->
 
 
-            <div class="row py-5 mt-5 bg-dark" style="width: 100vw; margin-left: calc(-50vw + 50%);">
-                <div>
-                    <script>
-                        activeAblDataMethodPill = document.querySelector('.abldata-method-pill.active-pill');
-                        activeAblDataScenePill = document.querySelector('.abldata-scene-pill.active-pill');
-                        activeAblDataModePill = document.querySelector('.abldata-mode-pill.active-pill');
-                    </script>
-                    <div class="has-text-centered text-center">
-                        <div class="pill-row scene-pills">
-                  <span class="pill abldata-scene-pill" data-value="plant_stool_1"
-                        onclick="selectAblDataVideo(activeAblDataMethodPill, this, activeAblDataModePill)">
-                    <img class="thumbnail-img" src="imgs/thumbnails/plant_stool_1.jpg" width="64">
-                  </span>
-                            <span class="pill abldata-scene-pill active" data-value="cat_car_5"
-                                  onclick="selectAblDataVideo(activeAblDataMethodPill, this, activeAblDataModePill)">
-                    <img class="thumbnail-img" src="imgs/thumbnails/cat_car_5.jpg" width="64">
-                  </span>
-                            <span class="pill abldata-scene-pill" data-value="blue_towel_roll_1"
-                                  onclick="selectAblDataVideo(activeAblDataMethodPill, this, activeAblDataModePill)">
-                    <img class="thumbnail-img" src="imgs/thumbnails/blue_towel_roll_1.jpg" width="64">
-                  </span>
-                            </span>
-                            <span class="pill abldata-scene-pill" data-value="goose_1"
-                                  onclick="selectAblDataVideo(activeAblDataMethodPill, this, activeAblDataModePill)">
-                    <img class="thumbnail-img" src="imgs/thumbnails/goose_1.jpg" width="64">
-                  </span>
-                            </span>
-                            <span class="pill abldata-scene-pill" data-value="walk_outside_conversation_2"
-                                  onclick="selectAblDataVideo(activeAblDataMethodPill, this, activeAblDataModePill)">
-                    <img class="thumbnail-img" src="imgs/thumbnails/walk_outside_conversation_2.jpg" width="64">
-                  </span>
-                            <span class="pill abldata-scene-pill" data-value="bus_1"
-                                  onclick="selectAblDataVideo(activeAblDataMethodPill, this, activeAblDataModePill)">
-                    <img class="thumbnail-img" src="imgs/thumbnails/bus_1.jpg" width="64">
-                  </span>
-                            </span>
-                            <span class="pill abldata-scene-pill" data-value="door_walkthrough_1"
-                                  onclick="selectAblDataVideo(activeAblDataMethodPill, this, activeAblDataModePill)">
-                    <img class="thumbnail-img" src="imgs/thumbnails/door_walkthrough_1.jpg" width="64">
-                  </span>
-                            </span>
-                            <span class="pill abldata-scene-pill" data-value="paper_plane_2"
-                                  onclick="selectAblDataVideo(activeAblDataMethodPill, this, activeAblDataModePill)">
-                    <img class="thumbnail-img" src="imgs/thumbnails/paper_plane_2.jpg" width="64">
-                  </span>
+<!--            <div class="row py-5 mt-5 bg-dark" style="width: 100vw; margin-left: calc(-50vw + 50%);">-->
+<!--                <div>-->
+<!--                    <script>-->
+<!--                        activeAblDataMethodPill = document.querySelector('.abldata-method-pill.active-pill');-->
+<!--                        activeAblDataScenePill = document.querySelector('.abldata-scene-pill.active-pill');-->
+<!--                        activeAblDataModePill = document.querySelector('.abldata-mode-pill.active-pill');-->
+<!--                    </script>-->
+<!--                    <div class="has-text-centered text-center">-->
+<!--                        <div class="pill-row scene-pills">-->
+<!--                  <span class="pill abldata-scene-pill" data-value="plant_stool_1"-->
+<!--                        onclick="selectAblDataVideo(activeAblDataMethodPill, this, activeAblDataModePill)">-->
+<!--                    <img class="thumbnail-img" src="imgs/thumbnails/plant_stool_1.jpg" width="64">-->
+<!--                  </span>-->
+<!--                            <span class="pill abldata-scene-pill active" data-value="cat_car_5"-->
+<!--                                  onclick="selectAblDataVideo(activeAblDataMethodPill, this, activeAblDataModePill)">-->
+<!--                    <img class="thumbnail-img" src="imgs/thumbnails/cat_car_5.jpg" width="64">-->
+<!--                  </span>-->
+<!--                            <span class="pill abldata-scene-pill" data-value="blue_towel_roll_1"-->
+<!--                                  onclick="selectAblDataVideo(activeAblDataMethodPill, this, activeAblDataModePill)">-->
+<!--                    <img class="thumbnail-img" src="imgs/thumbnails/blue_towel_roll_1.jpg" width="64">-->
+<!--                  </span>-->
+<!--                            </span>-->
+<!--                            <span class="pill abldata-scene-pill" data-value="goose_1"-->
+<!--                                  onclick="selectAblDataVideo(activeAblDataMethodPill, this, activeAblDataModePill)">-->
+<!--                    <img class="thumbnail-img" src="imgs/thumbnails/goose_1.jpg" width="64">-->
+<!--                  </span>-->
+<!--                            </span>-->
+<!--                            <span class="pill abldata-scene-pill" data-value="walk_outside_conversation_2"-->
+<!--                                  onclick="selectAblDataVideo(activeAblDataMethodPill, this, activeAblDataModePill)">-->
+<!--                    <img class="thumbnail-img" src="imgs/thumbnails/walk_outside_conversation_2.jpg" width="64">-->
+<!--                  </span>-->
+<!--                            <span class="pill abldata-scene-pill" data-value="bus_1"-->
+<!--                                  onclick="selectAblDataVideo(activeAblDataMethodPill, this, activeAblDataModePill)">-->
+<!--                    <img class="thumbnail-img" src="imgs/thumbnails/bus_1.jpg" width="64">-->
+<!--                  </span>-->
+<!--                            </span>-->
+<!--                            <span class="pill abldata-scene-pill" data-value="door_walkthrough_1"-->
+<!--                                  onclick="selectAblDataVideo(activeAblDataMethodPill, this, activeAblDataModePill)">-->
+<!--                    <img class="thumbnail-img" src="imgs/thumbnails/door_walkthrough_1.jpg" width="64">-->
+<!--                  </span>-->
+<!--                            </span>-->
+<!--                            <span class="pill abldata-scene-pill" data-value="paper_plane_2"-->
+<!--                                  onclick="selectAblDataVideo(activeAblDataMethodPill, this, activeAblDataModePill)">-->
+<!--                    <img class="thumbnail-img" src="imgs/thumbnails/paper_plane_2.jpg" width="64">-->
+<!--                  </span>-->
 
-                            <br/>
-                        </div>
-                        <div class="text-center" style="color: black;" id="abldata-method-pills">
-                            <div class="btn-group btn-group-sm">
-                      <span class="button is-normal abldata-method-pill" data-value="none" id="btn-abladata"
-                            style="display: none;"
-                            onclick="selectAblDataVideo(this, activeAblDataScenePill, activeAblDataModePill)">
-                          abla data
-                      </span>
-                            </div>
-                        </div>
-                        <br>
-                        <div class="text-center" style="color: black; display: none;" id="abldata-mode-pills">
-                            <div class="btn-group btn-group-sm">
-                    <span class="button is-normal abldata-mode-pill active" data-value="bg"
-                          onclick="selectAblDataVideo(activeAblDataMethodPill, activeAblDataScenePill, this)">
-                        Background
-                    </span>
-                            </div>
-                        </div>
-                        <div class="video-container" style="max-height: 480px;">
-                            <video class="video" style="max-width: 100%;" id="abldataVideo0" loop playsinline autoplay
-                                   muted>
-                                <source src="videos/dataset_vids/walk_outside_conversation_2.mp4"/>
-                            </video>
-                            <div class="column">
-                                <div class="columns method-labels">
-                                    <div class="column has-text-centered method-label">
-                                        Background
-                                    </div>
-                                    <div class="column has-text-centered method-label">
-                                        Background Seg
-                                    </div>
-                                    <div class="column has-text-centered method-label">
-                                        Foreground
-                                    </div>
-                                    <div class="column has-text-centered method-label">
-                                        Foreground Seg
-                                    </div>
-                                    <div class="column has-text-centered method-label">
-                                        Combined
-                                    </div>
-                                    <div class="column has-text-centered method-label">
-                                        Visible Mask
-                                    </div>
-                                    <div class="column has-text-centered method-label">
-                                        Ground Truth Mask
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <script>
-                            activeAblDataMethodPill = document.querySelector('.abldata-method-pill.active-pill');
-                            activeAblDataScenePill = document.querySelector('.abldata-scene-pill.active-pill');
-                            activeAblDataModePill = document.querySelector('.abldata-mode-pill.active-pill');
-                        </script>
-                    </div>
-                </div>
+<!--                            <br/>-->
+<!--                        </div>-->
+<!--                        <div class="text-center" style="color: black;" id="abldata-method-pills">-->
+<!--                            <div class="btn-group btn-group-sm">-->
+<!--                      <span class="button is-normal abldata-method-pill" data-value="none" id="btn-abladata"-->
+<!--                            style="display: none;"-->
+<!--                            onclick="selectAblDataVideo(this, activeAblDataScenePill, activeAblDataModePill)">-->
+<!--                          abla data-->
+<!--                      </span>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                        <br>-->
+<!--                        <div class="text-center" style="color: black; display: none;" id="abldata-mode-pills">-->
+<!--                            <div class="btn-group btn-group-sm">-->
+<!--                    <span class="button is-normal abldata-mode-pill active" data-value="bg"-->
+<!--                          onclick="selectAblDataVideo(activeAblDataMethodPill, activeAblDataScenePill, this)">-->
+<!--                        Background-->
+<!--                    </span>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                        <div class="video-container" style="max-height: 480px;">-->
+<!--                            <video class="video" style="max-width: 100%;" id="abldataVideo0" loop playsinline autoplay-->
+<!--                                   muted>-->
+<!--                                <source src="videos/dataset_vids/walk_outside_conversation_2.mp4"/>-->
+<!--                            </video>-->
+<!--                            <div class="column">-->
+<!--                                <div class="columns method-labels">-->
+<!--                                    <div class="column has-text-centered method-label">-->
+<!--                                        Background-->
+<!--                                    </div>-->
+<!--                                    <div class="column has-text-centered method-label">-->
+<!--                                        Background Seg-->
+<!--                                    </div>-->
+<!--                                    <div class="column has-text-centered method-label">-->
+<!--                                        Foreground-->
+<!--                                    </div>-->
+<!--                                    <div class="column has-text-centered method-label">-->
+<!--                                        Foreground Seg-->
+<!--                                    </div>-->
+<!--                                    <div class="column has-text-centered method-label">-->
+<!--                                        Combined-->
+<!--                                    </div>-->
+<!--                                    <div class="column has-text-centered method-label">-->
+<!--                                        Visible Mask-->
+<!--                                    </div>-->
+<!--                                    <div class="column has-text-centered method-label">-->
+<!--                                        Ground Truth Mask-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                        <script>-->
+<!--                            activeAblDataMethodPill = document.querySelector('.abldata-method-pill.active-pill');-->
+<!--                            activeAblDataScenePill = document.querySelector('.abldata-scene-pill.active-pill');-->
+<!--                            activeAblDataModePill = document.querySelector('.abldata-mode-pill.active-pill');-->
+<!--                        </script>-->
+<!--                    </div>-->
+<!--                </div>-->
 
-                <!-- <div class="col-2"></div> -->
-            </div
-        </div>
-    </div>
+<!--                &lt;!&ndash; <div class="col-2"></div> &ndash;&gt;-->
+<!--            </div-->
+<!--        </div>-->
+<!--    </div>-->
 
 
     <br>
