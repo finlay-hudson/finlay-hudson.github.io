@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>Finlay Hudson: Thesis</title>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" type="text/css" href="../assets/bootstrap/styles.css">
+    <link href="../assets/bootstrap/bootstrap.css" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/b7a3822f24.js" crossorigin="anonymous"></script>
+
+    <style>
+        body {
+            font-family: 'Open Sans', sans-serif;
+            font-size: 16px;
+            background-color: #181a1b;
+            color: #4F6071;
+        }
+
+        h1 { font-weight: 300; font-size: 2rem; color: #FFFFFF; }
+        h3 { font-weight: 300; font-size: 1.5rem; color: #FFFFFF; }
+
+        #header {
+            background-color: #1e2122;
+            padding-top: 40px;
+            padding-bottom: 40px;
+        }
+
+        #footer { background-color: #181a1b; padding: 60px; }
+
+        .main-text-desc { color: #4F6071; }
+        .text-lightblue { color: #a0b0d8; }
+        .subtle { color: #6c7a89; font-size: 0.9rem; }
+
+        /* ---------- demo ---------- */
+        .demo-wrap {
+            background-color: #1e2122;
+            border: 1px solid #2a2e30;
+            border-radius: 8px;
+            padding: 24px;
+        }
+
+        #stage {
+            position: relative;
+            line-height: 0;
+            border-radius: 4px;
+            overflow: hidden;
+            background: #000;
+        }
+
+        #stage img { width: 100%; display: block; border-radius: 0; }
+        #overlay { position: absolute; inset: 0; width: 100%; height: 100%; }
+        #stage.pickable { cursor: crosshair; }
+
+        #banner {
+            position: absolute;
+            left: 50%; top: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(24, 26, 27, 0.88);
+            border: 1px dashed #6c7a89;
+            border-radius: 6px;
+            padding: 14px 26px;
+            text-align: center;
+            line-height: 1.4;
+            display: none;
+        }
+
+        #banner .big { color: #fff; font-style: italic; font-size: 1.05rem; }
+
+        .querycard {
+            background: #14161a;
+            border: 1px solid #2a2e30;
+            border-radius: 6px;
+            padding: 12px;
+            text-align: center;
+        }
+
+        .querycard img { width: 100%; border-radius: 4px; }
+        .querycard .cap { color: #6c7a89; font-size: 0.82rem; margin-top: 8px; }
+
+        .btn-demo {
+            background: #2a2e30;
+            border: 1px solid #3a3f42;
+            color: #e8e8e8;
+            border-radius: 4px;
+            padding: 7px 16px;
+            font-size: 0.92rem;
+            margin: 3px 4px 3px 0;
+        }
+        .btn-demo:hover:not(:disabled) { background: #3a3f42; color: #fff; }
+        .btn-demo:disabled { opacity: 0.35; cursor: not-allowed; }
+        .btn-demo.primary { background: #1a9850; border-color: #1a9850; color: #fff; }
+        .btn-demo.primary:hover { background: #22b862; }
+
+        #prompt {
+            color: #fff;
+            min-height: 2.6em;
+            margin-bottom: 12px;
+            font-size: 1.02rem;
+        }
+        #prompt .hint { color: #6c7a89; font-size: 0.88rem; display: block; margin-top: 3px; }
+        #prompt .good { color: #4ec97e; }
+        #prompt .bad  { color: #e2685c; }
+
+        #scrub { width: 100%; margin: 14px 0 4px; }
+        .frameline { display: flex; justify-content: space-between; }
+
+        .legend { font-size: 0.82rem; color: #6c7a89; margin-top: 10px; }
+        .swatch {
+            display: inline-block; width: 22px; height: 0;
+            border-top: 2px solid; vertical-align: middle; margin-right: 5px;
+        }
+    </style>
+</head>
+
+<body>
+
+<div id="header">
+    <div class="container">
+        <div class="row">
+            <div class="col offset-sm-1">
+                <div style="font-size: 1.6rem; color: #fff;">Finlay Hudson</div>
+                <div class="subtle" style="margin-top: 4px;">
+                    <a href="../index.html">&larr; Back to homepage</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<section>
+    <div class="container">
+        <div class="row vspace-top">
+            <div class="col offset-sm-1">
+                <h1>Thesis</h1>
+                <h3 style="margin-top: 14px;">Beyond Visual Features</h3>
+                <p class="subtle" style="margin-top: 6px;">
+                    PhD thesis, University of York. Supervised by
+                    <a href="https://www-users.cs.york.ac.uk/wsmith/">Prof. William Smith</a>. In preparation.
+                </p>
+                <p class="main-text-desc" style="margin-top: 18px; max-width: 860px;">
+                    Humans infer the unseen constantly: a chair remains behind us when we turn away, a cat's tail
+                    behind a sofa implies a whole cat, a few sparse lines in a sketch call up a photorealistic object.
+                    Artificial vision systems largely do not. They operate frame by frame on visible pixels, and lose
+                    the thread the moment the evidence goes away.
+                </p>
+                <p class="main-text-desc" style="margin-top: 12px; max-width: 860px;">
+                    This thesis argues that robust computer vision requires moving beyond the processing of visible
+                    pixels to the <i>inference of the unseen</i>. Cross-domain retrieval, amodal video segmentation and
+                    out-of-view point tracking are not three problems but one, differing only in how far the evidence
+                    has receded: <i>abstracted</i>, then <i>occluded</i>, then <i>absent</i>. The
+                    barrier is as much a question of supervision as of architecture.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section>
+    <div class="container">
+        <div class="row vspace-top">
+            <div class="col offset-sm-1" style="max-width: 1000px;">
+                <h3>Try it yourself</h3>
+                <p class="main-text-desc" style="margin-bottom: 20px;">
+                    The sequence below contains the thesis in miniature. The query is <i>abstracted</i>: a drawing
+                    matched to photographic evidence, with no pixel in common. The target is then <i>occluded</i>,
+                    behind other players in identical navy. Finally it is <i>absent</i>, outside the frame altogether,
+                    and the identity must survive an interval in which the camera observes nothing relevant to it.
+                    Nine seconds of broadcast hockey at 3 frames per second, exactly the frames put to the
+                    vision&ndash;language models discussed in the thesis. See how you get on.
+                </p>
+
+                <div class="demo-wrap">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="querycard">
+                                <img src="demo/query.jpg" alt="Query: a drawing of a navy number 11 jersey">
+                                <div class="cap">the query<br><i>a drawing, not a photograph</i></div>
+                            </div>
+                            <div class="legend">
+                                <div><span class="swatch" style="border-color:#1a9850;"></span> ground truth</div>
+                                <div style="margin-top:4px;">
+                                    <span class="swatch" style="border-color:#d73027;"></span> your guess
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-9">
+                            <div id="prompt">Loading&hellip;</div>
+
+                            <div id="stage">
+                                <img id="frame" src="demo/f01.jpg" alt="video frame">
+                                <canvas id="overlay"></canvas>
+                                <div id="banner"><span class="big">not in view</span><br>
+                                    <span class="subtle" id="bannersub"></span></div>
+                            </div>
+
+                            <input type="range" id="scrub" min="1" max="25" value="1" disabled>
+                            <div class="frameline subtle">
+                                <span id="fnum">frame 1 of 25</span>
+                                <span id="ftime">t = 0.00 s</span>
+                            </div>
+
+                            <div style="margin-top: 14px;">
+                                <button class="btn-demo" id="prev" disabled>&larr; Prev</button>
+                                <button class="btn-demo" id="next" disabled>Next &rarr;</button>
+                                <button class="btn-demo" id="play" disabled>Play</button>
+                                <button class="btn-demo primary" id="action">Start</button>
+                                <button class="btn-demo" id="reveal" disabled>Reveal answer</button>
+                                <button class="btn-demo" id="restart">Restart</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <p class="subtle" style="margin-top: 16px; max-width: 860px;">
+                    Most people manage this, particularly when stepping through the frames in order. Contemporary
+                    vision&ndash;language models, given the same twenty-five frames and the same question, do not.
+                    The failure is not perceptual: every frame is sharp and the jersey is legible in the first
+                    one. Two things make it hard. <b>Granularity</b>: asked which of several candidates conceals an
+                    object, a model will often answer correctly, but its competence is verbal and coarse, whereas
+                    these tasks demand a pixel-level mask, an ordered ranking, or a continuous direction.
+                    <b>Compounding</b>: the sequence is not difficult in one respect but in three at once, and it
+                    demands all three in order, on the same target.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section>
+    <div class="container">
+        <div class="row vspace-top">
+            <div class="col offset-sm-1" style="max-width: 1000px;">
+                <h3>The clip</h3>
+                <p class="main-text-desc">
+                    The same sequence played back at its sampled rate. Continuity of motion makes the binding far
+                    easier to hold than it is frame by frame, which is itself part of the point.
+                </p>
+                <video controls loop style="width: 100%; max-width: 860px; border-radius: 6px;">
+                    <source src="demo/clip.mp4" type="video/mp4">
+                </video>
+                <p class="subtle" style="margin-top: 10px;">
+                    Broadcast footage &copy; <i>Svenskhockey.tv</i> (Linköping HC vs.&nbsp;Södertälje SK).
+                    Frames reproduced unaltered, including the broadcaster's on-screen mark, under UK fair
+                    dealing for criticism and review.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div id="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col offset-sm-1 subtle">
+                <a href="../index.html">Homepage</a> &nbsp;·&nbsp;
+                <a href="https://github.com/finlay-hudson">GitHub</a> &nbsp;·&nbsp;
+                <a href="https://scholar.google.com/citations?user=e_czAXQAAAAJ&hl">Google Scholar</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+(function () {
+    const S = {
+        stage: "intro",     // intro | find | track | guess | done
+        idx: 1,
+        tries: 0,
+        guess: null,        // [x, y] in source px, the final-frame guess
+        showTruth: false,
+        playing: null,
+        data: null
+    };
+
+    const el = id => document.getElementById(id);
+    const img = el("frame"), cv = el("overlay"), ctx = cv.getContext("2d");
+    const key = i => "f" + String(i).padStart(2, "0");
+
+    // inlined so the page also works when opened directly from disk (file://),
+    // where fetch() is blocked. demo/labels.json is kept as the source of truth.
+    S.data = {"w": 1280, "h": 720, "fps": 3.0, "n": 25, "boxes": {"f01": [747, 195, 840, 303], "f02": [755, 191, 838, 289], "f03": [791, 187, 849, 289], "f04": [824, 180, 866, 288], "f05": [845, 188, 907, 298], "f06": [886, 203, 956, 310], "f07": [937, 227, 1026, 330], "f08": [1037, 253, 1114, 352], "f10": [1246, 298, 1280, 408], "f09": [1135, 282, 1238, 381], "f25": [1226, 238, 1280, 397]}, "masks": {"f01": [[812.8, 202.9], [809.0, 201.5], [805.2, 202.5], [803.4, 205.0], [802.1, 212.5], [793.3, 216.8], [787.8, 223.0], [786.2, 227.0], [782.8, 246.0], [776.7, 256.0], [773.6, 266.0], [764.2, 280.7], [759.2, 286.1], [754.4, 295.0], [753.6, 297.9], [754.5, 299.8], [758.6, 297.1], [775.0, 275.6], [780.0, 272.4], [790.9, 269.0], [796.3, 263.5], [799.0, 262.3], [802.0, 262.9], [811.0, 267.8], [814.5, 271.0], [820.9, 296.4], [824.0, 297.2], [827.8, 294.8], [824.2, 288.0], [821.5, 266.0], [814.0, 251.1], [817.2, 247.8], [834.3, 246.3], [837.4, 245.2], [838.4, 243.4], [836.8, 242.2], [823.9, 241.3], [820.3, 238.8], [817.9, 227.0], [813.3, 218.0], [815.1, 207.0]]}};
+    setStage("intro");
+
+    // ---------- drawing ----------
+    function resize() {
+        const r = img.getBoundingClientRect();
+        cv.width = r.width; cv.height = r.height;
+        draw();
+    }
+    window.addEventListener("resize", resize);
+    img.addEventListener("load", resize);
+
+    function scale() { return cv.width / S.data.w; }
+
+    function strokeBox(b, colour, dashed) {
+        const s = scale();
+        ctx.save();
+        ctx.strokeStyle = colour; ctx.lineWidth = 2.5;
+        if (dashed) ctx.setLineDash([7, 5]);
+        ctx.strokeRect(b[0] * s, b[1] * s, (b[2] - b[0]) * s, (b[3] - b[1]) * s);
+        ctx.restore();
+    }
+
+    function strokePoly(pts, colour) {
+        const s = scale();
+        ctx.save();
+        ctx.strokeStyle = colour; ctx.lineWidth = 2.5; ctx.lineJoin = "round";
+        ctx.beginPath();
+        pts.forEach((p, i) => i ? ctx.lineTo(p[0] * s, p[1] * s) : ctx.moveTo(p[0] * s, p[1] * s));
+        ctx.closePath(); ctx.stroke();
+        ctx.restore();
+    }
+
+    function marker(p, colour) {
+        const s = scale();
+        ctx.save();
+        ctx.strokeStyle = colour; ctx.lineWidth = 2.5;
+        ctx.beginPath(); ctx.arc(p[0] * s, p[1] * s, 11, 0, 2 * Math.PI); ctx.stroke();
+        ctx.beginPath();
+        ctx.moveTo(p[0] * s - 17, p[1] * s); ctx.lineTo(p[0] * s + 17, p[1] * s);
+        ctx.moveTo(p[0] * s, p[1] * s - 17); ctx.lineTo(p[0] * s, p[1] * s + 17);
+        ctx.stroke();
+        ctx.restore();
+    }
+
+    function draw() {
+        if (!S.data) return;
+        el("reveal").textContent = S.showTruth ? "Hide answer" : "Reveal answer";
+        ctx.clearRect(0, 0, cv.width, cv.height);
+        const k = key(S.idx), box = S.data.boxes[k], mask = S.data.masks[k];
+        const absent = !box;
+
+        // out-of-view banner, only once the answer is on show
+        const b = el("banner");
+        if (S.showTruth && absent) {
+            el("bannersub").textContent = "frames " + firstAbsent() + "–" + lastAbsent() +
+                " · " + (countAbsent() / S.data.fps).toFixed(1) + " s";
+            b.style.display = "block";
+        } else {
+            b.style.display = "none";
+        }
+
+        if (S.showTruth && box) {
+            if (mask) strokePoly(mask, "#1a9850"); else strokeBox(box, "#1a9850", false);
+        }
+        // your guess, shown on the frame it was made
+        if (S.guess && S.idx === S.data.n) marker(S.guess, "#d73027");
+    }
+
+    // ---------- absent run helpers ----------
+    const absentIdx = () => {
+        const out = [];
+        for (let i = 1; i <= S.data.n; i++) if (!S.data.boxes[key(i)]) out.push(i);
+        return out;
+    };
+    const firstAbsent = () => absentIdx()[0];
+    const lastAbsent  = () => absentIdx().slice(-1)[0];
+    const countAbsent = () => absentIdx().length;
+
+    // ---------- navigation ----------
+    function go(i) {
+        S.idx = Math.max(1, Math.min(S.data.n, i));
+        img.src = "demo/" + key(S.idx) + ".jpg";
+        el("scrub").value = S.idx;
+        el("fnum").textContent = "frame " + S.idx + " of " + S.data.n;
+        el("ftime").textContent = "t = " + ((S.idx - 1) / S.data.fps).toFixed(2) + " s";
+        const navLocked = (S.stage === "intro" || S.stage === "find");
+        el("prev").disabled = navLocked || S.idx === 1;
+        el("next").disabled = navLocked || S.idx === S.data.n;
+        if (S.stage === "track" && S.idx === S.data.n) setStage("guess");
+        draw();
+    }
+
+    function stopPlay() {
+        if (S.playing) { clearInterval(S.playing); S.playing = null; el("play").textContent = "Play"; }
+    }
+
+    // ---------- stages ----------
+    function setStage(s) {
+        S.stage = s;
+        const p = el("prompt"), a = el("action");
+        a.style.display = "";
+        stopPlay();
+
+        if (s === "intro") {
+            S.idx = 1; S.tries = 0; S.guess = null; S.showTruth = false;
+            p.innerHTML = "You are looking for the player wearing the jersey on the left: navy, number 11." +
+                "<span class='hint'>The query is a drawing. The footage is real. No pixel is shared between them.</span>";
+            a.textContent = "Start"; a.disabled = false;
+            ["prev", "next", "play", "reveal"].forEach(id => el(id).disabled = true);
+            el("scrub").disabled = true;
+            el("stage").classList.remove("pickable");
+            go(1);
+        }
+
+        if (s === "find") {
+            p.innerHTML = "<b>Frame 1.</b> Click on the player you are looking for." +
+                "<span class='hint'>He is in this frame. Take your time, the rest depends on finding him here.</span>";
+            a.textContent = "I give up, show me"; a.disabled = false;
+            el("stage").classList.add("pickable");
+            el("scrub").disabled = true;
+            go(1);
+        }
+
+        if (s === "track") {
+            p.innerHTML = "Now follow him. Step forward through the frames." +
+                "<span class='hint'>The camera does not stay where it is.</span>";
+            a.textContent = "Skip to the end"; a.disabled = false;
+            ["prev", "next", "play"].forEach(id => el(id).disabled = false);
+            el("scrub").disabled = false;
+            el("stage").classList.remove("pickable");
+        }
+
+        if (s === "guess") {
+            p.innerHTML = "<b>Final frame.</b> Where is he now? Click your answer." +
+                "<span class='hint'>You may step back through the frames if it helps.</span>";
+            a.textContent = "I do not know"; a.disabled = false;
+            el("stage").classList.add("pickable");
+            el("reveal").disabled = false;
+            ["prev", "next", "play"].forEach(id => el(id).disabled = false);
+            el("scrub").disabled = false;
+        }
+
+        if (s === "done") {
+            a.style.display = "none";
+            el("reveal").disabled = false;
+            ["prev", "next", "play"].forEach(id => el(id).disabled = false);
+            el("scrub").disabled = false;
+            el("stage").classList.remove("pickable");
+        }
+        draw();
+    }
+
+    // ---------- clicking ----------
+    el("stage").addEventListener("click", ev => {
+        if (!S.data) { el("prompt").textContent = "Demo failed to load."; return; }
+        if (S.stage !== "find" && S.stage !== "guess") return;
+        const r = img.getBoundingClientRect(), s = S.data.w / r.width;
+        const x = (ev.clientX - r.left) * s, y = (ev.clientY - r.top) * s;
+        const box = S.data.boxes[key(S.idx)];
+        const inside = box && x >= box[0] && x <= box[2] && y >= box[1] && y <= box[3];
+
+        if (S.stage === "find") {
+            if (inside) {
+                S.showTruth = true; draw();
+                el("prompt").innerHTML = "<span class='good'>That is him.</span> Number 11, in navy." +
+                    "<span class='hint'>Hold on to that identity; you will need it shortly.</span>";
+                el("action").textContent = "Now follow him →";
+                el("action").onclick = () => { S.showTruth = false; setStage("track"); go(1); bindAction(); };
+            } else {
+                S.tries++;
+                el("prompt").innerHTML = "<span class='bad'>Not him.</span> " +
+                    (S.tries === 1 ? "There is more than one player in navy." :
+                                     "Look for the number on the back.") +
+                    "<span class='hint'>Click again.</span>";
+            }
+            return;
+        }
+
+        // final guess
+        S.guess = [x, y];
+        S.showTruth = true;
+        draw();
+        const msg = inside
+            ? "<span class='good'>Correct.</span> He re-enters at the right-hand edge."
+            : "<span class='bad'>Not quite.</span> He re-enters at the right-hand edge.";
+        el("prompt").innerHTML = msg +
+            "<span class='hint'>He was out of view for " + countAbsent() + " frames (" +
+            (countAbsent() / S.data.fps).toFixed(1) + " s). Step back through to see the whole track; " +
+            "the answer stays on show.</span>";
+        setStage("done");
+    });
+
+    // ---------- controls ----------
+    function bindAction() {
+        el("action").onclick = () => {
+            if (S.stage === "intro") { setStage("find"); return; }
+            if (S.stage === "find") {
+                S.showTruth = true; draw();
+                el("prompt").innerHTML = "There he is: navy, number 11." +
+                    "<span class='hint'>Hold on to that identity; you will need it shortly.</span>";
+                el("action").textContent = "Now follow him →";
+                el("action").onclick = () => { S.showTruth = false; setStage("track"); go(1); bindAction(); };
+                return;
+            }
+            if (S.stage === "track") { go(S.data.n); return; }
+            if (S.stage === "guess") {
+                S.showTruth = true;
+                el("prompt").innerHTML = "He re-enters at the right-hand edge." +
+                    "<span class='hint'>He was out of view for " + countAbsent() + " frames (" +
+                    (countAbsent() / S.data.fps).toFixed(1) + " s).</span>";
+                setStage("done");
+            }
+        };
+    }
+    bindAction();
+
+    el("prev").onclick = () => { stopPlay(); go(S.idx - 1); };
+    el("next").onclick = () => { stopPlay(); go(S.idx + 1); };
+    el("scrub").oninput = e => { stopPlay(); go(+e.target.value); };
+
+    el("play").onclick = () => {
+        if (S.playing) { stopPlay(); return; }
+        if (S.idx === S.data.n) go(1);
+        el("play").textContent = "Pause";
+        S.playing = setInterval(() => {
+            if (S.idx >= S.data.n) { stopPlay(); return; }
+            go(S.idx + 1);
+        }, 1000 / S.data.fps);
+    };
+
+    el("reveal").onclick = () => {
+        S.showTruth = !S.showTruth;
+        draw();
+    };
+
+    el("restart").onclick = () => {
+        setStage("intro"); bindAction();
+    };
+
+    document.addEventListener("keydown", e => {
+        if (el("scrub").disabled) return;
+        if (e.key === "ArrowRight") { stopPlay(); go(S.idx + 1); }
+        if (e.key === "ArrowLeft")  { stopPlay(); go(S.idx - 1); }
+    });
+})();
+</script>
+
+</body>
+</html>
