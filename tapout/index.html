@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- Google Tag Manager -->
+    <script>(function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({
+            'gtm.start':
+                new Date().getTime(), event: 'gtm.js'
+        });
+        var f = d.getElementsByTagName(s)[0],
+            j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
+        j.async = true;
+        j.src =
+            'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+        f.parentNode.insertBefore(j, f);
+    })(window, document, 'script', 'dataLayer', 'GTM-54ZK7PFG');</script>
+    <!-- End Google Tag Manager -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <meta name="description"
+          content="TAP-Out: Tracking Any Point in 360 via Outpainting">
+    <title>TAP-Out</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+          rel="stylesheet">
+
+    <link rel="stylesheet" href="src/css/bulma.min.css">
+    <link rel="stylesheet" href="src/css/bulma-carousel.min.css">
+    <link rel="stylesheet" href="src/css/bulma-slider.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.8.0/codemirror.min.css">
+
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+    <link rel="stylesheet" href="src/css/index.css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.8.0/codemirror.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.5.3/clipboard.min.js"></script>
+    <script type="text/javascript" async
+            src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
+    <script src="src/js/bulma-carousel.min.js"></script>
+    <script src="src/js/bulma-slider.min.js"></script>
+    <script src="src/js/app.js"></script>
+    <script src="src/js/synced_video_selector.js"></script>
+</head>
+<body onresize="reload();">
+<!-- Google Tag Manager (noscript) -->
+<noscript>
+    <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-54ZK7PFG"
+            height="0" width="0" style="display:none;visibility:hidden"></iframe>
+</noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+<section class="hero" style="padding-bottom: 0; margin-bottom: 0;background-color: #d9e8fc;">
+    <div class="hero-body" style="padding-bottom: 0; margin-bottom: 0;background-color: #d9e8fc;">
+        <div class="container is-max-desktop">
+            <div class="columns is-centered">
+                <div class="column has-text-centered">
+                    <h1 class="title is-1 publication-title" style="font-size: 32pt;"><span
+                            style="font-weight: bolder;">TAP-Out</span>
+                        <br><span style="font-weight:normal">Tracking Any Point in 360&deg; via Outpainting</span></h1>
+                    <div class="is-size-5 publication-authors" id="div-row-authors">
+                        <span class="author-block">
+                            <a href="https://finlay-hudson.github.io/">Finlay G. C. Hudson</a><sup>1</sup>&nbsp;&nbsp;</span>
+                        <span class="author-block">
+                            <a href="https://jadgardner.github.io/">James A. D. Gardner</a><sup>1</sup>&nbsp;&nbsp;</span>
+                        <span class="author-block">
+                            <a href="https://www-users.york.ac.uk/~waps101/">William A. P. Smith</a><sup>1</sup>&nbsp;&nbsp;</span>
+                    </div>
+
+                    <div class="is-size-5 publication-authors">
+                        <span class="author-block"><sup>1</sup>University of York</span>
+                    </div>
+                    <div class="is-size-5 publication-authors" style="margin-top: 6px;">
+                        <span class="author-block"><i>BMVC 2026</i></span>
+                    </div>
+                    <div class="column has-text-centered">
+                        <div class="publication-links">
+                            <span class="link-block"></span>
+
+                            <!-- Paper Link -->
+                            <a href="https://arxiv.org/abs/2611.00406" class="external-link button is-normal is-rounded is-dark">
+                                <span class="icon">
+                                    <i class="ai ai-arxiv"></i>
+                                </span>
+                                <span>Paper</span>
+                            </a>
+
+                            <!-- Code Link (coming soon) -->
+                            <a class="external-link button is-normal is-rounded is-dark" style="opacity: 0.6; cursor: default;">
+                                <span class="icon">
+                                    <i class="fab fa-github" aria-hidden="true"></i>
+                                </span>
+                                <span>Code - Coming Soon</span>
+                            </a>
+
+                            <!-- Dataset Link -->
+                            <a href="https://huggingface.co/datasets/fhudson96/TAPVid360-10k"
+                               class="external-link button is-normal is-rounded is-dark">
+                                <span class="icon">
+                                    <i class="fa fa-book"></i>
+                                </span>
+                                <span>Dataset - TAPVid360-10k</span>
+                            </a>
+                        </div>
+                        <div style="margin-top: 10px; font-size: 0.85rem; color: #333;">
+                            <i>TAP-Out is evaluated on <b>TAPVid360-TAPOut</b>, a non-overlapping subset of
+                                <a href="https://huggingface.co/datasets/fhudson96/TAPVid360-10k">TAPVid360-10k</a> (8,887 clips).</i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<br>
+
+<!-- Flow-chart teaser -->
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="tapout-flow">
+                    <div class="tapout-panel">
+                        <div class="tapout-ttl">1. Input video</div>
+                        <div class="tapout-media"><video autoplay loop muted playsinline
+                             src="videos/flowchart/panel1_input.mp4"></video></div>
+                        <div class="tapout-cap">A narrow field-of-view clip. The camera rotates over time;
+                            much of the scene is never directly observed.</div>
+                    </div>
+                    <div class="tapout-arrow">&rarr;</div>
+                    <div class="tapout-panel">
+                        <div class="tapout-ttl">2. Query points</div>
+                        <div class="tapout-media"><img src="videos/flowchart/panel2_query.png" alt="query points"></div>
+                        <div class="tapout-cap">A set of points to track is specified on frame 1 of the input.
+                            The goal is to follow every point throughout the clip, even when they leave the FoV.</div>
+                    </div>
+                    <div class="tapout-arrow">&rarr;</div>
+                    <div class="tapout-panel wide">
+                        <div class="tapout-ttl">3. Project to 360&deg; (unseen = black)</div>
+                        <div class="tapout-media"><video autoplay loop muted playsinline
+                             src="videos/flowchart/panel3_masked.mp4"></video></div>
+                        <div class="tapout-cap">Only ~20% of the sphere is observed. Points that leave the FoV fall
+                            into the unseen void where standard trackers lose them.</div>
+                    </div>
+                    <div class="tapout-arrow">&rarr;</div>
+                    <div class="tapout-panel wide gen">
+                        <div class="tapout-ttl">4. Outpaint the missing 360&deg;</div>
+                        <div class="tapout-media"><video autoplay loop muted playsinline
+                             src="videos/flowchart/panel4_outpaint.mp4"></video></div>
+                        <div class="tapout-cap">A generative video model (Argus) fills in the unobserved regions as a
+                            world-model prior, so the full scene is now visually consistent.</div>
+                    </div>
+                    <div class="tapout-arrow">&rarr;</div>
+                    <div class="tapout-panel wide gen">
+                        <div class="tapout-ttl">5. Locate object with SAM2</div>
+                        <div class="tapout-media"><video autoplay loop muted playsinline
+                             src="videos/flowchart/panel5_sam2.mp4"></video></div>
+                        <div class="tapout-cap">SAM2 is prompted with the query points and segments the object across
+                            the panorama. Only a coarse mask is needed because it just has to localise the object.</div>
+                    </div>
+                    <div class="tapout-arrow">&rarr;</div>
+                    <div class="tapout-panel gen">
+                        <div class="tapout-ttl">6. Track object-centred crop</div>
+                        <div class="tapout-media"><video autoplay loop muted playsinline
+                             src="videos/flowchart/panel6_crop.mp4"></video></div>
+                        <div class="tapout-cap">The panorama is reprojected to a perspective view centred on the
+                            object. A standard in-frame tracker (CoTracker3) runs here, so the point is followed
+                            even when OOV.</div>
+                    </div>
+                    <div class="tapout-arrow">&rarr;</div>
+                    <div class="tapout-panel wide eval">
+                        <div class="tapout-ttl">7. Project back for evaluation</div>
+                        <div class="tapout-media"><video autoplay loop muted playsinline
+                             src="videos/flowchart/panel7_eval.mp4"></video></div>
+                        <div class="tapout-cap">The 2D crop-space tracks are converted to 3D unit-vector directions
+                            and projected onto the original equirectangular (unseen regions still black). Predictions
+                            (green dots) can now be scored against ground truth (yellow rings) across the full sphere,
+                            including out-of-view portions.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    .tapout-flow {
+        display: flex; flex-wrap: wrap; justify-content: center; align-items: stretch;
+        gap: 8px; margin: 0 auto; max-width: 1200px;
+    }
+    .tapout-panel {
+        display: flex; flex-direction: column; align-items: center;
+        flex: 0 0 auto; max-width: 220px;
+    }
+    .tapout-panel.wide { max-width: 300px; }
+    .tapout-ttl {
+        font-weight: 600; font-size: 0.88rem; margin-bottom: 6px;
+        text-align: center; color: #78c8ff;
+    }
+    .tapout-media {
+        border: 2px solid #78c8ff; border-radius: 4px; overflow: hidden;
+        background: #000; width: 100%;
+    }
+    .tapout-media video, .tapout-media img {
+        display: block; width: 100%; height: auto;
+    }
+    .tapout-cap {
+        color: #aaa; font-size: 0.74rem; line-height: 1.4; margin-top: 6px;
+        text-align: left;
+    }
+    .tapout-arrow {
+        display: flex; align-items: center; color: #888;
+        font-size: 1.4rem; padding: 0 2px; align-self: center; margin-top: 18px;
+    }
+    @media (max-width: 992px) {
+        .tapout-arrow { transform: rotate(90deg); margin: 4px 0; }
+    }
+</style>
+<br>
+
+<!-- abstract -->
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h2 class="title has-text-centered is-3">Abstract</h2>
+                <hr style="margin-top:-20px">
+                <div class="has-text-justified" style="width: 72%; margin-left: 14%;">
+                    Tracking points that leave the camera's field of view (FoV) requires reasoning about unobserved
+                    scene dynamics, a fundamentally different problem from tracking visible correspondences. We present
+                    <b>TAP-Out</b>, an offline method that makes this out-of-view (OOV) reasoning explicit by leveraging
+                    generative video outpainting as a world-model prior. Given a narrow-FoV input video, TAP-Out
+                    outpaints a complete 360&deg; equirectangular video, locates target objects within the panoramic
+                    scene via video object segmentation, and synthesises object-centred perspective crops on which
+                    standard in-frame trackers operate. This decoupled design composes off-the-shelf foundation models
+                    without requiring task-specific architectural modifications. On the TAPVid360 benchmark, TAP-Out
+                    achieves state-of-the-art performance, improving OOV tracking accuracy by approximately
+                    <b>3&times;</b> over the best prior method. We demonstrate its flexibility on out-of-frame object
+                    segmentation and detection and we provide detailed diagnostic analyses across motion regimes,
+                    static versus dynamic content, and hallucination quality, characterising when and why the approach
+                    succeeds or fails.
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<br>
+
+<!-- Method -->
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h2 class="title has-text-centered is-3">Method</h2>
+                <hr style="margin-top:-20px">
+                <div class="has-text-justified" style="width: 72%; margin-left: 14%;">
+                    TAP-Out transforms out-of-view point tracking into a standard in-frame tracking task by first
+                    completing the full scene around the camera and then operating on object-centred perspective crops.
+                    Given an input perspective video, we estimate per-frame camera poses
+                    (using <b>VGGT</b> when ground truth is unavailable) and project each frame onto a shared
+                    equirectangular canvas aligned with the first frame. A diffusion-based video-to-360 model
+                    (<b>Argus</b>) outpaints the masked panorama to produce a temporally consistent 360&deg; scene,
+                    including unobserved regions. Observed pixels are preserved via a composite with the input mask.
+                    <br><br>
+                    Query points are then tracked in the equirectangular domain by running <b>SAM2</b> on the completed
+                    panorama to locate the target object. For each frame, the object centroid defines a virtual
+                    perspective camera whose optical axis is aligned with the object, producing object-centred crops in
+                    which the target remains consistently visible. A standard tracker (<b>CoTracker3</b>) then regresses
+                    refined point positions on these crops, which are transformed back to 3D direction vectors
+                    (<i>S<sup>2</sup></i>) in the original camera frame, following the TAPVid360 formulation.
+                    <br><br>
+                    This modular, decoupled design means every component (camera estimator, generative outpainter,
+                    segmenter, tracker) can be independently upgraded as the field advances, with no retraining or
+                    architectural changes.
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-lg-12 has-text-centered text-center">
+                        <img class="img-fluid mb-4" src="imgs/method.png"
+                             style="display: block; margin-left: auto; margin-right: auto; max-width: 95%; border: 2px solid #000;">
+                        <p class="has-text-centered" style="width: 72%; margin: 10px auto 0; font-style: italic; font-size: 0.9rem;">
+                            TAP-Out pipeline overview. Camera pose estimation &rarr; equirectangular reprojection
+                            &rarr; Argus 360&deg; scene completion &rarr; SAM2 object localisation &rarr;
+                            object-centred perspective crops &rarr; CoTracker3 point tracking &rarr; reprojection to
+                            unit-sphere directions.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<br>
+
+<!-- Results -->
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h2 class="title has-text-centered is-3">Results</h2>
+                <hr style="margin-top:-20px">
+                <div class="has-text-justified" style="width: 72%; margin-left: 14%;">
+                    On the TAPVid360-TAPOut benchmark, TAP-Out with ground-truth cameras achieves
+                    &delta;<sub>avg,oof</sub><sup>x</sup> = <b>0.332</b>, a <b>~3&times;</b> improvement over
+                    CoTracker360 (0.106), the strongest prior OOV baseline. With estimated cameras (via VGGT) it still
+                    reaches 0.135, substantially outperforming the specialised baseline. A static-reprojection baseline
+                    using ground-truth cameras scores 0.203, confirming that geometric reprojection alone cannot
+                    account for dynamic object motion, confirming the generative world model is necessary.
+                    <br><br>
+                    <b>Motion regime analysis:</b> TAP-Out achieves 0.90 OOV accuracy at low camera motion
+                    (0&ndash;5&deg;), 0.45 at medium motion (5&ndash;30&deg;, the dominant regime at 59.6% of points),
+                    and 0.21 at high motion (&gt;30&deg;) where the generative model must hallucinate increasingly
+                    large unobserved regions. Future improvements in video-generation fidelity should directly benefit
+                    this regime.
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-lg-12 has-text-centered text-center">
+                        <div style="width: 92%; margin: 0 auto; overflow-x: auto;">
+                            <table class="results-table" style="width: 100%; border-collapse: collapse;
+                                   font-family: 'Castoro', serif; font-size: 0.95rem; color: #222;
+                                   background: #ffffff; border-radius: 6px; overflow: hidden;">
+                                <thead>
+                                    <tr style="border-top: 2px solid #222; border-bottom: 1px solid #222;">
+                                        <th style="text-align: left; padding: 10px 12px;">Method</th>
+                                        <th style="padding: 10px 8px;">&lt; &delta;<sup>x</sup><sub>avg,all</sub> &uarr;</th>
+                                        <th style="padding: 10px 8px;">&lt; &delta;<sup>x</sup><sub>avg,if</sub> &uarr;</th>
+                                        <th style="padding: 10px 8px;">&lt; &delta;<sup>x</sup><sub>avg,oof</sub> &uarr;</th>
+                                        <th style="padding: 10px 8px;">AD<sup>x</sup><sub>avg,all</sub> &darr;</th>
+                                        <th style="padding: 10px 8px;">AD<sup>x</sup><sub>avg,if</sub> &darr;</th>
+                                        <th style="padding: 10px 8px;">AD<sup>x</sup><sub>avg,oof</sub> &darr;</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td style="text-align: left; padding: 8px 12px;">TAPNext</td>
+                                        <td style="padding: 8px;">0.0075 <span class="pm">&plusmn;0.0077</span></td>
+                                        <td style="padding: 8px;">0.0178 <span class="pm">&plusmn;0.0180</span></td>
+                                        <td style="padding: 8px;">0.0004 <span class="pm">&plusmn;0.0010</span></td>
+                                        <td style="padding: 8px;">52.6330 <span class="pm">&plusmn;18.4256</span></td>
+                                        <td style="padding: 8px;">37.2676 <span class="pm">&plusmn;19.6733</span></td>
+                                        <td style="padding: 8px;">62.6947 <span class="pm">&plusmn;19.8463</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="text-align: left; padding: 8px 12px;">TAPIR</td>
+                                        <td style="padding: 8px;">0.0096 <span class="pm">&plusmn;0.0096</span></td>
+                                        <td style="padding: 8px;">0.0229 <span class="pm">&plusmn;0.0225</span></td>
+                                        <td style="padding: 8px;">0.0003 <span class="pm">&plusmn;0.0006</span></td>
+                                        <td style="padding: 8px;">50.7070 <span class="pm">&plusmn;18.4413</span></td>
+                                        <td style="padding: 8px;">35.0867 <span class="pm">&plusmn;21.8100</span></td>
+                                        <td style="padding: 8px;">60.9705 <span class="pm">&plusmn;17.8270</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="text-align: left; padding: 8px 12px;">BootsTAPIR</td>
+                                        <td style="padding: 8px;">0.0106 <span class="pm">&plusmn;0.0106</span></td>
+                                        <td style="padding: 8px;">0.0254 <span class="pm">&plusmn;0.0251</span></td>
+                                        <td style="padding: 8px;">0.0005 <span class="pm">&plusmn;0.0011</span></td>
+                                        <td style="padding: 8px;">49.1382 <span class="pm">&plusmn;18.5384</span></td>
+                                        <td style="padding: 8px;">34.4510 <span class="pm">&plusmn;21.4859</span></td>
+                                        <td style="padding: 8px;">58.6180 <span class="pm">&plusmn;18.2366</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="text-align: left; padding: 8px 12px;">TAPIP3D</td>
+                                        <td style="padding: 8px;">0.2514 <span class="pm">&plusmn;0.1606</span></td>
+                                        <td style="padding: 8px;">0.4773 <span class="pm">&plusmn;0.2429</span></td>
+                                        <td style="padding: 8px;">0.0897 <span class="pm">&plusmn;0.1301</span></td>
+                                        <td style="padding: 8px;">35.9088 <span class="pm">&plusmn;26.7414</span></td>
+                                        <td style="padding: 8px;">22.9776 <span class="pm">&plusmn;23.0838</span></td>
+                                        <td style="padding: 8px;">44.8629 <span class="pm">&plusmn;32.1248</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="text-align: left; padding: 8px 12px;">CoTracker3 (offline)</td>
+                                        <td style="padding: 8px;">0.2375 <span class="pm">&plusmn;0.0899</span></td>
+                                        <td style="padding: 8px;">0.5516 <span class="pm">&plusmn;0.1588</span></td>
+                                        <td style="padding: 8px;">0.0146 <span class="pm">&plusmn;0.0208</span></td>
+                                        <td style="padding: 8px;">38.2831 <span class="pm">&plusmn;21.9041</span></td>
+                                        <td style="padding: 8px;">18.4400 <span class="pm">&plusmn;22.2117</span></td>
+                                        <td style="padding: 8px;">51.6813 <span class="pm">&plusmn;24.4290</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="text-align: left; padding: 8px 12px;">CoTracker360</td>
+                                        <td style="padding: 8px;">0.2259 <span class="pm">&plusmn;0.1059</span></td>
+                                        <td style="padding: 8px;">0.3925 <span class="pm">&plusmn;0.1326</span></td>
+                                        <td style="padding: 8px;">0.1062 <span class="pm">&plusmn;0.0984</span></td>
+                                        <td style="padding: 8px;">8.6054 <span class="pm">&plusmn;7.6706</span></td>
+                                        <td style="padding: 8px;">4.1213 <span class="pm">&plusmn;4.8057</span></td>
+                                        <td style="padding: 8px;">11.3619 <span class="pm">&plusmn;9.9862</span></td>
+                                    </tr>
+                                    <tr style="border-bottom: 1px solid #222;">
+                                        <td style="text-align: left; padding: 8px 12px;">Static Reprojection (GT Camera)</td>
+                                        <td style="padding: 8px;">0.2497 <span class="pm">&plusmn;0.1989</span></td>
+                                        <td style="padding: 8px;">0.3192 <span class="pm">&plusmn;0.2177</span></td>
+                                        <td style="padding: 8px;">0.2032 <span class="pm">&plusmn;0.2030</span></td>
+                                        <td style="padding: 8px;">8.5689 <span class="pm">&plusmn;10.9995</span></td>
+                                        <td style="padding: 8px;">5.8791 <span class="pm">&plusmn;7.4396</span></td>
+                                        <td style="padding: 8px;">10.2048 <span class="pm">&plusmn;13.5424</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="text-align: left; padding: 8px 12px;"><b>TAP-Out (GT Camera)</b></td>
+                                        <td style="padding: 8px;"><b>0.4418</b> <span class="pm">&plusmn;0.1769</span></td>
+                                        <td style="padding: 8px;"><b>0.6038</b> <span class="pm">&plusmn;0.2103</span></td>
+                                        <td style="padding: 8px;"><b>0.3318</b> <span class="pm">&plusmn;0.1794</span></td>
+                                        <td style="padding: 8px;"><b>4.0788</b> <span class="pm">&plusmn;7.2187</span></td>
+                                        <td style="padding: 8px;"><b>2.5947</b> <span class="pm">&plusmn;6.8070</span></td>
+                                        <td style="padding: 8px;"><b>5.0180</b> <span class="pm">&plusmn;7.9054</span></td>
+                                    </tr>
+                                    <tr style="border-bottom: 2px solid #222;">
+                                        <td style="text-align: left; padding: 8px 12px;">TAP-Out (VGGT Est. Camera)</td>
+                                        <td style="padding: 8px;">0.2960 <span class="pm">&plusmn;0.1499</span></td>
+                                        <td style="padding: 8px;">0.5296 <span class="pm">&plusmn;0.2126</span></td>
+                                        <td style="padding: 8px;">0.1354 <span class="pm">&plusmn;0.1314</span></td>
+                                        <td style="padding: 8px;">17.4218 <span class="pm">&plusmn;17.3905</span></td>
+                                        <td style="padding: 8px;">8.0179 <span class="pm">&plusmn;11.9628</span></td>
+                                        <td style="padding: 8px;">23.2742 <span class="pm">&plusmn;23.5585</span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <p class="has-text-centered" style="width: 72%; margin: 15px auto 0; font-style: italic; font-size: 0.9rem;">
+                            Tracking performance on TAPVid360-TAPOut. Subscripts denote in-frame (<b>if</b>),
+                            out-of-frame (<b>oof</b>), and all points (<b>all</b>). TAP-Out with ground-truth cameras
+                            achieves state-of-the-art performance across all metrics, with a ~3&times; improvement
+                            on OOV accuracy over the best prior method (CoTracker360).
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    .results-table .pm { font-size: 0.72em; color: #666; }
+    .results-table tr:hover { background: #f8f8f8; }
+    .results-table th { background: #f3f3f3; }
+</style>
+<br>
+
+<!-- Qualitative Comparisons -->
+<section id='sec-sidebyside-edit' class="hero is-light is-small">
+    <div class="hero-body">
+        <div class="container" style="padding-left: 5%; padding-right: 5%;">
+            <h2 class="has-text-centered title">
+                <b>Qualitative Comparisons</b>
+            </h2>
+            <div id="sidebyside-carousel" class="carousel results-carousel">
+                <div class="item">
+                    <div class="qual-headers">
+                        <div>Ground Truth</div><div>TAPIP3D</div><div>CoTracker360</div><div>TAP-Out (Ours)</div>
+                    </div>
+                    <img src="imgs/QA4WgLNo-XI_clip_0000-3.png" style="max-width: 100%; height: auto;">
+                </div>
+                <div class="item">
+                    <div class="qual-headers">
+                        <div>Ground Truth</div><div>TAPIP3D</div><div>CoTracker360</div><div>TAP-Out (Ours)</div>
+                    </div>
+                    <img src="imgs/4xhrsRhLApU_clip_0007-2.png" style="max-width: 100%; height: auto;">
+                </div>
+                <div class="item">
+                    <div class="qual-headers">
+                        <div>Ground Truth</div><div>TAPIP3D</div><div>CoTracker360</div><div>TAP-Out (Ours)</div>
+                    </div>
+                    <img src="imgs/2fUW8J3iyGs_clip_0002-4.png" style="max-width: 100%; height: auto;">
+                </div>
+            </div>
+            <style>
+                .qual-headers { display: grid; grid-template-columns: repeat(4, 1fr); text-align: center;
+                                font-weight: 600; font-size: 0.95rem; padding: 6px 0; color: #222; }
+            </style>
+        </div>
+        <h2 class="title has-text-centered is-size-5"
+            style="font-weight: 400; line-height: 32px; font-style: italic; padding-top: 20px;">
+            TAP-Out vs. TAPIP3D and CoTracker360 on TAPVid360. Each column shows tracked point positions on the
+            equirectangular view across timesteps. Standard 2D trackers lose track when points leave the FoV;
+            CoTracker360 produces noisy OOV estimates. TAP-Out maintains coherent tracks through extended OOV periods
+            by operating on the outpainted panoramic scene. <br>
+            (Scroll to view more figures)
+        </h2>
+    </div>
+</section>
+<br>
+
+<!-- Extensions: LaSOT -->
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h2 class="title has-text-centered is-3">Beyond Point Tracking</h2>
+                <hr style="margin-top:-20px">
+                <div class="has-text-justified" style="width: 72%; margin-left: 14%;">
+                    The object-centred perspective video produced by TAP-Out is a drop-in substitute for the input
+                    video in a range of tracking tasks. We demonstrate this on the
+                    <b>LaSOT</b> benchmark: a standard tracker (SAM2) often fails to re-identify an object when it
+                    re-enters the scene after extended absence, a classic Re-ID failure. TAP-Out side-steps the
+                    problem entirely by continuously tracking in the equirectangular domain, where the object is never
+                    truly "lost".
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-lg-12 has-text-centered text-center">
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; max-width: 55%; margin: 0 auto 10px;
+                                    font-weight: 600; font-size: 0.95rem; text-align: center;">
+                            <div>SAM2</div><div>TAP-Out (Ours)</div>
+                        </div>
+                        <img class="img-fluid mb-4" src="imgs/reid_issue_lasot_oov_pool2_clip014.png"
+                             style="display: block; margin-left: auto; margin-right: auto; max-width: 55%; border: 2px solid #000;">
+                        <p class="has-text-centered" style="width: 72%; margin: 10px auto 0; font-style: italic; font-size: 0.9rem;">
+                            SAM2 (left) tracks a white snooker ball when visible (blue circles) but fails to
+                            re-identify it on return (red circle). TAP-Out (right) maintains continuous localisation
+                            in the equirectangular domain.
+                        </p>
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-lg-12 has-text-centered text-center">
+                        <img class="img-fluid mb-4" src="imgs/lasot_oov_outputs.png"
+                             style="display: block; margin-left: auto; margin-right: auto; max-width: 60%; border: 2px solid #000;">
+                        <p class="has-text-centered" style="width: 72%; margin: 10px auto 0; font-style: italic; font-size: 0.9rem;">
+                            TAP-Out applied to out-of-frame object tracking on the LaSOT benchmark.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<br>
+
+<!-- BibTeX -->
+<section class="section" id="BibTeX">
+    <div class="container is-max-desktop content">
+        <h2 class="title">BibTeX</h2>
+        <pre><code>@inproceedings{hudson2026tapout,
+    title     = {TAP-Out: Tracking Any Point in 360$^\circ$ via Outpainting},
+    author    = {Hudson, Finlay G. C. and Gardner, James A. D. and Smith, William A. P.},
+    booktitle = {Proceedings of the British Machine Vision Conference (BMVC)},
+    year      = {2026}
+}</code></pre>
+    </div>
+</section>
+
+<footer class="footer">
+    <div class="container">
+        <div class="columns is-centered">
+            <div class="content is-centered">
+                <p>
+                    Thanks to <a href="https://gen-omnimatte.github.io/">gen-omnimatte</a> for the template.
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>

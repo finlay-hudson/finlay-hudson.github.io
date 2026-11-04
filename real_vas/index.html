@@ -1,0 +1,810 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- Google Tag Manager -->
+    <script>(function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({
+            'gtm.start':
+                new Date().getTime(), event: 'gtm.js'
+        });
+        var f = d.getElementsByTagName(s)[0],
+            j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
+        j.async = true;
+        j.src =
+            'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+        f.parentNode.insertBefore(j, f);
+    })(window, document, 'script', 'dataLayer', 'GTM-54ZK7PFG');</script>
+    <!-- End Google Tag Manager -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <meta name="description"
+          content="Real-VAS: a Real-World Video Amodal Segmentation Dataset">
+    <title>Real-VAS</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+          rel="stylesheet">
+
+    <link rel="stylesheet" href="../tapout/src/css/bulma.min.css">
+    <link rel="stylesheet" href="../tapout/src/css/bulma-carousel.min.css">
+    <link rel="stylesheet" href="../tapout/src/css/bulma-slider.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.8.0/codemirror.min.css">
+
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+    <link rel="stylesheet" href="../tapout/src/css/index.css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.8.0/codemirror.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.5.3/clipboard.min.js"></script>
+    <script type="text/javascript" async
+            src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
+    </script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
+    <script src="../tapout/src/js/app.js"></script>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript>
+    <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-54ZK7PFG"
+            height="0" width="0" style="display:none;visibility:hidden"></iframe>
+</noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+<section class="hero" style="padding-bottom: 0; margin-bottom: 0; background-color: #efe4d9;">
+    <div class="hero-body" style="padding-bottom: 0; margin-bottom: 0; background-color: #efe4d9;">
+        <div class="container is-max-desktop">
+            <div class="columns is-centered">
+                <div class="column has-text-centered">
+                    <h1 class="title is-1 publication-title" style="font-size: 32pt;">
+                        <span style="font-weight: bolder;">Real-VAS</span>
+                        <br><span style="font-weight:normal">A Real-World Video Amodal Segmentation Dataset</span>
+                    </h1>
+                    <div class="is-size-5 publication-authors">
+                        <span class="author-block">
+                            <a href="https://finlay-hudson.github.io/">Finlay G. C. Hudson</a><sup>1</sup>&nbsp;&nbsp;</span>
+                        <span class="author-block">
+                            <a href="https://www-users.york.ac.uk/~waps101/">William A. P. Smith</a><sup>1</sup>&nbsp;&nbsp;</span>
+                    </div>
+                    <div class="is-size-5 publication-authors">
+                        <span class="author-block"><sup>1</sup>University of York</span>
+                    </div>
+                    <div class="is-size-5 publication-authors" style="margin-top: 6px;">
+                        <span class="author-block"><i>Under review</i></span>
+                    </div>
+                    <div class="column has-text-centered">
+                        <div class="publication-links">
+                            <a href="https://arxiv.org/abs/2611.00430"
+                               class="external-link button is-normal is-rounded is-dark">
+                                <span class="icon"><i class="ai ai-arxiv"></i></span>
+                                <span>Paper</span>
+                            </a>
+                            <a class="external-link button is-normal is-rounded is-dark"
+                               style="opacity: 0.6; cursor: default;">
+                                <span class="icon"><i class="fab fa-github" aria-hidden="true"></i></span>
+                                <span>Code - Coming Soon</span>
+                            </a>
+                            <a class="external-link button is-normal is-rounded is-dark"
+                               style="opacity: 0.6; cursor: default;">
+                                <span class="icon"><i class="fa fa-database"></i></span>
+                                <span>Dataset - Coming Soon</span>
+                            </a>
+                        </div>
+                        <div style="margin-top: 10px; font-size: 0.85rem; color: #333;">
+                            <i>300 Occlusion + 100 Container clips &middot; 10,600+ occluded frames &middot;
+                                72.5% occlusion prevalence &middot; 67.3% mean occlusion severity.</i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<br>
+
+<!-- Dataset examples (teaser) -->
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h2 class="title has-text-centered is-3">Dataset examples</h2>
+                <hr style="margin-top:-20px">
+                <div class="has-text-justified" style="width: 72%; margin-left: 14%;">
+                    Each clip pair below shows the raw composited video (left) and the same video with the
+                    <b>amodal ground-truth mask</b> overlaid (right). The mask persists while the object is
+                    behind the occluder &mdash; it is not interpolation or human guess; it is produced by the
+                    pipelines described further down.
+                </div>
+            </div>
+        </div>
+
+        <div class="row" style="margin-top: 24px;">
+            <div class="col-12">
+
+                <!-- Dynamic Occlusion carousel -->
+                <h4 class="rv-category">Dynamic Occlusion</h4>
+                <div class="rv-carousel" data-rv-prefix="occ" data-rv-count="6">
+                    <button class="rv-nav rv-prev" aria-label="previous">&#10094;</button>
+                    <div class="rv-slide">
+                        <div class="rv-side">
+                            <div class="rv-side-ttl">input</div>
+                            <video autoplay muted playsinline preload="auto" class="rv-vid-rgb"></video>
+                        </div>
+                        <div class="rv-side">
+                            <div class="rv-side-ttl">amodal GT</div>
+                            <video autoplay muted playsinline preload="auto" class="rv-vid-gt"></video>
+                        </div>
+                    </div>
+                    <button class="rv-nav rv-next" aria-label="next">&#10095;</button>
+                    <div class="rv-dots"></div>
+                </div>
+
+                <!-- Containment carousel -->
+                <h4 class="rv-category" style="margin-top: 32px;">Containment</h4>
+                <div class="rv-carousel" data-rv-prefix="cont" data-rv-count="3">
+                    <button class="rv-nav rv-prev" aria-label="previous">&#10094;</button>
+                    <div class="rv-slide">
+                        <div class="rv-side">
+                            <div class="rv-side-ttl">input</div>
+                            <video autoplay muted playsinline preload="auto" class="rv-vid-rgb"></video>
+                        </div>
+                        <div class="rv-side">
+                            <div class="rv-side-ttl">amodal GT</div>
+                            <video autoplay muted playsinline preload="auto" class="rv-vid-gt"></video>
+                        </div>
+                    </div>
+                    <button class="rv-nav rv-next" aria-label="next">&#10095;</button>
+                    <div class="rv-dots"></div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    .rv-category {
+        font-weight: 700; margin-bottom: 10px; padding-bottom: 4px;
+        border-bottom: 2px solid #c08b3a;
+    }
+    .rv-carousel {
+        position: relative;
+        max-width: 1200px;
+        margin: 0 auto 32px;
+        padding: 0 50px;
+    }
+    .rv-slide {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+        align-items: start;
+    }
+    .rv-side {
+        display: flex; flex-direction: column; align-items: center;
+    }
+    .rv-side-ttl {
+        font-weight: 600; font-size: 0.95rem; color: #c08b3a; margin-bottom: 6px;
+    }
+    .rv-side video {
+        width: 100%; height: auto; display: block;
+        border: 2px solid #c08b3a; border-radius: 6px; background: #000;
+    }
+    .rv-nav {
+        position: absolute; top: 50%; transform: translateY(-50%);
+        background: #c08b3a; color: #fff; border: none; cursor: pointer;
+        width: 40px; height: 40px; border-radius: 50%;
+        font-size: 1.3rem; line-height: 1; display: flex;
+        align-items: center; justify-content: center;
+        z-index: 2; transition: background 0.15s;
+    }
+    .rv-nav:hover { background: #a06f28; }
+    .rv-prev { left: 0; }
+    .rv-next { right: 0; }
+    .rv-dots {
+        display: flex; justify-content: center; gap: 8px;
+        margin-top: 14px;
+    }
+    .rv-dot {
+        width: 10px; height: 10px; border-radius: 50%;
+        background: #ddd; cursor: pointer; border: none; padding: 0;
+        transition: background 0.15s;
+    }
+    .rv-dot.active { background: #c08b3a; }
+    @media (max-width: 768px) {
+        .rv-slide { grid-template-columns: 1fr; }
+        .rv-carousel { padding: 0 40px; }
+    }
+</style>
+
+<script>
+    (function () {
+        function initRvCarousel(root) {
+            var prefix = root.dataset.rvPrefix;
+            var count = parseInt(root.dataset.rvCount, 10);
+            var slide = root.querySelector('.rv-slide');
+            var vidRgb = root.querySelector('.rv-vid-rgb');
+            var vidGt = root.querySelector('.rv-vid-gt');
+            var dotsContainer = root.querySelector('.rv-dots');
+            var idx = 0, autoTimer = null;
+
+            function manualLoop(v) {
+                v.addEventListener('ended', function () {
+                    try { v.currentTime = 0; v.play(); } catch (e) {}
+                });
+            }
+            manualLoop(vidRgb); manualLoop(vidGt);
+            function load(i) {
+                idx = ((i % count) + count) % count;
+                var n = idx + 1;
+                var cb = '?v=4';
+                vidRgb.src = 'videos/dataset_examples/' + prefix + '_' + n + '_rgb.mp4' + cb;
+                vidGt.src  = 'videos/dataset_examples/' + prefix + '_' + n + '_gt.mp4' + cb;
+                vidRgb.load(); vidGt.load();
+                vidRgb.play().catch(function(){});
+                vidGt.play().catch(function(){});
+                [].forEach.call(dotsContainer.children, function (d, j) {
+                    d.classList.toggle('active', j === idx);
+                });
+            }
+            function next() { load(idx + 1); }
+            function prev() { load(idx - 1); }
+            function restartAuto() {
+                if (autoTimer) clearInterval(autoTimer);
+                autoTimer = setInterval(next, 7000);
+            }
+
+            // Build dots
+            for (var i = 0; i < count; i++) {
+                var d = document.createElement('button');
+                d.className = 'rv-dot';
+                d.setAttribute('aria-label', 'slide ' + (i + 1));
+                (function (j) { d.addEventListener('click', function () { load(j); restartAuto(); }); })(i);
+                dotsContainer.appendChild(d);
+            }
+            root.querySelector('.rv-prev').addEventListener('click', function () { prev(); restartAuto(); });
+            root.querySelector('.rv-next').addEventListener('click', function () { next(); restartAuto(); });
+
+            load(0);
+            // Only auto-advance while the carousel is in view, so scrolling
+            // away to another section isn't disrupted by layout shifts from
+            // new videos loading above the viewport.
+            if ('IntersectionObserver' in window) {
+                var observer = new IntersectionObserver(function (entries) {
+                    if (entries[0].isIntersecting) {
+                        restartAuto();
+                    } else if (autoTimer) {
+                        clearInterval(autoTimer);
+                        autoTimer = null;
+                    }
+                }, { threshold: 0.1 });
+                observer.observe(root);
+            } else {
+                restartAuto();
+            }
+        }
+        document.addEventListener('DOMContentLoaded', function () {
+            document.querySelectorAll('.rv-carousel').forEach(initRvCarousel);
+        });
+    })();
+</script>
+<br>
+
+<!-- Flow diagram: two pipelines -->
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h2 class="title has-text-centered is-3">How is the ground truth generated?</h2>
+                <hr style="margin-top:-20px">
+                <div style="text-align: center; margin-bottom: 24px;">
+                    <img class="img-fluid" src="imgs/real_vas_fig1.png"
+                         style="display: block; margin: 0 auto; max-width: 100%;">
+                    <p class="has-text-centered" style="width: 72%; margin: 10px auto 0; font-style: italic; font-size: 0.9rem;">
+                        An overview of our Real-VAS data generation pipeline.
+                        <b>Occlusion pipeline:</b> from static camera videos, we automatically find compatible
+                        pairs of clips that can be composited to form realistic occlusions. Occluder objects and
+                        their secondary effects (e.g. shadows) are composited over occludee objects for which
+                        accurate ground truth is computed from the unoccluded sequence.
+                        <b>Containment pipeline:</b> we identify three scenarios in which tracking the container
+                        is sufficient to provide ground-truth tracking of the contained object. For both
+                        pipelines, additional camera motion can subsequently be emulated by cropping to a
+                        narrower moving field of view.
+                    </p>
+                </div>
+                <div class="rv-pipeline-container">
+
+                    <!-- Occlusion pipeline -->
+                    <div class="rv-pipeline">
+                        <div class="rv-pipeline-head">Dynamic Occlusion pipeline</div>
+                        <div class="rv-flow">
+                            <div class="rv-panel">
+                                <div class="rv-ttl">1. Two source clips</div>
+                                <div class="rv-cap">An <em>occludee</em> clip (object to be hidden) and an
+                                    <em>occluder</em> clip (object that will hide it), each with a static camera.
+                                    From in-house capture or filtered-scraped video.</div>
+                            </div>
+                            <div class="rv-arrow">&rarr;</div>
+                            <div class="rv-panel">
+                                <div class="rv-ttl">2. Masks + motion</div>
+                                <div class="rv-cap">Lang-SAM&nbsp;+ SAM2 produce visible masks for both objects.
+                                    CoTracker3 trajectories give a mean-motion score &mdash; only pairs with
+                                    <em>both</em> objects dynamic are kept.</div>
+                            </div>
+                            <div class="rv-arrow">&rarr;</div>
+                            <div class="rv-panel">
+                                <div class="rv-ttl">3. Temporal alignment</div>
+                                <div class="rv-cap">Cross-correlate the two mask sequences over all time shifts
+                                    &Delta;<i>t</i>; the sum of per-frame mask intersections scores each candidate
+                                    occlusion event.</div>
+                            </div>
+                            <div class="rv-arrow">&rarr;</div>
+                            <div class="rv-panel">
+                                <div class="rv-ttl">4. Filter candidates</div>
+                                <div class="rv-cap">Depth Anything V2 enforces physical plausibility (no reverse
+                                    occlusion, no &ldquo;on top&rdquo;, no external occluders). Quality,
+                                    interest, and redundancy checks are applied.</div>
+                            </div>
+                            <div class="rv-arrow">&rarr;</div>
+                            <div class="rv-panel">
+                                <div class="rv-ttl">5. Composite with soft matte</div>
+                                <div class="rv-cap">Generative Omnimatte provides the FG alpha matte (incl.
+                                    shadows and reflections) for seamless compositing. The occluder stays fully
+                                    opaque inside, so the amodal mask is exact behind the occlusion.</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="rv-divider"></div>
+
+                    <!-- Containment pipeline -->
+                    <div class="rv-pipeline">
+                        <div class="rv-pipeline-head">Container pipeline (On-Surface / Articulated / Mobile)</div>
+                        <div class="rv-flow">
+                            <div class="rv-panel">
+                                <div class="rv-ttl">1. Form-fitting pair</div>
+                                <div class="rv-cap">An object and a snug-fit container recorded in-house.
+                                    Once the object is fully contained, its rigid motion is defined by the
+                                    container's motion.</div>
+                            </div>
+                            <div class="rv-arrow">&rarr;</div>
+                            <div class="rv-panel">
+                                <div class="rv-ttl">2. Track object while visible</div>
+                                <div class="rv-cap">SAM2 tracks the object mask up to the entry frame
+                                    <i>t</i><sub>entry</sub>. The last visible mask is cached.</div>
+                            </div>
+                            <div class="rv-arrow">&rarr;</div>
+                            <div class="rv-panel">
+                                <div class="rv-ttl">3. Track container points</div>
+                                <div class="rv-cap">After <i>t</i><sub>entry</sub>, CoTracker3 estimates the
+                                    container's full rigid/affine transform (translation, rotation, scale) from
+                                    multiple surface points.</div>
+                            </div>
+                            <div class="rv-arrow">&rarr;</div>
+                            <div class="rv-panel">
+                                <div class="rv-ttl">4. Apply container transform</div>
+                                <div class="rv-cap">The container's transform is applied to the cached object
+                                    mask &mdash; this is the amodal GT while occluded. If a human hand inserts the
+                                    object we substitute the actuator's tracked motion until it settles.</div>
+                            </div>
+                            <div class="rv-arrow">&rarr;</div>
+                            <div class="rv-panel">
+                                <div class="rv-ttl">5. Validated (97.5% IoU)</div>
+                                <div class="rv-cap">We measure the empirical error between the propagated mask
+                                    and visible-case ground truth and find mean IoU 97.5%, confirming the
+                                    snug-fit transform is a tight proxy for the hidden object's mask.</div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    .rv-pipeline-container { max-width: 1200px; margin: 20px auto; }
+    .rv-pipeline-head {
+        font-weight: 700; font-size: 1.1rem; margin: 24px 0 12px;
+        padding: 6px 10px; border-left: 4px solid #c08b3a; background: #efe4d9;
+    }
+    .rv-flow {
+        display: flex; flex-wrap: wrap; justify-content: center; align-items: stretch;
+        gap: 8px; margin: 0 auto;
+    }
+    .rv-panel {
+        display: flex; flex-direction: column; align-items: center;
+        flex: 1 1 180px; max-width: 220px;
+    }
+    .rv-ttl {
+        font-weight: 600; font-size: 0.9rem; margin-bottom: 8px;
+        text-align: center; color: #c08b3a;
+    }
+    .rv-cap {
+        color: #333; font-size: 0.78rem; line-height: 1.45; margin-top: 4px;
+        text-align: left; padding: 6px 10px; background: #fdf7f0; border-radius: 4px;
+        min-height: 70px;
+    }
+    .rv-arrow {
+        display: flex; align-items: center; color: #c08b3a;
+        font-size: 1.4rem; padding: 0 2px; align-self: center; font-weight: bold;
+    }
+    .rv-divider {
+        height: 1px; background: #c08b3a; opacity: 0.4; margin: 32px 0;
+    }
+    @media (max-width: 992px) {
+        .rv-arrow { transform: rotate(90deg); margin: 4px 0; }
+    }
+</style>
+<br>
+
+<!-- Abstract -->
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h2 class="title has-text-centered is-3">Abstract</h2>
+                <hr style="margin-top:-20px">
+                <div class="has-text-justified" style="width: 72%; margin-left: 14%;">
+                    Amodal video object segmentation is fundamentally limited by the absence of datasets that
+                    combine real-world complexity with precise ground-truth annotations. To address this, we
+                    present <b>Real Video Amodal Segmentation (Real-VAS)</b>, a new large-scale, zero-shot
+                    evaluation dataset built from composited real-image video. We introduce a novel data
+                    generation pipeline that enables the creation of <em>programmatically consistent</em> amodal
+                    ground truth for real-world footage, in which the object mask, occlusion boundary, and
+                    composited image are all derived from a single unoccluded source, without relying on human
+                    estimation or expensive 3D reconstruction. Our dataset is structured into two challenging
+                    scenarios: <b>dynamic Occlusion</b>, created by compositing two clips of moving objects, and
+                    a unique <b>Container</b> category featuring complex, physically-constrained interactions.
+                    These container scenarios &mdash; On-Surface Containment, Articulated Containment, and Mobile
+                    Containment &mdash; allow us to generate precise ground truth by simulating an object's
+                    motion based on its container's tracked transformation. As a result, Real-VAS provides a
+                    diverse and challenging benchmark for evaluating amodal segmentation models on realistic
+                    video with the precision of synthetic data.
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<br>
+
+
+<!-- Compositing animation: BG + FG → Composite -->
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h2 class="title has-text-centered is-3">Compositing the dataset</h2>
+                <hr style="margin-top:-20px">
+                <div class="has-text-justified" style="width: 72%; margin-left: 14%;">
+                    Each Real-VAS Occlusion clip is built from <b>two source recordings</b>: the <em>occludee</em>
+                    (unoccluded scene we want ground truth on) and the <em>occluder</em> (object recorded
+                    separately). They are tracked, filtered, and composited &mdash; the amodal mask comes
+                    directly from the occludee's visible-case mask, so the hidden boundary is exact.
+                </div>
+            </div>
+        </div>
+
+        <div class="row" style="margin-top: 10px;">
+            <div class="col-12">
+                <div class="rv-merge-stage">
+                    <div class="rv-merge-slot rv-slot-bg">
+                        <div class="rv-slot-ttl">Occludee (BG)</div>
+                        <video autoplay loop muted playsinline preload="auto"
+                               src="videos/merge_examples/air_hockey_1_bg.mp4?v=2"></video>
+                    </div>
+                    <div class="rv-merge-slot rv-slot-fg">
+                        <div class="rv-slot-ttl">Occluder (FG)</div>
+                        <video autoplay loop muted playsinline preload="auto"
+                               src="videos/merge_examples/air_hockey_1_fg.mp4?v=2"></video>
+                    </div>
+                    <div class="rv-merge-slot rv-slot-comp">
+                        <div class="rv-slot-ttl">Composite &rarr; Real-VAS clip</div>
+                        <video autoplay loop muted playsinline preload="auto"
+                               src="videos/merge_examples/air_hockey_1_comp.mp4?v=2"></video>
+                    </div>
+                    <div class="rv-merge-slot rv-slot-amodal">
+                        <div class="rv-slot-ttl">+ Amodal GT mask</div>
+                        <video autoplay loop muted playsinline preload="auto"
+                               src="videos/merge_examples/air_hockey_1_comp_amodal.mp4?v=2"></video>
+                    </div>
+                </div>
+                <p class="has-text-centered" style="font-style: italic; font-size: 0.85rem; color: #666; margin-top: 4px; margin-bottom: 0;">
+                    Example: <code>air_hockey_1</code>. Two separate recordings &mdash; a hand hitting a puck,
+                    and a cardboard box on the same table &mdash; are composited to create an occlusion scene
+                    where the puck disappears behind the box. The amodal ground-truth mask (red) stays exact
+                    behind the box because it comes from the unoccluded BG clip.
+                </p>
+            </div>
+        </div>
+
+        <!-- Containment pipeline visualisation -->
+        <div class="row" style="margin-top: 32px;">
+            <div class="col-12 text-center">
+                <h4 class="rv-category" style="display: inline-block; text-align: left;">
+                    Containment: track the container, inherit its motion
+                </h4>
+                <div class="has-text-justified" style="width: 72%; margin: 10px auto 16px;">
+                    For the Container scenarios, no compositing is needed. SAM2 tracks the object while it is
+                    visible; once it enters the container, CoTracker3 tracks points on the <em>container</em>,
+                    and the object's last visible mask is propagated using the container's recovered rigid /
+                    affine transform. Below: the amodal mask of the putty (yellow) is produced automatically
+                    by the container's tracked motion while the putty itself is hidden inside the mug.
+                </div>
+                <div class="rv-cont-grid">
+                    <div class="rv-cont-item">
+                        <video autoplay loop muted playsinline preload="auto"
+                               src="videos/merge_examples/IMG_7668_points.mp4?v=1"></video>
+                        <p>
+                            <code>IMG_7668</code> &mdash; drawer. A different container type:
+                            <span style="color:#27ae60;">green</span> CoTracker3 points track the drawer
+                            handle; yellow is the resulting amodal mask of the object stowed inside.
+                        </p>
+                    </div>
+                    <div class="rv-cont-item">
+                        <video autoplay loop muted playsinline preload="auto"
+                               src="videos/merge_examples/IMG_7700_points.mp4?v=1"></video>
+                        <p>
+                            <code>IMG_7700</code> &mdash; mug held by hand.
+                            <span style="color:#c0392b;">Red</span>: CoTracker3 points on the mug surface
+                            (hundreds of them). <span style="color:#27ae60;">Green</span>: object trajectory.
+                            Yellow: resulting amodal mask of the object inside.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    /* ----- Compositing animation ----- */
+    /*
+      Timeline (18s total):
+        0.00 - 0.33  (0-6s)   side-by-side: BG left, FG right
+        0.33 - 0.44  (6-8s)   both slide to centre, scale down
+        0.44 - 0.55  (8-10s)  BG+FG fade out, Composite fades in
+        0.55 - 0.72  (10-13s) Composite plays full width
+        0.72 - 0.83  (13-15s) Amodal overlay crossfades in on top of composite
+        0.83 - 0.94  (15-17s) Amodal overlay dwells
+        0.94 - 1.00  (17-18s) all fade out, BG+FG reappear at sides
+    */
+    .rv-merge-stage {
+        position: relative;
+        max-width: 1100px;
+        width: 100%;
+        margin: 0 auto;
+        aspect-ratio: 5 / 2;
+        overflow: hidden;
+        background: #fff;
+        border-radius: 6px;
+    }
+    .rv-merge-slot {
+        position: absolute;
+        top: 0;
+        width: 50%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        animation-duration: 18s;
+        animation-timing-function: ease-in-out;
+        animation-iteration-count: infinite;
+    }
+    .rv-slot-ttl {
+        font-weight: 600; font-size: 0.9rem; color: #c08b3a; margin-bottom: 6px;
+    }
+    .rv-merge-slot video {
+        max-width: 100%; max-height: calc(100% - 24px);
+        display: block;
+        border: 2px solid #c08b3a; border-radius: 6px; background: #000;
+    }
+    .rv-slot-bg    { left: 0;  animation-name: rv-bg-move; }
+    .rv-slot-fg    { left: 50%; animation-name: rv-fg-move; }
+    .rv-slot-comp  { left: 0; width: 100%; opacity: 0; animation-name: rv-comp-fade; }
+    .rv-slot-amodal{ left: 0; width: 100%; opacity: 0; animation-name: rv-amodal-fade; }
+
+    @keyframes rv-bg-move {
+        0%, 33%  { left: 0;   width: 50%; opacity: 1; transform: scale(1); }
+        44%      { left: 25%; width: 50%; opacity: 1; transform: scale(0.85); }
+        55%, 94% { left: 25%; width: 50%; opacity: 0; transform: scale(0.6); }
+        100%     { left: 0;   width: 50%; opacity: 1; transform: scale(1); }
+    }
+    @keyframes rv-fg-move {
+        0%, 33%  { left: 50%; width: 50%; opacity: 1; transform: scale(1); }
+        44%      { left: 25%; width: 50%; opacity: 1; transform: scale(0.85); }
+        55%, 94% { left: 25%; width: 50%; opacity: 0; transform: scale(0.6); }
+        100%     { left: 50%; width: 50%; opacity: 1; transform: scale(1); }
+    }
+    @keyframes rv-comp-fade {
+        0%, 44%  { opacity: 0; }
+        55%, 72% { opacity: 1; }
+        83%      { opacity: 0; }
+        100%     { opacity: 0; }
+    }
+    @keyframes rv-amodal-fade {
+        0%, 72%  { opacity: 0; }
+        83%, 94% { opacity: 1; }
+        100%     { opacity: 0; }
+    }
+
+    /* Containment visualisation grid */
+    .rv-cont-grid {
+        display: grid;
+        grid-template-columns: 1.5fr 1fr;
+        gap: 20px;
+        max-width: 1100px;
+        margin: 0 auto;
+        align-items: start;
+    }
+    .rv-cont-item {
+        display: flex; flex-direction: column; align-items: center;
+    }
+    .rv-cont-item video {
+        max-width: 100%; max-height: 480px;
+        display: block;
+        border: 2px solid #c08b3a; border-radius: 6px; background: #000;
+    }
+    .rv-cont-item p {
+        font-style: italic; font-size: 0.85rem; color: #666;
+        margin-top: 10px; text-align: left;
+    }
+    @media (max-width: 768px) {
+        .rv-cont-grid { grid-template-columns: 1fr; }
+    }
+</style>
+
+<!-- Benchmark results -->
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h2 class="title has-text-centered is-3">Benchmark</h2>
+                <hr style="margin-top:-20px">
+                <div class="has-text-justified" style="width: 72%; margin-left: 14%;">
+                    We benchmark a diverse set of state-of-the-art amodal segmentation methods on Real-VAS,
+                    covering image-based completion, video diffusion, and video-transformer approaches:
+                    <b>pix2gestalt</b>, <b>TCOW</b>, <b>SDAmodal</b>, <b>Generative Omnimatte</b>, <b>TABE</b>,
+                    <b>PCNet</b>, and <b>Diffusion VAS</b>. We report mean IoU over <em>full-object</em>
+                    (mIoU<sub>fo</sub>), <em>fully-occluded</em> (mIoU<sub>ffo</sub>), and <em>partially-occluded
+                    </em> (mIoU<sub>occ</sub>) frames.
+                </div>
+                <div style="margin-top: 20px; overflow-x: auto;">
+                    <table class="rv-table">
+                        <thead>
+                        <tr>
+                            <th>Method</th>
+                            <th>Inputs</th>
+                            <th>Run&nbsp;type</th>
+                            <th>mIoU<sub>fo</sub></th>
+                            <th>mIoU<sub>ffo</sub></th>
+                            <th>mIoU<sub>occ</sub></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr><td>pix2gestalt</td><td>Modal&nbsp;Seg.</td><td>Online</td><td>0.411</td><td>0.060</td><td>0.136</td></tr>
+                        <tr><td>TCOW</td><td>/</td><td>Offline</td><td>0.426</td><td>0.179</td><td>0.165</td></tr>
+                        <tr><td>SDAmodal</td><td>Modal&nbsp;Seg.&nbsp;+&nbsp;GT&nbsp;BBox</td><td>Online</td><td>0.526</td><td>0.059</td><td>0.146</td></tr>
+                        <tr><td>Generative Omnimatte</td><td>Modal&nbsp;Seg.</td><td>Offline</td><td>0.416</td><td>0.045</td><td>0.062</td></tr>
+                        <tr><td>TABE</td><td>Modal&nbsp;Seg.</td><td>Offline</td><td>0.501</td><td>0.209</td><td>0.207</td></tr>
+                        <tr><td>PCNet</td><td>Modal&nbsp;Seg.&nbsp;+&nbsp;GT&nbsp;BBox</td><td>Online</td><td>0.452</td><td>0.030</td><td>0.011</td></tr>
+                        <tr class="rv-best"><td>Diffusion&nbsp;VAS</td><td>Modal&nbsp;Seg.</td><td>Offline</td><td><b>0.604</b></td><td><b>0.267</b></td><td><b>0.262</b></td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div style="margin-top: 32px;">
+                    <img class="img-fluid" src="imgs/combined_metrics_plot_side_by_side.png"
+                         style="display: block; margin: 0 auto; max-width: 95%;">
+                    <p class="has-text-centered" style="width: 72%; margin: 10px auto 0; font-style: italic; font-size: 0.9rem;">
+                        Per-method performance against (left) occlusion severity and (right) occlusion duration.
+                        Harder occlusion events depress every method's mIoU, with the largest absolute drops on
+                        the Diffusion-based approaches that <em>are</em> otherwise the strongest in the easy
+                        regime.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    .rv-table {
+        margin: 0 auto; border-collapse: collapse; background: #fff;
+        font-size: 0.9rem;
+    }
+    .rv-table th, .rv-table td {
+        padding: 6px 12px; border-bottom: 1px solid #eee; text-align: center;
+    }
+    .rv-table thead th { background: #efe4d9; }
+    .rv-table tr.rv-best td { background: #fdf7f0; }
+</style>
+<br>
+
+<!-- Qualitative comparisons -->
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h2 class="title has-text-centered is-3">Qualitative comparisons</h2>
+                <hr style="margin-top:-20px">
+                <img class="img-fluid mb-4" src="imgs/qualitative_1.png"
+                     style="display: block; margin: 0 auto; max-width: 95%; border: 1px solid #ddd; border-radius: 4px;">
+                <img class="img-fluid mb-4" src="imgs/qualitative_2.png"
+                     style="display: block; margin: 0 auto; max-width: 95%; border: 1px solid #ddd; border-radius: 4px;">
+                <p class="has-text-centered" style="width: 72%; margin: 10px auto 0; font-style: italic; font-size: 0.9rem;">
+                    Qualitative predictions across methods on representative Occlusion and Containment sequences.
+                    Yellow outline is the Real-VAS ground-truth amodal mask.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+<br>
+
+<!-- Design decisions / method -->
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h2 class="title has-text-centered is-3">Why composite?</h2>
+                <hr style="margin-top:-20px">
+                <div class="has-text-justified" style="width: 72%; margin-left: 14%;">
+                    Real-world amodal datasets usually bottom out in a tradeoff: either you rely on human
+                    best-guess annotations behind occlusions (noisy, not ground truth), on multi-camera 3D rigs
+                    (not scalable), or you give up and only annotate the <em>visible</em> frames (so your
+                    benchmark is testing re-identification, not amodal reasoning). Synthetic datasets dodge
+                    this with exact ground truth but lose real-world appearance, texture, and sensor noise.
+                    <br><br>
+                    <b>Real-VAS trades a controlled compositing step for programmatically perfect ground
+                        truth on real-world footage.</b> Every amodal mask on the dataset comes from a
+                    source clip in which the object was <em>unoccluded</em> and tracked by SAM2 (and
+                    optionally CoTracker3 for the container case). The composite is then driven by that
+                    source, so the mask behind the occlusion is <em>exactly</em> the mask we have for the
+                    visible-case source footage. No human annotator ever had to guess the hidden boundary.
+                </div>
+                <div style="margin-top: 20px;">
+                    <img class="img-fluid" src="imgs/gen_omnimatte_effect.png"
+                         style="display: block; margin: 0 auto; max-width: 95%;">
+                    <p class="has-text-centered" style="width: 72%; margin: 10px auto 0; font-style: italic; font-size: 0.9rem;">
+                        We use Generative Omnimatte to carry the occluder's secondary effects (cast shadows,
+                        reflections) through the compositing step &mdash; top: naive compositing, bottom: ours.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<br>
+
+<!-- Download / BibTeX -->
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h2 class="title has-text-centered is-3">BibTeX</h2>
+                <hr style="margin-top:-20px">
+                <pre style="text-align: left; background: #f8f8f8; padding: 12px; max-width: 72%; margin: 0 auto; border-radius: 6px; font-size: 0.85rem;">@inproceedings{hudson2026realvas,
+  title     = {Real-VAS: A Real-World Video Amodal Segmentation Dataset},
+  author    = {Hudson, Finlay G. C. and Smith, William A. P.},
+  booktitle = {Under review},
+  year      = {2026}
+}</pre>
+            </div>
+        </div>
+    </div>
+</section>
+<br>
+
+<section>
+    <div class="container has-text-centered">
+        <a href="https://finlay-hudson.github.io/" style="font-size: 0.9rem;">&larr; back to Finlay Hudson's homepage</a>
+    </div>
+</section>
+<br>
+
+</body>
+</html>
