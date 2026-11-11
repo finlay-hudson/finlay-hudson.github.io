@@ -463,9 +463,15 @@ li .description {
 		float: left;
 	}
 
+	/* Phones: wrap the timeline three per row instead of hiding it */
 	.timeline{
-		display: none;
-		}
+		padding-left: 0;
+	}
+	.timeline li{
+		width: 32%;
+		margin-top: 20px;
+		height: auto;
+	}
 
 	.job-title {
 		position: absolute;

@@ -291,6 +291,36 @@
 </script>
 <br>
 
+<!-- Abstract -->
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h2 class="title has-text-centered is-3">Abstract</h2>
+                <hr style="margin-top:-20px">
+                <div class="has-text-justified" style="width: 72%; margin-left: 14%;">
+                    Amodal video object segmentation is fundamentally limited by the absence of datasets that
+                    combine real-world complexity with precise ground-truth annotations. To address this, we
+                    present <b>Real Video Amodal Segmentation (Real-VAS)</b>, a new large-scale, zero-shot
+                    evaluation dataset built from composited real-image video. We introduce a novel data
+                    generation pipeline that enables the creation of <em>programmatically consistent</em> amodal
+                    ground truth for real-world footage, in which the object mask, occlusion boundary, and
+                    composited image are all derived from a single unoccluded source, without relying on human
+                    estimation or expensive 3D reconstruction. Our dataset is structured into two challenging
+                    scenarios: <b>dynamic Occlusion</b>, created by compositing two clips of moving objects, and
+                    a unique <b>Container</b> category featuring complex, physically-constrained interactions.
+                    These container scenarios &mdash; On-Surface Containment, Articulated Containment, and Mobile
+                    Containment &mdash; allow us to generate precise ground truth by simulating an object's
+                    motion based on its container's tracked transformation. As a result, Real-VAS provides a
+                    diverse and challenging benchmark for evaluating amodal segmentation models on realistic
+                    video with the precision of synthetic data.
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<br>
+
 <!-- Flow diagram: two pipelines -->
 <section>
     <div class="container">
@@ -440,35 +470,6 @@
 </style>
 <br>
 
-<!-- Abstract -->
-<section>
-    <div class="container">
-        <div class="row">
-            <div class="col-12 text-center">
-                <h2 class="title has-text-centered is-3">Abstract</h2>
-                <hr style="margin-top:-20px">
-                <div class="has-text-justified" style="width: 72%; margin-left: 14%;">
-                    Amodal video object segmentation is fundamentally limited by the absence of datasets that
-                    combine real-world complexity with precise ground-truth annotations. To address this, we
-                    present <b>Real Video Amodal Segmentation (Real-VAS)</b>, a new large-scale, zero-shot
-                    evaluation dataset built from composited real-image video. We introduce a novel data
-                    generation pipeline that enables the creation of <em>programmatically consistent</em> amodal
-                    ground truth for real-world footage, in which the object mask, occlusion boundary, and
-                    composited image are all derived from a single unoccluded source, without relying on human
-                    estimation or expensive 3D reconstruction. Our dataset is structured into two challenging
-                    scenarios: <b>dynamic Occlusion</b>, created by compositing two clips of moving objects, and
-                    a unique <b>Container</b> category featuring complex, physically-constrained interactions.
-                    These container scenarios &mdash; On-Surface Containment, Articulated Containment, and Mobile
-                    Containment &mdash; allow us to generate precise ground truth by simulating an object's
-                    motion based on its container's tracked transformation. As a result, Real-VAS provides a
-                    diverse and challenging benchmark for evaluating amodal segmentation models on realistic
-                    video with the precision of synthetic data.
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<br>
 
 
 <!-- Compositing animation: BG + FG → Composite -->
@@ -697,13 +698,12 @@
                 </div>
 
                 <div style="margin-top: 32px;">
-                    <img class="img-fluid" src="imgs/combined_metrics_plot_side_by_side.png"
+                    <img class="img-fluid" src="imgs/combined_metrics_plot_side_by_side.png" alt="mIoU of Diffusion VAS, TABE and TCOW versus fraction of Real-VAS used"
                          style="display: block; margin: 0 auto; max-width: 95%;">
                     <p class="has-text-centered" style="width: 72%; margin: 10px auto 0; font-style: italic; font-size: 0.9rem;">
-                        Per-method performance against (left) occlusion severity and (right) occlusion duration.
-                        Harder occlusion events depress every method's mIoU, with the largest absolute drops on
-                        the Diffusion-based approaches that <em>are</em> otherwise the strongest in the easy
-                        regime.
+                        Mean IoU of the three strongest methods (Diffusion VAS, TABE, TCOW) when evaluated on increasing fractions
+                        of Real-VAS, for full-object (left), fully-occluded (middle) and partially-occluded (right) frames.
+                        The ranking of the methods is the same at every fraction.
                     </p>
                 </div>
             </div>
