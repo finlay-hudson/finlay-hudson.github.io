@@ -314,13 +314,6 @@ li {
 	max-width: 300px;
 	vertical-align: top;
 }
-/* Timeline: fit seven entries on one row (inline-block gaps + list padding need the headroom) */
-.timeline {
-	padding-left: 0;
-}
-.timeline li {
-	width: 13.5%;
-}
 li .line {
   position: absolute;
   top: -47px;
@@ -504,3 +497,40 @@ li .description {
 
 
 /* End of all :P*/
+
+
+/* ---- Timeline: always a single row (phones wrap three per row) ---- */
+.timeline {
+	display: flex;
+	flex-wrap: nowrap;
+	justify-content: center;
+	padding-left: 0;
+}
+.timeline:after {
+	content: none;
+	display: none;
+}
+.timeline li {
+	flex: 1 1 0;
+	min-width: 0;
+	width: auto;
+	max-width: 180px;
+	padding: 0 4px;
+}
+@media (max-width: 850px) {
+	.timeline li .description {
+		font-size: 12px;
+		line-height: 16px;
+	}
+}
+@media (max-width: 425px) {
+	.timeline {
+		flex-wrap: wrap;
+	}
+	.timeline li {
+		flex: 0 0 32%;
+		max-width: none;
+		margin-top: 20px;
+		height: auto;
+	}
+}
