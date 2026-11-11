@@ -314,6 +314,13 @@ li {
 	max-width: 300px;
 	vertical-align: top;
 }
+/* Timeline: fit seven entries on one row (inline-block gaps + list padding need the headroom) */
+.timeline {
+	padding-left: 0;
+}
+.timeline li {
+	width: 13.5%;
+}
 li .line {
   position: absolute;
   top: -47px;
